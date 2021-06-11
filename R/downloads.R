@@ -57,7 +57,7 @@ download_logs <- function(from = Sys.Date() - 9,
   }
 
   data.table::setorder(downloads, date)
-  downloads[date %in% dates]
+  #downloads[date %in% dates]
 }
 
 #' @export
