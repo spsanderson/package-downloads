@@ -1,6 +1,7 @@
 ---
 title: "CRAN Downloads"
 output: github_document
+always_allow_html: true
 ---
 
 ```{r knit_opts, include=FALSE}
@@ -15,10 +16,10 @@ knitr::opts_chunk$set(
 
 This repo contains the analysis of downloads of my `R` packages:
 
-* [`healthyR`](https://www.spsanderson.com/healthyR/)
-* [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
-* [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
-* [`healthyverse`](https://www.spsanderson.com/healthyverse/)
+-   [`healthyR`](https://www.spsanderson.com/healthyR/)
+-   [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
+-   [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
+-   [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 
 All of which follow the ["analyses as package"](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
 
@@ -28,17 +29,26 @@ While I analyze `healthyverse` packages here, the functions are written in a way
 
 This file was last updated on `r format(Sys.Date(), "%B %d, %Y")`.
 
-```{r setup, results='hide'}
+```{r setup, results='hide', echo=FALSE, message=FALSE, warning=FALSE}
 library(packagedownloads)
 library(ggplot2)
 library(patchwork)
+library(dplyr)
+library(timetk)
+library(purrr)
+library(knitr)
 ```
 
 ```{r get_data, echo=FALSE, message=FALSE, warning=FALSE}
-start_date           <- Sys.Date() - 9
-end_date             <- Sys.Date() - 2
-total_downloads      <- download_logs(start_date, end_date)
+start_date      <- Sys.Date() - 9
+end_date        <- Sys.Date() - 2
+total_downloads <- download_logs(start_date, end_date)
+interactive     <- FALSE
 ```
+
+# Current Trend
+
+Here are the current 7 day trends for the `healthyverse` suite of packages.
 
 ```{r analysis_7_day}
 downloads            <- total_downloads[date >= start_date]
@@ -59,11 +69,13 @@ patchwork_theme <- theme_classic(base_size = 24) +
 p1 + p2 + p3 + p4 +
   plot_annotation(
     title    = "healthyR packages are on the Rise",
-    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - 7 Days",
     caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
     theme    = patchwork_theme
   )
 ```
+
+# Since Inception
 
 ```{r total_data}
 start_date <- as.Date("2020-11-15")
@@ -85,8 +97,44 @@ patchwork_theme <- theme_classic(base_size = 24) +
 p1 + p2 + p3 + p4 +
   plot_annotation(
     title    = "healthyR packages are on the Rise",
-    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
     caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
     theme    = patchwork_theme
+  )
+```
+
+# Some table data
+
+```{r top_n_data_tbl}
+top_n_downloads(total_downloads, 10, r_os) %>%
+  set_names("OS", "Count") %>%
+  kable()
+
+top_n_downloads(total_downloads, 10, r_version) %>%
+  set_names("Version","Count") %>%
+  kable()
+
+top_n_downloads(total_downloads, 4, package) %>%
+  set_names("Package","Count") %>%
+  kable()
+```
+
+# Time Series Plot of each package
+
+```{r time_series}
+total_downloads %>%
+  group_by(package) %>%
+  summarise_by_time(
+    .date_var = date
+    , .by = "day"
+    , count = dplyr::n()
+  ) %>%
+  plot_time_series(
+    .date_var      = date
+    , .value       = count
+    , .color_var   = package
+    , .facet_ncol  = 2
+    , .title       = "Time Series Plot of Daily Downloads by day"
+    , .interactive = interactive
   )
 ```
