@@ -1,5 +1,5 @@
 ---
-title: "{ggcharts} CRAN Downloads"
+title: "CRAN Downloads"
 output: github_document
 ---
 
