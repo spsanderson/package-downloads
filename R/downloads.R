@@ -1,3 +1,8 @@
+#' Download Logs
+#'
+#' @return
+#' A data.table
+#'
 #' @export
 download_logs <- function(from = Sys.Date() - 9,
                           to = Sys.Date() - 2,
@@ -73,4 +78,20 @@ compute_downloads_by_country <- function(downloads) {
   data.table::setnames(downloads_by_country, "country", "code")
   downloads_by_country[, country := countrycode::countrycode(code, "iso2c", "country.name")]
   downloads_by_country
+}
+
+#' Top N Downloads
+#'
+#' @return
+#' A tibble
+#'
+#' @export
+top_n_downloads <- function(downloads, .n, ...) {
+  loadNamespace("magrittr")
+  top_n_tbl <- downloads %>%
+    dplyr::count(...) %>%
+    dplyr::slice_head(n = .n) %>%
+    dplyr::arrange(dplyr::desc(n))
+
+  top_n_tbl
 }
