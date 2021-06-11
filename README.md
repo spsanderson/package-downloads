@@ -1,24 +1,36 @@
-{ggcharts} CRAN Downloads
+CRAN Downloads
 ================
 
-This repo contains the analysis of downloads of my [`ggcharts`](https://thomas-neitmann.github.io/ggcharts/index.html) `R` package. Following the ["analyses as package"](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
+This repo contains the analysis of downloads of my `R` packages: 1.
+[`healthyR`](https://www.spsanderson.com/healthyR/) 2.
+[`healthyR.data`](https://www.spsanderson.com/healthyR.data/) 3.
+[`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/) 4.
+[`healthyverse`](https://www.spsanderson.com/healthyverse/)
 
-Why did I bother to make this a package? Because it forced me to modularize my code rather than having one long script. Almost all functions I use below are part of this package.
+All of which follow the [“analyses as
+package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html)
+philosophy this repo itself is an `R` package that can installed using
+`remotes::install_github()`.
 
-While I analyze `ggcharts` here, the function are written in a way that you can analyze any CRAN package.
+I have forked this project itself from
+[`ggcharts-analysis`](https://github.com/thomas-neitmann/ggcharts-downloads).
 
-This file was last updated on May 01, 2020.
+While I analyze `healthyverse` packages here, the functions are written
+in a way that you can analyze any CRAN package with a slight
+modificaiton to the `download_log` function.
+
+This file was last updated on June 11, 2021.
 
 ``` r
-library(ggchartsdownloads)
+library(packagedownloads)
 library(ggplot2)
 library(patchwork)
 ```
 
 ``` r
-start_date <- as.Date("2020-03-26")
+start_date <- Sys.Date() - 9
 end_date <- Sys.Date() - 2
-downloads <- download_logs("ggcharts", start_date, end_date)
+downloads <- download_logs(start_date, end_date)
 daily_downloads <- compute_daily_downloads(downloads)
 downloads_by_country <- compute_downloads_by_country(downloads)
 
@@ -35,11 +47,11 @@ patchwork_theme <- theme_classic(base_size = 24) +
   )
 p1 + p2 + p3 + p4 +
   plot_annotation(
-    title = "ggcharts is on the Rise",
+    title    = "healthyR packages are on the Rise",
     subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
-    caption = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
-    theme = patchwork_theme
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
   )
 ```
 
-![](man/figures/README-analysis-1.png)
+![](man/figures/README-analysis-1.png)<!-- -->
