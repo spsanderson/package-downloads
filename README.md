@@ -56,6 +56,8 @@ p1 + p2 + p3 + p4 +
 ![](man/figures/README-analysis_7_day-1.png)<!-- -->
 
 ``` r
+start_date <- as.Date("2020-11-15")
+
 daily_downloads <- compute_daily_downloads(downloads = total_downloads)
 downloads_by_country <- compute_downloads_by_country(downloads = total_downloads)
 
