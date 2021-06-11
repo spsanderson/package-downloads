@@ -1,13 +1,16 @@
 #' @export
-download_logs <- function(pkg = "ggcharts",
-                          from = Sys.Date() - 9,
+download_logs <- function(from = Sys.Date() - 9,
                           to = Sys.Date() - 2,
                           cache = TRUE) {
   if (cache) {
-    file <- paste0(".", pkg, "_cache.rds")
+    file <- paste0(".", "_cache.rds")
     if (file.exists(file)) {
       old_downloads <- readRDS(file)
     }
+  }
+
+  if(file.exists("old_downloads.RDS")){
+    old_downloads <- readRDS("old_downloads.RDS")
   }
 
   dates <- as.Date(from:to, origin = "1970-01-01")
@@ -18,17 +21,26 @@ download_logs <- function(pkg = "ggcharts",
   }
 
   if (length(new_dates)) {
-    n_cores <- min(length(new_dates), parallel::detectCores())
+    n_cores <- min(length(new_dates), parallel::detectCores() - 2)
     cl <- parallel::makeCluster(n_cores)
     downloads <- parallel::parLapply(cl, new_dates, function(date) {
-      base_url <- "http://cran-logs.rstudio.com/2020/"
-      file <- paste0(as.character(date), ".csv.gz")
-      url <- paste0(base_url, file)
+      base_url <- "http://cran-logs.rstudio.com/"
+      year     <- lubridate::year(date)
+      file     <- paste0(as.character(date), ".csv.gz")
+      url      <- paste0(base_url, year, "/", file)
+
+      # Download the file
       utils::download.file(url, file)
+
+      # Read the file int
       downloads <- data.table::fread(file)
+
+      # Remove file after reading
       file.remove(file)
+
+      # Get only the dates and packages we want
       downloads[, date := as.Date(date)]
-      downloads[package == "ggcharts"]
+      downloads[package %in% c("healthyR","healthyR.ts","healthyR.data","healthyverse")]
     })
     parallel::stopCluster(cl)
 
