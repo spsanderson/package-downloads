@@ -33,7 +33,7 @@ plot_cumulative_downloads <- function(daily_downloads, color = "steelblue") {
       data = max_downloads,
       mapping = aes(date, cumulative_N, label = cumulative_N),
       vjust = -.75,
-      size = 7
+      size = 4
     ) +
     scale_x_date(date_labels = "%b %d") +
     scale_y_continuous(expand = expansion(c(.05, .2))) +
@@ -66,7 +66,7 @@ plot_downloads_by_country <- function(downloads_by_country, color = "steelblue")
     bar_color = color,
     limit = 10
   ) +
-    geom_text(aes(label = N), hjust = -.2, size = 6) +
+    geom_text(aes(label = N), hjust = -.2, size = 4) +
     labs(
       x = NULL,
       title = "Countries with Highest Total\nNumber of Downloads"
