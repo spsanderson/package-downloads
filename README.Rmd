@@ -14,10 +14,11 @@ knitr::opts_chunk$set(
 ```
 
 This repo contains the analysis of downloads of my `R` packages:
-1. [`healthyR`](https://www.spsanderson.com/healthyR/)
-2. [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
-3. [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
-4. [`healthyverse`](https://www.spsanderson.com/healthyverse/)
+
+* [`healthyR`](https://www.spsanderson.com/healthyR/)
+* [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
+* [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
+* [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 
 All of which follow the ["analyses as package"](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
 
