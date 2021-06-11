@@ -1,11 +1,12 @@
 CRAN Downloads
 ================
 
-This repo contains the analysis of downloads of my `R` packages: 1.
-[`healthyR`](https://www.spsanderson.com/healthyR/) 2.
-[`healthyR.data`](https://www.spsanderson.com/healthyR.data/) 3.
-[`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/) 4.
-[`healthyverse`](https://www.spsanderson.com/healthyverse/)
+This repo contains the analysis of downloads of my `R` packages:
+
+-   [`healthyR`](https://www.spsanderson.com/healthyR/)
+-   [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
+-   [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
+-   [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 
 All of which follow the [“analyses as
 package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html)
