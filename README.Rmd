@@ -35,10 +35,11 @@ library(patchwork)
 ```
 
 ```{r analysis}
-start_date <- Sys.Date() - 9
-end_date <- Sys.Date() - 2
-downloads <- download_logs(start_date, end_date)
-daily_downloads <- compute_daily_downloads(downloads)
+start_date           <- Sys.Date() - 9
+end_date             <- Sys.Date() - 2
+total_downloads      <- download_logs(start_date, end_date)
+downloads            <- total_downloads[date >= start_date]
+daily_downloads      <- compute_daily_downloads(downloads)
 downloads_by_country <- compute_downloads_by_country(downloads)
 
 p1 <- plot_daily_downloads(daily_downloads)
