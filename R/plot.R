@@ -49,7 +49,6 @@ plot_cumulative_downloads <- function(daily_downloads, color = "steelblue") {
 hist_daily_downloads <- function(daily_downloads, color = "steelblue") {
   ggplot(daily_downloads, aes(N)) +
     geom_histogram(bins = 7, fill = color, color = "black") +
-    scalesextra::scale_y_tight() +
     theme_classic(base_size = 18) +
     labs(
       x = NULL,
