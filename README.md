@@ -20,7 +20,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modificaiton to the `download_log` function.
 
-This file was last updated on June 11, 2021.
+This file was last updated on June 13, 2021.
 
 # Current Trend
 
@@ -94,12 +94,12 @@ top_n_downloads(total_downloads, 10, r_os) %>%
 
 | OS              | Count |
 |:----------------|------:|
-| NA              |  8468 |
-| mingw32         |   794 |
+| NA              |  8533 |
+| mingw32         |   828 |
 | linux-gnu       |   478 |
 | darwin15.6.0    |    29 |
 | darwin13.4.0    |    19 |
-| darwin17.0      |    11 |
+| darwin17.0      |    15 |
 | linux-gnueabihf |     2 |
 
 ``` r
@@ -129,10 +129,10 @@ top_n_downloads(total_downloads, 4, package) %>%
 
 | Package       | Count |
 |:--------------|------:|
-| healthyR.data |  3725 |
-| healthyR      |  2703 |
-| healthyR.ts   |  1980 |
-| healthyverse  |  1393 |
+| healthyR.data |  3755 |
+| healthyR      |  2736 |
+| healthyR.ts   |  2000 |
+| healthyverse  |  1413 |
 
 # Time Series Plot of each package
 
