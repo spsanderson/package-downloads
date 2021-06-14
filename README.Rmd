@@ -138,4 +138,24 @@ total_downloads %>%
     , .interactive = interactive
   )
 ```
-total
+
+# Cumulative Downloads by Package
+```{r cum_pkg_dl}
+total_downloads %>% 
+  tibble::as_tibble() %>% 
+  select(date, package) %>% 
+  group_by(package) %>% 
+  summarise_by_time(.date_var = date, downloads = n()) %>% 
+  ungroup() %>% 
+  group_by(package) %>%
+  mutate(cum_dl = cumsum(downloads)) %>% 
+  ungroup() %>% 
+  plot_time_series(
+    .date_var = date
+    , .value = cum_dl
+    , .color_var = package
+    , .smooth = FALSE
+    , .interactive = FALSE
+    , .line_size = 1
+  )
+```

@@ -154,4 +154,28 @@ total_downloads %>%
   )
 ```
 
-![](man/figures/README-time_series-1.png)<!-- --> total
+![](man/figures/README-time_series-1.png)<!-- -->
+
+# Cumulative Downloads by Package
+
+``` r
+total_downloads %>% 
+  tibble::as_tibble() %>% 
+  select(date, package) %>% 
+  group_by(package) %>% 
+  summarise_by_time(.date_var = date, downloads = n()) %>% 
+  ungroup() %>% 
+  group_by(package) %>%
+  mutate(cum_dl = cumsum(downloads)) %>% 
+  ungroup() %>% 
+  plot_time_series(
+    .date_var = date
+    , .value = cum_dl
+    , .color_var = package
+    , .smooth = FALSE
+    , .interactive = FALSE
+    , .line_size = 1
+  )
+```
+
+![](man/figures/README-cum_pkg_dl-1.png)<!-- -->
