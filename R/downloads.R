@@ -61,6 +61,8 @@ download_logs <- function(from = Sys.Date() - 9,
     saveRDS(downloads, file)
   }
 
+  saveRDS(downloads, "old_downloads.RDS")
+
   data.table::setorder(downloads, date)
   #downloads[date %in% dates]
 }

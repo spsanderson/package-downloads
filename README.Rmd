@@ -134,7 +134,8 @@ total_downloads %>%
     , .value       = count
     , .color_var   = package
     , .facet_ncol  = 2
-    , .title       = "Time Series Plot of Daily Downloads by day"
+    , .title       = "Time Series Plot of Daily Downloads"
     , .interactive = interactive
   )
 ```
+total
