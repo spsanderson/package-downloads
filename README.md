@@ -167,7 +167,7 @@ total_downloads %>%
   ungroup() %>% 
   group_by(package) %>%
   mutate(cum_dl = cumsum(downloads)) %>% 
-  ungroup() %>% 
+  #ungroup() %>% 
   plot_time_series(
     .date_var = date
     , .value = cum_dl
@@ -175,6 +175,7 @@ total_downloads %>%
     , .smooth = FALSE
     , .interactive = FALSE
     , .line_size = 1
+    , .facet_ncol = 2
   )
 ```
 
