@@ -68,10 +68,23 @@ download_logs <- function(from = Sys.Date() - 9,
 }
 
 #' @export
-compute_daily_downloads <- function(downloads) {
-  daily_downloads <- downloads[, .N, by = date]
-  daily_downloads[, cumulative_N := cumsum(N)]
-  daily_downloads
+compute_daily_downloads <- function(downloads, pkg = NULL) {
+
+  if(is.null(pkg)){
+    daily_downloads <- downloads[, .N, by = date]
+    daily_downloads[, cumulative_N := cumsum(N)]
+    daily_downloads
+  } else {
+    daily_downloads <- downloads %>%
+      filter(package == pkg)
+    daily_downloads <- daily_downloads[, .N, by = date]
+    daily_downloads[, cumulative_N := cumsum(N)]
+    daily_downloads
+  }
+
+  # daily_downloads <- downloads[, .N, by = date]
+  # daily_downloads[, cumulative_N := cumsum(N)]
+  # daily_downloads
 }
 
 #' @export

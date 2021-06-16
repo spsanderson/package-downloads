@@ -68,8 +68,8 @@ patchwork_theme <- theme_classic(base_size = 24) +
   )
 p1 + p2 + p3 + p4 +
   plot_annotation(
-    title    = "healthyR packages are on the Rise",
-    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - 7 Days",
+    title    = "healthyverse Packages - 7 Day Trend",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
     caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
     theme    = patchwork_theme
   )

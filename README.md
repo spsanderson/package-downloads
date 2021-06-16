@@ -20,7 +20,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modificaiton to the `download_log` function.
 
-This file was last updated on June 15, 2021.
+This file was last updated on June 16, 2021.
 
 # Current Trend
 
@@ -45,8 +45,8 @@ patchwork_theme <- theme_classic(base_size = 24) +
   )
 p1 + p2 + p3 + p4 +
   plot_annotation(
-    title    = "healthyR packages are on the Rise",
-    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - 7 Days",
+    title    = "healthyverse Packages - 7 Day Trend",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
     caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
     theme    = patchwork_theme
   )
@@ -94,12 +94,12 @@ top_n_downloads(total_downloads, 10, r_os) %>%
 
 | OS              | Count |
 |:----------------|------:|
-| NA              |  8609 |
-| mingw32         |   846 |
-| linux-gnu       |   481 |
+| NA              |  8632 |
+| mingw32         |   851 |
+| linux-gnu       |   482 |
 | darwin15.6.0    |    29 |
 | darwin13.4.0    |    23 |
-| darwin17.0      |    15 |
+| darwin17.0      |    16 |
 | linux-gnueabihf |     2 |
 
 ``` r
@@ -129,10 +129,10 @@ top_n_downloads(total_downloads, 4, package) %>%
 
 | Package       | Count |
 |:--------------|------:|
-| healthyR.data |  3786 |
-| healthyR      |  2772 |
-| healthyR.ts   |  2016 |
-| healthyverse  |  1431 |
+| healthyR.data |  3789 |
+| healthyR      |  2789 |
+| healthyR.ts   |  2020 |
+| healthyverse  |  1437 |
 
 # Time Series Plot of each package
 
