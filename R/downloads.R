@@ -33,16 +33,12 @@ download_logs <- function(from = Sys.Date() - 9,
       year     <- lubridate::year(date)
       file     <- paste0(as.character(date), ".csv.gz")
       url      <- paste0(base_url, year, "/", file)
-
       # Download the file
       utils::download.file(url, file)
-
       # Read the file int
       downloads <- data.table::fread(file)
-
       # Remove file after reading
       file.remove(file)
-
       # Get only the dates and packages we want
       downloads[, date := as.Date(date)]
       downloads[package %in% c("healthyR","healthyR.ts","healthyR.data","healthyverse")]
@@ -60,9 +56,7 @@ download_logs <- function(from = Sys.Date() - 9,
   if (cache) {
     saveRDS(downloads, file)
   }
-
   saveRDS(downloads, "old_downloads.RDS")
-
   data.table::setorder(downloads, date)
   #downloads[date %in% dates]
 }
@@ -88,11 +82,25 @@ compute_daily_downloads <- function(downloads, pkg = NULL) {
 }
 
 #' @export
-compute_downloads_by_country <- function(downloads) {
-  downloads_by_country <- downloads[, .N, by = country]
-  data.table::setnames(downloads_by_country, "country", "code")
-  downloads_by_country[, country := countrycode::countrycode(code, "iso2c", "country.name")]
-  downloads_by_country
+compute_downloads_by_country <- function(downloads, pkg = NULL) {
+
+  if(is.null(pkg)){
+    downloads_by_country <- downloads[, .N, by = country]
+    data.table::setnames(downloads_by_country, "country", "code")
+    downloads_by_country[, country := countrycode::countrycode(code, "iso2c", "country.name")]
+    downloads_by_country
+  } else {
+    downloads <- downloads %>%
+      filter(package == pkg)
+    downloads_by_country <- downloads[, .N, by = country]
+    data.table::setnames(downloads_by_country, "country", "code")
+    downloads_by_country[, country := countrycode::countrycode(code, "iso2c", "country.name")]
+    downloads_by_country
+  }
+  # downloads_by_country <- downloads[, .N, by = country]
+  # data.table::setnames(downloads_by_country, "country", "code")
+  # downloads_by_country[, country := countrycode::countrycode(code, "iso2c", "country.name")]
+  # downloads_by_country
 }
 
 #' Top N Downloads
