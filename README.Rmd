@@ -1,7 +1,17 @@
 ---
 title: "CRAN Downloads"
-output: github_document
+#output: github_document
 always_allow_html: true
+author: "Steven P. Sanderson II, MPH - Data Scientist/IT Manager"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    code_folding: hide
+    highlight: tango
+    theme: flatly
+    toc: yes
+  pdf_document:
+    toc: yes
 ---
 
 ```{r knit_opts, include=FALSE}
