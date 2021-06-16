@@ -46,6 +46,58 @@ plot_cumulative_downloads <- function(daily_downloads, color = "steelblue") {
 }
 
 #' @export
+plot_cumulative_downloads_pkg <- function(.data, color = "steelblue"
+                                          , pkg = "healthyR") {
+
+  total_downloads <- tibble::as_tibble(.data)
+
+  pkg_dl_tbl <- total_downloads %>%
+    select(date, package) %>%
+    group_by(package) %>%
+    summarise_by_time(
+      .date_var = date
+      , .by = "day"
+      , n = n()
+    ) %>%
+    ungroup() %>%
+    group_by(package) %>%
+    mutate(cumulative_N = cumsum(n)) %>%
+    ungroup()
+
+  max_dl <- pkg_dl_tbl %>%
+    group_by(package) %>%
+    filter(cumulative_N == max(cumulative_N))
+
+  ggplot() +
+    geom_line(
+      data = pkg_dl_tbl %>%
+        filter(package == pkg)
+      , mapping = aes(date, cumulative_N)
+      , color = color
+    )  +
+    geom_point(
+      data = max_dl %>% filter(package == pkg),
+      mapping = aes(date, cumulative_N),
+      size = 5,
+      color = color
+    ) +
+    geom_text(
+      data = max_dl %>% filter(package == pkg),
+      mapping = aes(date, cumulative_N, label = cumulative_N),
+      vjust = -.75,
+      size = 4
+    ) +
+    scale_x_date(date_labels = "%b %d") +
+    scale_y_continuous(expand = expansion(c(.05, .2))) +
+    theme_classic(base_size = 18) +
+    labs(
+      x = NULL,
+      y = NULL,
+      title = glue::glue("Cumulative Downloads for {pkg}")
+    )
+}
+
+#' @export
 hist_daily_downloads <- function(daily_downloads, color = "steelblue") {
   ggplot(daily_downloads, aes(N)) +
     geom_histogram(bins = 7, fill = color, color = "black") +
