@@ -281,22 +281,6 @@ total_downloads %>%
     , .title       = "Time Series Plot of Daily Downloads"
     , .interactive = interactive
   )
-
-total_downloads %>%
-  group_by(package) %>%
-  summarise_by_time(
-    .date_var = date
-    , .by     = "day"
-    , count   = dplyr::n()
-  ) %>%
-  plot_seasonal_diagnostics(
-    .date_var             = date
-    , .value              = count
-    , .feature_set        = c("wday.lbl","month.lbl","quarter")
-    , .interactive        = interactive
-    , .geom_outlier_color = "red"
-  ) +
-  theme(axis.text.x=element_text(angle=60, hjust=1))
 ```
 
 # Cumulative Downloads by Package
