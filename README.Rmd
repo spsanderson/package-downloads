@@ -35,11 +35,11 @@ All of which follow the ["analyses as package"](https://rmflight.github.io/posts
 
 I have forked this project itself from [`ggcharts-analysis`](https://github.com/thomas-neitmann/ggcharts-downloads).
 
-While I analyze `healthyverse` packages here, the functions are written in a way that you can analyze any CRAN package with a slight modificaiton to the `download_log` function.
+While I analyze `healthyverse` packages here, the functions are written in a way that you can analyze any CRAN package with a slight modification to the `download_log` function.
 
 This file was last updated on `r format(Sys.Date(), "%B %d, %Y")`.
 
-```{r setup, results='hide', echo=FALSE, message=FALSE, warning=FALSE}
+```{r setup, results='hide', echo=FALSE}
 library(packagedownloads)
 library(ggplot2)
 library(patchwork)
@@ -49,7 +49,7 @@ library(purrr)
 library(knitr)
 ```
 
-```{r get_data, echo=FALSE, message=FALSE, warning=FALSE}
+```{r get_data, echo=FALSE}
 start_date      <- Sys.Date() - 9
 end_date        <- Sys.Date() - 2
 total_downloads <- download_logs(start_date, end_date)
