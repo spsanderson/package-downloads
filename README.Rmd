@@ -307,6 +307,7 @@ p1 + p2 + p3 + p4 +
 
 # Seasonal Diagnostic Plots
 ```{r seasonal_dx_plt}
+
 total_downloads %>%
   group_by(package) %>%
   summarise_by_time(
