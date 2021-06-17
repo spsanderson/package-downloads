@@ -263,7 +263,7 @@ top_n_downloads(total_downloads, 4, package) %>%
   kable()
 ```
 
-# Time Series Plot of each package
+# Time Series and Seasonal Dx Plots of each package
 
 ```{r time_series}
 total_downloads %>%
@@ -281,6 +281,22 @@ total_downloads %>%
     , .title       = "Time Series Plot of Daily Downloads"
     , .interactive = interactive
   )
+
+total_downloads %>%
+  group_by(package) %>%
+  summarise_by_time(
+    .date_var = date
+    , .by     = "day"
+    , value   = n()
+  ) %>%
+  plot_seasonal_diagnostics(
+    .date_var             = date
+    , .value              = value
+    , .feature_set        = c("wday.lbl","month.lbl","quarter")
+    , .interactive        = FALSE
+    , .geom_outlier_color = "red"
+  ) +
+  theme(axis.text.x=element_text(angle=60, hjust=1))
 ```
 
 # Cumulative Downloads by Package
