@@ -76,9 +76,6 @@ compute_daily_downloads <- function(downloads, pkg = NULL) {
     daily_downloads
   }
 
-  # daily_downloads <- downloads[, .N, by = date]
-  # daily_downloads[, cumulative_N := cumsum(N)]
-  # daily_downloads
 }
 
 #' @export
