@@ -283,25 +283,25 @@ top_n_downloads(total_downloads, 4, package) %>%
 <!--   ) -->
 <!-- ``` -->
 
-<!-- # Cumulative Downloads by Package -->
-<!-- ```{r cum_pkg_dl, echo=FALSE} -->
-<!-- p1 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR") -->
-<!-- p2 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ts") -->
-<!-- p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data") -->
-<!-- p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse") -->
+# Cumulative Downloads by Package
+```{r cum_pkg_dl, echo=FALSE}
+p1 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR")
+p2 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ts")
+p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data")
+p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse")
 
-<!-- f <- function(date) format(date, "%b %d, %Y") -->
-<!-- patchwork_theme <- theme_classic(base_size = 24) + -->
-<!--   theme( -->
-<!--     plot.title = element_text(face = "bold"), -->
-<!--     plot.caption = element_text(size = 14) -->
-<!--   ) -->
-<!-- p1 + p2 + p3 + p4 + -->
-<!--   plot_annotation( -->
-<!--     title    = "healthyR packages are on the Rise", -->
-<!--     subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception", -->
-<!--     caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"), -->
-<!--     theme    = patchwork_theme -->
-<!--   ) -->
-<!-- ``` -->
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = "healthyR packages are on the Rise",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
 
