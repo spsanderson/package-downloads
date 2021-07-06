@@ -259,43 +259,6 @@ top_n_downloads(total_downloads, 4, r_version) %>%
   kable()
 ```
 
-# Time Series
-
-```{r time_series}
-total_downloads %>%
-  group_by(package) %>%
-  summarise_by_time(
-    .date_var = date
-    , .by = "day"
-    , count = dplyr::n()
-  ) %>%
-  plot_time_series(
-    .date_var      = date
-    , .value       = count
-    , .color_var   = package
-    , .facet_ncol  = 2
-    , .title       = "Time Series Plot of Daily Downloads"
-    , .interactive = interactive
-  )
-```
-
-```{r seasonal_dx, out.width="100%",out.height="100%"}
-total_downloads %>%
-  group_by(package) %>%
-  summarise_by_time(
-    .date_var = date
-    , .by     = "day"
-    , count   = dplyr::n()
-  ) %>%
-  plot_seasonal_diagnostics(
-    .date_var      = date
-    , .value       = count
-    , .interactive = FALSE
-    , .feature_set = c("wday.lbl","month.lbl","year")
-  ) +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
-```
-
 # Cumulative Downloads by Package
 ```{r cum_pkg_dl}
 p1 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR")
