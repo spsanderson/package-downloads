@@ -39,7 +39,7 @@ While I analyze `healthyverse` packages here, the functions are written in a way
 
 This file was last updated on `r format(Sys.Date(), "%B %d, %Y")`.
 
-```{r setup, results='hide', echo=FALSE}
+```{r setup, results='hide'}
 library(packagedownloads)
 library(ggplot2)
 library(patchwork)
@@ -49,7 +49,7 @@ library(purrr)
 library(knitr)
 ```
 
-```{r get_data, echo=FALSE}
+```{r get_data}
 start_date      <- Sys.Date() - 9
 end_date        <- Sys.Date() - 2
 total_downloads <- download_logs(start_date, end_date)
@@ -87,7 +87,7 @@ p1 + p2 + p3 + p4 +
 
 # Since Inception
 
-```{r total_data, echo=FALSE}
+```{r total_data}
 start_date <- as.Date("2020-11-15")
 
 daily_downloads <- compute_daily_downloads(downloads = total_downloads)
@@ -117,7 +117,7 @@ p1 + p2 + p3 + p4 +
 
 ## healthyR
 
-```{r healthyR_analysis, echo=FALSE}
+```{r healthyR_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR"
 
@@ -150,7 +150,7 @@ p1 + p2 + p3 + p4 +
 
 ## healthyR.ts
 
-```{r healthyRts_analysis, echo=FALSE}
+```{r healthyRts_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR.ts"
 
@@ -183,7 +183,7 @@ p1 + p2 + p3 + p4 +
 
 ## healthyR.data
 
-```{r healthyRdata_analysis, echo=FALSE}
+```{r healthyRdata_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR.data"
 
@@ -216,7 +216,7 @@ p1 + p2 + p3 + p4 +
 
 ## healthyverse
 
-```{r healthyverse_analysis, echo=FALSE}
+```{r healthyverse_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyverse"
 
@@ -257,34 +257,47 @@ top_n_downloads(total_downloads, 4, r_os) %>%
 top_n_downloads(total_downloads, 4, r_version) %>%
   set_names("Version","Count") %>%
   kable()
-
-top_n_downloads(total_downloads, 4, package) %>%
-  set_names("Package","Count") %>%
-  kable()
 ```
 
-<!-- # Time Series and Seasonal Dx Plots of each package -->
+# Time Series
 
-<!-- ```{r time_series} -->
-<!-- total_downloads %>% -->
-<!--   group_by(package) %>% -->
-<!--   summarise_by_time( -->
-<!--     .date_var = date -->
-<!--     , .by = "day" -->
-<!--     , count = dplyr::n() -->
-<!--   ) %>% -->
-<!--   plot_time_series( -->
-<!--     .date_var      = date -->
-<!--     , .value       = count -->
-<!--     , .color_var   = package -->
-<!--     , .facet_ncol  = 2 -->
-<!--     , .title       = "Time Series Plot of Daily Downloads" -->
-<!--     , .interactive = interactive -->
-<!--   ) -->
-<!-- ``` -->
+```{r time_series}
+total_downloads %>%
+  group_by(package) %>%
+  summarise_by_time(
+    .date_var = date
+    , .by = "day"
+    , count = dplyr::n()
+  ) %>%
+  plot_time_series(
+    .date_var      = date
+    , .value       = count
+    , .color_var   = package
+    , .facet_ncol  = 2
+    , .title       = "Time Series Plot of Daily Downloads"
+    , .interactive = interactive
+  )
+```
+
+```{r seasonal_dx, out.width="100%",out.height="100%"}
+total_downloads %>%
+  group_by(package) %>%
+  summarise_by_time(
+    .date_var = date
+    , .by     = "day"
+    , count   = dplyr::n()
+  ) %>%
+  plot_seasonal_diagnostics(
+    .date_var      = date
+    , .value       = count
+    , .interactive = FALSE
+    , .feature_set = c("wday.lbl","month.lbl","year")
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+```
 
 # Cumulative Downloads by Package
-```{r cum_pkg_dl, echo=FALSE}
+```{r cum_pkg_dl}
 p1 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR")
 p2 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ts")
 p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data")
