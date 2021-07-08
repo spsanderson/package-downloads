@@ -1,5 +1,7 @@
 CRAN Downloads
 ================
+Steven P. Sanderson II, MPH - Data Scientist/IT Manager
+08 July, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -18,9 +20,26 @@ I have forked this project itself from
 
 While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
-modificaiton to the `download_log` function.
+modification to the `download_log` function.
 
-This file was last updated on June 16, 2021.
+This file was last updated on July 08, 2021.
+
+``` r
+library(packagedownloads)
+library(ggplot2)
+library(patchwork)
+library(dplyr)
+library(timetk)
+library(purrr)
+library(knitr)
+```
+
+``` r
+start_date      <- Sys.Date() - 9
+end_date        <- Sys.Date() - 2
+total_downloads <- download_logs(start_date, end_date)
+interactive     <- FALSE
+```
 
 # Current Trend
 
@@ -56,23 +75,173 @@ p1 + p2 + p3 + p4 +
 
 # Since Inception
 
+``` r
+start_date <- as.Date("2020-11-15")
+
+daily_downloads <- compute_daily_downloads(downloads = total_downloads)
+downloads_by_country <- compute_downloads_by_country(downloads = total_downloads)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = "healthyR packages are on the Rise",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
 ![](man/figures/README-total_data-1.png)<!-- -->
 
 # Analysis by Package
 
 ## healthyR
 
+``` r
+start_date <- as.Date("2020-11-15")
+pkg <- "healthyR"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
 ![](man/figures/README-healthyR_analysis-1.png)<!-- -->
 
 ## healthyR.ts
+
+``` r
+start_date <- as.Date("2020-11-15")
+pkg <- "healthyR.ts"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
 
 ![](man/figures/README-healthyRts_analysis-1.png)<!-- -->
 
 ## healthyR.data
 
+``` r
+start_date <- as.Date("2020-11-15")
+pkg <- "healthyR.data"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
 ![](man/figures/README-healthyRdata_analysis-1.png)<!-- -->
 
 ## healthyverse
+
+``` r
+start_date <- as.Date("2020-11-15")
+pkg <- "healthyverse"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
 
 ![](man/figures/README-healthyverse_analysis-1.png)<!-- -->
 
@@ -86,10 +255,10 @@ top_n_downloads(total_downloads, 4, r_os) %>%
 
 | OS           | Count |
 |:-------------|------:|
-| linux-gnu    |   482 |
+| linux-gnu    |   508 |
+| darwin17.0   |    55 |
 | darwin15.6.0 |    29 |
 | darwin13.4.0 |    23 |
-| darwin17.0   |    16 |
 
 ``` r
 top_n_downloads(total_downloads, 4, r_version) %>%
@@ -100,45 +269,54 @@ top_n_downloads(total_downloads, 4, r_version) %>%
 | Version | Count |
 |:--------|------:|
 | 3.3.2   |    11 |
-| 3.2.3   |     7 |
+| 3.2.3   |     9 |
 | 3.2.2   |     4 |
 | 3.2.1   |     2 |
 
 ``` r
-top_n_downloads(total_downloads, 4, package) %>%
-  set_names("Package","Count") %>%
+total_downloads %>% 
+  count(package, version) %>% 
+  tidyr::pivot_wider(
+    id_cols       = version
+    , names_from  = package
+    , values_from = n
+    , values_fill = 0
+    ) %>% 
   kable()
 ```
 
-| Package       | Count |
-|:--------------|------:|
-| healthyR.data |  3789 |
-| healthyR      |  2789 |
-| healthyR.ts   |  2020 |
-| healthyverse  |  1437 |
-
-# Time Series Plot of each package
-
-``` r
-total_downloads %>%
-  group_by(package) %>%
-  summarise_by_time(
-    .date_var = date
-    , .by = "day"
-    , count = dplyr::n()
-  ) %>%
-  plot_time_series(
-    .date_var      = date
-    , .value       = count
-    , .color_var   = package
-    , .facet_ncol  = 2
-    , .title       = "Time Series Plot of Daily Downloads"
-    , .interactive = interactive
-  )
-```
-
-![](man/figures/README-time_series-1.png)<!-- -->
+| version | healthyR | healthyR.data | healthyR.ts | healthyverse |
+|:--------|---------:|--------------:|------------:|-------------:|
+| 0.1.0   |      119 |             0 |         340 |            0 |
+| 0.1.1   |     1166 |             0 |        1812 |            0 |
+| 0.1.2   |     1335 |             0 |         230 |            0 |
+| 0.1.3   |      186 |             0 |           0 |            0 |
+| 0.1.4   |      234 |             0 |           0 |            0 |
+| 0.1.5   |      281 |             0 |           0 |            0 |
+| 1.0.0   |        0 |          2740 |           0 |         1636 |
+| 1.0.1   |        0 |          1375 |           0 |            0 |
 
 # Cumulative Downloads by Package
+
+``` r
+p1 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR")
+p2 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ts")
+p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data")
+p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse")
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = "healthyR packages are on the Rise",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
 
 ![](man/figures/README-cum_pkg_dl-1.png)<!-- -->
