@@ -257,6 +257,16 @@ top_n_downloads(total_downloads, 4, r_os) %>%
 top_n_downloads(total_downloads, 4, r_version) %>%
   set_names("Version","Count") %>%
   kable()
+
+total_downloads %>% 
+  count(package, version) %>% 
+  tidyr::pivot_wider(
+    id_cols       = version
+    , names_from  = package
+    , values_from = n
+    , values_fill = 0
+    ) %>% 
+  kable()
 ```
 
 # Cumulative Downloads by Package
