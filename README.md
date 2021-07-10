@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-09 July, 2021
+10 July, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -22,7 +22,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on July 09, 2021.
+This file was last updated on July 10, 2021.
 
 ``` r
 library(packagedownloads)
@@ -289,12 +289,12 @@ total_downloads %>%
 |:--------|---------:|--------------:|------------:|-------------:|
 | 0.1.0   |      121 |             0 |         342 |            0 |
 | 0.1.1   |     1168 |             0 |        1816 |            0 |
-| 0.1.2   |     1337 |             0 |         238 |            0 |
+| 0.1.2   |     1337 |             0 |         260 |            0 |
 | 0.1.3   |      188 |             0 |           0 |            0 |
 | 0.1.4   |      236 |             0 |           0 |            0 |
-| 0.1.5   |      288 |             0 |           0 |            0 |
-| 1.0.0   |        0 |          2742 |           0 |         1643 |
-| 1.0.1   |        0 |          1384 |           0 |            0 |
+| 0.1.5   |      306 |             0 |           0 |            0 |
+| 1.0.0   |        0 |          2742 |           0 |         1656 |
+| 1.0.1   |        0 |          1407 |           0 |            0 |
 
 # Cumulative Downloads by Package
 
