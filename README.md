@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-22 July, 2021
+23 July, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -22,7 +22,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on July 22, 2021.
+This file was last updated on July 23, 2021.
 
 ``` r
 library(packagedownloads)
@@ -287,14 +287,14 @@ total_downloads %>%
 
 | version | healthyR | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|--------------:|------------:|-------------:|
-| 0.1.0   |      123 |             0 |         344 |            0 |
-| 0.1.1   |     1170 |             0 |        1819 |            0 |
-| 0.1.2   |     1340 |             0 |         387 |            0 |
-| 0.1.3   |      190 |             0 |           0 |            0 |
-| 0.1.4   |      238 |             0 |           0 |            0 |
-| 0.1.5   |      436 |             0 |           0 |            0 |
-| 1.0.0   |        0 |          2744 |           0 |         1753 |
-| 1.0.1   |        0 |          1565 |           0 |            0 |
+| 0.1.0   |      125 |             0 |         346 |            0 |
+| 0.1.1   |     1172 |             0 |        1821 |            0 |
+| 0.1.2   |     1342 |             0 |         395 |            0 |
+| 0.1.3   |      192 |             0 |           0 |            0 |
+| 0.1.4   |      240 |             0 |           0 |            0 |
+| 0.1.5   |      443 |             0 |           0 |            0 |
+| 1.0.0   |        0 |          2746 |           0 |         1759 |
+| 1.0.1   |        0 |          1572 |           0 |            0 |
 
 # Cumulative Downloads by Package
 
