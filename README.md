@@ -41,6 +41,52 @@ total_downloads <- download_logs(start_date, end_date)
 interactive     <- FALSE
 ```
 
+# Last Full Day Data
+
+``` r
+downloads            <- total_downloads %>% filter(date == max(date))
+daily_downloads      <- compute_daily_downloads(downloads)
+downloads_by_country <- compute_downloads_by_country(downloads)
+
+p2 <- plot_cumulative_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p2 + p4 +
+  plot_annotation(
+    title    = "healthyverse Packages - Last Full Day",
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
+![](man/figures/README-last_full_day-1.png)<!-- -->
+
+``` r
+downloads %>% 
+  count(package, version) %>% 
+  tidyr::pivot_wider(
+    id_cols       = version
+    , names_from  = package
+    , values_from = n
+    , values_fill = 0
+    ) %>% 
+  kable()
+```
+
+| version | healthyR | healthyR.data | healthyR.ts | healthyverse |
+|:--------|---------:|--------------:|------------:|-------------:|
+| 0.1.5   |       16 |             0 |           0 |            0 |
+| 1.0.1   |        0 |            19 |           0 |            0 |
+| 0.1.2   |        0 |             0 |          15 |            0 |
+| 1.0.0   |        0 |             0 |           0 |           10 |
+
 # Current Trend
 
 Here are the current 7 day trends for the `healthyverse` suite of
