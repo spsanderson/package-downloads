@@ -75,7 +75,7 @@ p2 + p4 +
   plot_annotation(
     title    = "healthyverse Packages - Last Full Day",
     subtitle = "A Summary of Downloads from the RStudio CRAN Mirror",
-    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    caption  = glue::glue("Source: RStudio CRAN Logs for {f(end_date)}"),
     theme    = patchwork_theme
   )
 
