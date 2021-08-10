@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-09 August, 2021
+10 August, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -22,7 +22,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on August 09, 2021.
+This file was last updated on August 10, 2021.
 
 ``` r
 library(packagedownloads)
@@ -82,10 +82,10 @@ downloads %>%
 
 | version | healthyR | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|--------------:|------------:|-------------:|
-| 0.1.5   |       13 |             0 |           0 |            0 |
-| 1.0.1   |        0 |            19 |           0 |            0 |
-| 0.1.2   |        0 |             0 |          14 |            0 |
-| 1.0.0   |        0 |             0 |           0 |           11 |
+| 0.1.5   |        6 |             0 |           0 |            0 |
+| 1.0.1   |        0 |             5 |           0 |            0 |
+| 0.1.2   |        0 |             0 |           5 |            0 |
+| 1.0.0   |        0 |             0 |           0 |            5 |
 
 # Current Trend
 
@@ -335,12 +335,12 @@ total_downloads %>%
 |:--------|---------:|--------------:|------------:|-------------:|
 | 0.1.0   |      128 |             0 |         349 |            0 |
 | 0.1.1   |     1175 |             0 |        1824 |            0 |
-| 0.1.2   |     1345 |             0 |         703 |            0 |
+| 0.1.2   |     1345 |             0 |         708 |            0 |
 | 0.1.3   |      195 |             0 |           0 |            0 |
 | 0.1.4   |      243 |             0 |           0 |            0 |
-| 0.1.5   |      751 |             0 |           0 |            0 |
-| 1.0.0   |        0 |          2749 |           0 |         2022 |
-| 1.0.1   |        0 |          1929 |           0 |            0 |
+| 0.1.5   |      757 |             0 |           0 |            0 |
+| 1.0.0   |        0 |          2749 |           0 |         2027 |
+| 1.0.1   |        0 |          1934 |           0 |            0 |
 
 # Cumulative Downloads by Package
 
