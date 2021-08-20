@@ -248,6 +248,39 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
+## healthyR.ai
+
+```{r healthyRai_analysis}
+start_date <- as.Date("2020-11-15")
+pkg <- "healthyR.ai"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
 ## healthyverse
 
 ```{r healthyverse_analysis}
