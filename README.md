@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-24 August, 2021
+25 August, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -22,7 +22,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on August 24, 2021.
+This file was last updated on August 25, 2021.
 
 ``` r
 library(packagedownloads)
@@ -77,17 +77,18 @@ downloads %>%
     , values_from = n
     , values_fill = 0
     ) %>% 
+  arrange(version) %>%
   kable()
 ```
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.1.5   |        2 |           0 |             0 |           0 |            0 |
-| 0.1.6   |        6 |           0 |             0 |           0 |            0 |
-| 0.0.1   |        0 |           2 |             0 |           0 |            0 |
-| 1.0.1   |        0 |           0 |            14 |           0 |            0 |
-| 0.1.2   |        0 |           0 |             0 |           5 |            0 |
-| 1.0.0   |        0 |           0 |             0 |           0 |            3 |
+| 0.0.1   |        0 |          36 |             0 |           0 |            0 |
+| 0.1.2   |        0 |           0 |             0 |          11 |            0 |
+| 0.1.3   |        0 |           0 |             0 |          13 |            0 |
+| 0.1.6   |       36 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |             0 |           0 |            9 |
+| 1.0.1   |        0 |           0 |            39 |           0 |            6 |
 
 # Current Trend
 
@@ -351,7 +352,7 @@ top_n_downloads(total_downloads, 4, r_version) %>%
 
 | Version | Count |
 |:--------|------:|
-| 3.2.3   |    11 |
+| 3.2.3   |    13 |
 | 3.2.2   |     4 |
 | 3.2.5   |     4 |
 | 3.2.1   |     2 |
@@ -364,22 +365,23 @@ total_downloads %>%
     , names_from  = package
     , values_from = n
     , values_fill = 0
-    ) %>% 
+    ) %>%
+  arrange(version) %>%
   kable()
 ```
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
+| 0.0.1   |        0 |          49 |             0 |           0 |            0 |
 | 0.1.0   |      134 |           0 |             0 |         355 |            0 |
 | 0.1.1   |     1181 |           0 |             0 |        1830 |            0 |
-| 0.1.2   |     1351 |           0 |             0 |         845 |            0 |
-| 0.1.3   |      201 |           0 |             0 |           0 |            0 |
+| 0.1.2   |     1351 |           0 |             0 |         856 |            0 |
+| 0.1.3   |      201 |           0 |             0 |          13 |            0 |
 | 0.1.4   |      249 |           0 |             0 |           0 |            0 |
 | 0.1.5   |      895 |           0 |             0 |           0 |            0 |
-| 0.1.6   |       17 |           0 |             0 |           0 |            0 |
-| 0.0.1   |        0 |          13 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |          2755 |           0 |         2138 |
-| 1.0.1   |        0 |           0 |          2201 |           0 |            0 |
+| 0.1.6   |       53 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |          2755 |           0 |         2147 |
+| 1.0.1   |        0 |           0 |          2240 |           0 |            6 |
 
 # Cumulative Downloads by Package
 

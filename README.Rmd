@@ -87,6 +87,7 @@ downloads %>%
     , values_from = n
     , values_fill = 0
     ) %>% 
+  arrange(version) %>%
   kable()
 ```
 
@@ -332,7 +333,8 @@ total_downloads %>%
     , names_from  = package
     , values_from = n
     , values_fill = 0
-    ) %>% 
+    ) %>%
+  arrange(version) %>%
   kable()
 ```
 
