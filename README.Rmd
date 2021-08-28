@@ -29,6 +29,7 @@ This repo contains the analysis of downloads of my `R` packages:
 -   [`healthyR`](https://www.spsanderson.com/healthyR/)
 -   [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
 -   [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
+-   [`healthyR.ai`](https://www.spsanderson.com/healthyR.ai/)
 -   [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 
 All of which follow the ["analyses as package"](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
