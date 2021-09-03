@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-02 September, 2021
+03 September, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on September 02, 2021.
+This file was last updated on September 03, 2021.
 
 ``` r
 library(packagedownloads)
@@ -84,10 +84,16 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |          39 |             0 |           0 |            0 |
-| 0.1.3   |        0 |           0 |             0 |          41 |            0 |
-| 0.1.6   |       34 |           0 |             0 |           0 |            0 |
-| 1.0.1   |        0 |           0 |            41 |           0 |           43 |
+| 0.0.1   |        0 |          12 |             0 |           0 |            0 |
+| 0.1.0   |        2 |           0 |             0 |           2 |            0 |
+| 0.1.1   |        2 |           0 |             0 |           2 |            0 |
+| 0.1.2   |        2 |           0 |             0 |           4 |            0 |
+| 0.1.3   |        2 |           0 |             0 |          12 |            0 |
+| 0.1.4   |        2 |           0 |             0 |           0 |            0 |
+| 0.1.5   |        4 |           0 |             0 |           0 |            0 |
+| 0.1.6   |       13 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |             2 |           0 |            4 |
+| 1.0.1   |        0 |           0 |            24 |           0 |           11 |
 
 # Current Trend
 
@@ -371,16 +377,16 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |         201 |             0 |           0 |            0 |
-| 0.1.0   |      135 |           0 |             0 |         356 |            0 |
-| 0.1.1   |     1182 |           0 |             0 |        1831 |            0 |
-| 0.1.2   |     1352 |           0 |             0 |         875 |            0 |
-| 0.1.3   |      202 |           0 |             0 |         182 |            0 |
-| 0.1.4   |      250 |           0 |             0 |           0 |            0 |
-| 0.1.5   |      899 |           0 |             0 |           0 |            0 |
-| 0.1.6   |      213 |           0 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |          2756 |           0 |         2161 |
-| 1.0.1   |        0 |           0 |          2401 |           0 |          161 |
+| 0.0.1   |        0 |         213 |             0 |           0 |            0 |
+| 0.1.0   |      137 |           0 |             0 |         358 |            0 |
+| 0.1.1   |     1184 |           0 |             0 |        1833 |            0 |
+| 0.1.2   |     1354 |           0 |             0 |         879 |            0 |
+| 0.1.3   |      204 |           0 |             0 |         194 |            0 |
+| 0.1.4   |      252 |           0 |             0 |           0 |            0 |
+| 0.1.5   |      903 |           0 |             0 |           0 |            0 |
+| 0.1.6   |      226 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |          2758 |           0 |         2165 |
+| 1.0.1   |        0 |           0 |          2425 |           0 |          172 |
 
 # Cumulative Downloads by Package
 
