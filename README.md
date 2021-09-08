@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-03 September, 2021
+08 September, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on September 03, 2021.
+This file was last updated on September 08, 2021.
 
 ``` r
 library(packagedownloads)
@@ -84,16 +84,11 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |          12 |             0 |           0 |            0 |
-| 0.1.0   |        2 |           0 |             0 |           2 |            0 |
-| 0.1.1   |        2 |           0 |             0 |           2 |            0 |
-| 0.1.2   |        2 |           0 |             0 |           4 |            0 |
-| 0.1.3   |        2 |           0 |             0 |          12 |            0 |
-| 0.1.4   |        2 |           0 |             0 |           0 |            0 |
-| 0.1.5   |        4 |           0 |             0 |           0 |            0 |
-| 0.1.6   |       13 |           0 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |             2 |           0 |            4 |
-| 1.0.1   |        0 |           0 |            24 |           0 |           11 |
+| 0.0.1   |        0 |           1 |             0 |           0 |            0 |
+| 0.0.2   |        0 |          36 |             0 |           0 |            0 |
+| 0.1.3   |        0 |           0 |             0 |          16 |            0 |
+| 0.1.6   |       19 |           0 |             0 |           0 |            0 |
+| 1.0.1   |        0 |           0 |            22 |           0 |           16 |
 
 # Current Trend
 
@@ -344,7 +339,7 @@ top_n_downloads(total_downloads, 4, r_os) %>%
 
 | OS           | Count |
 |:-------------|------:|
-| darwin17.0   |   109 |
+| darwin17.0   |   114 |
 | darwin15.6.0 |    29 |
 | darwin13.4.0 |    23 |
 | darwin20     |     4 |
@@ -357,7 +352,7 @@ top_n_downloads(total_downloads, 4, r_version) %>%
 
 | Version | Count |
 |:--------|------:|
-| 3.2.3   |    13 |
+| 3.2.3   |    14 |
 | 3.2.2   |     4 |
 | 3.2.5   |     4 |
 | 3.2.1   |     2 |
@@ -377,16 +372,17 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |         213 |             0 |           0 |            0 |
+| 0.0.1   |        0 |         239 |             0 |           0 |            0 |
+| 0.0.2   |        0 |          59 |             0 |           0 |            0 |
 | 0.1.0   |      137 |           0 |             0 |         358 |            0 |
-| 0.1.1   |     1184 |           0 |             0 |        1833 |            0 |
-| 0.1.2   |     1354 |           0 |             0 |         879 |            0 |
-| 0.1.3   |      204 |           0 |             0 |         194 |            0 |
+| 0.1.1   |     1184 |           0 |             0 |        1835 |            0 |
+| 0.1.2   |     1356 |           0 |             0 |         879 |            0 |
+| 0.1.3   |      204 |           0 |             0 |         237 |            0 |
 | 0.1.4   |      252 |           0 |             0 |           0 |            0 |
 | 0.1.5   |      903 |           0 |             0 |           0 |            0 |
-| 0.1.6   |      226 |           0 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |          2758 |           0 |         2165 |
-| 1.0.1   |        0 |           0 |          2425 |           0 |          172 |
+| 0.1.6   |      272 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |          2758 |           0 |         2167 |
+| 1.0.1   |        0 |           0 |          2494 |           0 |          219 |
 
 # Cumulative Downloads by Package
 
