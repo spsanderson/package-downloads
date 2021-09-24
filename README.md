@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-23 September, 2021
+24 September, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on September 23, 2021.
+This file was last updated on September 24, 2021.
 
 ``` r
 library(packagedownloads)
@@ -84,10 +84,17 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.2   |        0 |           4 |             0 |           0 |            0 |
-| 0.1.3   |        0 |           0 |             0 |           4 |            0 |
-| 0.1.6   |        3 |           0 |             0 |           0 |            0 |
-| 1.0.1   |        0 |           0 |             9 |           0 |            3 |
+| 0.0.1   |        0 |           1 |             0 |           0 |            0 |
+| 0.0.2   |        0 |          17 |             0 |           0 |            0 |
+| 0.1.0   |        1 |           0 |             0 |           1 |            0 |
+| 0.1.1   |        1 |           0 |             0 |           1 |            0 |
+| 0.1.2   |        1 |           0 |             0 |           1 |            0 |
+| 0.1.3   |        1 |           0 |             0 |          18 |            0 |
+| 0.1.4   |        1 |           0 |             0 |           0 |            0 |
+| 0.1.5   |        1 |           0 |             0 |           0 |            0 |
+| 0.1.6   |       17 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |             1 |           0 |            1 |
+| 1.0.1   |        0 |           0 |            25 |           0 |           13 |
 
 # Current Trend
 
@@ -371,17 +378,17 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |         246 |             0 |           0 |            0 |
-| 0.0.2   |        0 |         239 |             0 |           0 |            0 |
-| 0.1.0   |      140 |           0 |             0 |         361 |            0 |
-| 0.1.1   |     1187 |           0 |             0 |        1838 |            0 |
-| 0.1.2   |     1359 |           0 |             0 |         882 |            0 |
-| 0.1.3   |      207 |           0 |             0 |         370 |            0 |
-| 0.1.4   |      255 |           0 |             0 |           0 |            0 |
-| 0.1.5   |      906 |           0 |             0 |           0 |            0 |
-| 0.1.6   |      401 |           0 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |          2761 |           0 |         2170 |
-| 1.0.1   |        0 |           0 |          2656 |           0 |          350 |
+| 0.0.1   |        0 |         247 |             0 |           0 |            0 |
+| 0.0.2   |        0 |         256 |             0 |           0 |            0 |
+| 0.1.0   |      141 |           0 |             0 |         362 |            0 |
+| 0.1.1   |     1188 |           0 |             0 |        1839 |            0 |
+| 0.1.2   |     1360 |           0 |             0 |         883 |            0 |
+| 0.1.3   |      208 |           0 |             0 |         388 |            0 |
+| 0.1.4   |      256 |           0 |             0 |           0 |            0 |
+| 0.1.5   |      907 |           0 |             0 |           0 |            0 |
+| 0.1.6   |      418 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |          2762 |           0 |         2171 |
+| 1.0.1   |        0 |           0 |          2681 |           0 |          363 |
 
 # Cumulative Downloads by Package
 
