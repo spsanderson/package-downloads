@@ -154,7 +154,7 @@ p1 + p2 + p3 + p4 +
 A `leaflet` map of countries where a package has been downloaded. The markers
 will give the country name, display name and the download count.
 
-```{r map_file}
+```{r map_file, warning=FALSE}
 mapping_dataset()
 map_leaflet()
 ```
