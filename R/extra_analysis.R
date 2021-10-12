@@ -49,18 +49,32 @@ write_rds(
 
 # Manipulation ------------------------------------------------------------
 
-df_tbl %>%
+country_count_tbl <- df_tbl %>%
   mutate(
     date_time = str_c(date, time, sep = " ") %>%
       ymd_hms()
   ) %>%
   select(!starts_with("r_")) %>%
   mutate(country_name = countrycode(country, "iso2c", "country.name")) %>%
+  filter(!is.na(country_name)) %>%
   count(country_name)
 
 # Map ---------------------------------------------------------------------
 
-leaflet(data = geocode_map_tbl) %>%
+map_data <- geocode_map_tbl %>%
+  left_join(country_count_tbl, by = c("country" = "country_name"))
+
+leaflet(data = map_data) %>%
   addTiles() %>%
   addMarkers(lng = ~longitude, lat = ~latitude, label = ~htmlEscape(country),
-             icon = ~icon)
+             popup = ~as.character(
+               paste(
+                 "<strong>Country: </strong>"
+                 , country
+                 , "<br><strong>Display Name: </strong>"
+                 , display_name
+                 , "<br><strong>Downloads: </strong>"
+                 , n
+               )
+             )
+          )
