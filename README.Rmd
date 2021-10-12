@@ -149,6 +149,16 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
+# Map of Downloads
+
+A `leaflet` map of countries where a package has been downloaded. The markers
+will give the country name, display name and the download count.
+
+```{r map_file}
+mapping_dataset()
+map_leaflet()
+```
+
 # Analysis by Package
 
 ## healthyR
