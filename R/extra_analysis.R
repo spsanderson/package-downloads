@@ -14,9 +14,31 @@ pacman::p_load(
 # Data --------------------------------------------------------------------
 
 
-df <- read_rds("old_downloads.RDS")
-df_tbl <- df %>%
+df_tbl <- read_rds("old_downloads.RDS") %>%
   as_tibble()
+
+
+# Geocode -----------------------------------------------------------------
+
+country_vector <- df_tbl %>%
+  mutate(country_name = countrycode(country, "iso2c", "country.name")) %>%
+  select(country_name) %>%
+  distinct() %>%
+  filter(!is.na(country_name)) %>%
+  pull()
+
+# Map the geocode_OSM function to the vector
+geocode_tbl <- country_vector %>%
+  map(function(x) geocode_OSM(x, return.first.only = TRUE, as.data.frame = TRUE,
+                              details = TRUE)) %>%
+  map_dfr(~ as.data.frame(.))
+
+# Coerce to a tibble and rename columns
+geocode_map_tbl <- geocode_tbl %>%
+  as_tibble() %>%
+  select(query, lat, lon, display_name) %>%
+  set_names("country","latitude","longitude","display_name")
+
 
 # Manipulation ------------------------------------------------------------
 
@@ -30,4 +52,3 @@ df_tbl %>%
   filter(country != "US")  %>%
   count(country_name) %>%
   arrange(desc(n))
-  glimpse()
