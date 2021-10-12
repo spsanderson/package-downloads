@@ -9,6 +9,7 @@ pacman::p_load(
   , "countrycode"
   , "leaflet"
   , "tmaptools"
+  , "htmltools"
 )
 
 # Data --------------------------------------------------------------------
@@ -36,8 +37,14 @@ geocode_tbl <- country_vector %>%
 # Coerce to a tibble and rename columns
 geocode_map_tbl <- geocode_tbl %>%
   as_tibble() %>%
-  select(query, lat, lon, display_name) %>%
-  set_names("country","latitude","longitude","display_name")
+  select(query, lat, lon, display_name, icon) %>%
+  set_names("country","latitude","longitude","display_name","icon")
+
+# Write file to RDS for later use in mapping
+write_rds(
+  x = geocode_map_tbl
+  , file = "mapping_dataset.rds"
+)
 
 
 # Manipulation ------------------------------------------------------------
@@ -49,6 +56,11 @@ df_tbl %>%
   ) %>%
   select(!starts_with("r_")) %>%
   mutate(country_name = countrycode(country, "iso2c", "country.name")) %>%
-  filter(country != "US")  %>%
-  count(country_name) %>%
-  arrange(desc(n))
+  count(country_name)
+
+# Map ---------------------------------------------------------------------
+
+leaflet(data = geocode_map_tbl) %>%
+  addTiles() %>%
+  addMarkers(lng = ~longitude, lat = ~latitude, label = ~htmlEscape(country),
+             icon = ~icon)
