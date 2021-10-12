@@ -22,7 +22,8 @@ Imports:
     tmaptools,
     htmltools,
     leaflet,
-    purrr
+    purrr,
+    mapview
 Suggests: glue
 License: MIT + file LICENSE
 URL: https://github.com/spsanderson/package-downloads
