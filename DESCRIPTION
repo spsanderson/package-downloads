@@ -18,7 +18,11 @@ Imports:
     lubridate,
     knitr,
     timetk,
-    dplyr
+    dplyr,
+    tmaptools,
+    htmltools,
+    leaflet,
+    purrr
 Suggests: glue
 License: MIT + file LICENSE
 URL: https://github.com/spsanderson/package-downloads
