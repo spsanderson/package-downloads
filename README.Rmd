@@ -160,6 +160,7 @@ will give the country name, display name and the download count.
 
 ```{r map_file, warning=FALSE}
 mapping_dataset() %>%
+  head() %>%
   knitr::kable()
 
 l <- map_leaflet()
