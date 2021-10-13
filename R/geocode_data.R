@@ -8,6 +8,8 @@ mapping_dataset <- function(){
   if(file.exists("mapping_dataset.rds")){
     map_data <- readRDS("mapping_dataset.rds") %>%
       dplyr::as_tibble()
+
+    # make sure all countries are geocoded, if not then geocode them
   } else {
     message("There is no mapping data present. Will attempt to create.")
 
