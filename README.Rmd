@@ -159,7 +159,9 @@ A `leaflet` map of countries where a package has been downloaded. The markers
 will give the country name, display name and the download count.
 
 ```{r map_file, warning=FALSE}
-mapping_dataset()
+mapping_dataset() %>%
+  knitr::kable()
+
 l <- map_leaflet()
 mapshot(x = l, file = "map.png")
 ```
