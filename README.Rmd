@@ -155,8 +155,7 @@ p1 + p2 + p3 + p4 +
 
 # Map of Downloads
 
-A `leaflet` map of countries where a package has been downloaded. The markers
-will give the country name, display name and the download count.
+A `leaflet` map of countries where a package has been downloaded.
 
 ```{r map_file, warning=FALSE}
 mapping_dataset() %>%
@@ -168,6 +167,7 @@ mapshot(x = l, file = "map.png")
 ```
 
 ![map of downloads](map.png)
+To date there has been downloads in a total of `r nrow(readRDS("mapping_dataset.rds"))` different countries.
 
 # Analysis by Package
 
