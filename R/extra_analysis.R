@@ -50,6 +50,7 @@ write_rds(
 # Manipulation ------------------------------------------------------------
 
 geocode_map_tbl <- readRDS("mapping_dataset.rds")
+df_tbl <- readRDS("old_downloads.RDS")
 
 country_count_tbl <- df_tbl %>%
   mutate(
