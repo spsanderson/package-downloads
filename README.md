@@ -178,13 +178,15 @@ mapping_dataset() %>%
 ``` r
 l <- map_leaflet()
 mapshot(x = l, file = "map.png")
+
+m <- map_leaflet()
+m
 ```
+
+![](man/figures/README-map_file-1.png)<!-- -->
 
 ![map of downloads](map.png) To date there has been downloads in a total
 of 93 different countries.
-
-[Click here for an interactive
-map](https://github.com/spsanderson/package-downloads/blob/master/map_file.html)
 
 # Analysis by Package
 

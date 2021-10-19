@@ -1,17 +1,17 @@
 ---
 title: "CRAN Downloads"
-output: github_document
+# output: github_document
 always_allow_html: true
 author: "Steven P. Sanderson II, MPH - Data Scientist/IT Manager"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-# output:
-#   html_document:
-#     code_folding: hide
-#     highlight: tango
-#     theme: flatly
-#     toc: yes
-#   pdf_document:
-#     toc: yes
+output:
+  html_document:
+    code_folding: hide
+    highlight: tango
+    theme: flatly
+    toc: yes
+  pdf_document:
+    toc: yes
 ---
 
 ```{r knit_opts, include=FALSE}
@@ -165,12 +165,13 @@ mapping_dataset() %>%
 
 l <- map_leaflet()
 mapshot(x = l, file = "map.png")
+
+m <- map_leaflet()
+m
 ```
 
 ![map of downloads](map.png)
 To date there has been downloads in a total of `r nrow(readRDS("mapping_dataset.rds"))` different countries.
-
-!![Click here for an interactive map](/map_file.html)
 
 # Analysis by Package
 
