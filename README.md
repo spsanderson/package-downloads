@@ -37,6 +37,7 @@ library(leaflet)
 library(htmltools)
 library(tmaptools)
 library(mapview)
+library(countrycode)
 ```
 
 ``` r
@@ -181,6 +182,8 @@ mapshot(x = l, file = "map.png")
 
 ![map of downloads](map.png) To date there has been downloads in a total
 of 93 different countries.
+
+[Click here for an interactive map](map_file.html)
 
 # Analysis by Package
 
