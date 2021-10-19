@@ -49,6 +49,8 @@ write_rds(
 
 # Manipulation ------------------------------------------------------------
 
+geocode_map_tbl <- readRDS("mapping_dataset.rds")
+
 country_count_tbl <- df_tbl %>%
   mutate(
     date_time = str_c(date, time, sep = " ") %>%
