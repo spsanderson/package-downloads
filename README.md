@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-21 October, 2021
+22 October, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on October 21, 2021.
+This file was last updated on October 22, 2021.
 
 ``` r
 library(packagedownloads)
@@ -89,10 +89,17 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.2   |        0 |          12 |             0 |           0 |            0 |
-| 0.1.3   |        0 |           0 |             0 |          15 |            0 |
-| 0.1.6   |       11 |           0 |             0 |           0 |            0 |
-| 1.0.1   |        0 |           0 |            21 |           0 |           11 |
+| 0.0.1   |        0 |           2 |             0 |           0 |            0 |
+| 0.0.2   |        0 |           7 |             0 |           0 |            0 |
+| 0.1.0   |        2 |           0 |             0 |           2 |            0 |
+| 0.1.1   |        2 |           0 |             0 |           2 |            0 |
+| 0.1.2   |        2 |           0 |             0 |           2 |            0 |
+| 0.1.3   |        2 |           0 |             0 |           9 |            0 |
+| 0.1.4   |        2 |           0 |             0 |           0 |            0 |
+| 0.1.5   |        2 |           0 |             0 |           0 |            0 |
+| 0.1.6   |        7 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |             2 |           0 |            2 |
+| 1.0.1   |        0 |           0 |             7 |           0 |            7 |
 
 # Current Trend
 
@@ -403,17 +410,17 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |         250 |             0 |           0 |            0 |
-| 0.0.2   |        0 |         606 |             0 |           0 |            0 |
-| 0.1.0   |      144 |           0 |             0 |         365 |            0 |
-| 0.1.1   |     1191 |           0 |             0 |        1843 |            0 |
-| 0.1.2   |     1364 |           0 |             0 |         886 |            0 |
-| 0.1.3   |      211 |           0 |             0 |         738 |            0 |
-| 0.1.4   |      259 |           0 |             0 |           0 |            0 |
-| 0.1.5   |      910 |           0 |             0 |           0 |            0 |
-| 0.1.6   |      791 |           0 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |          2765 |           0 |         2175 |
-| 1.0.1   |        0 |           0 |          3127 |           0 |          699 |
+| 0.0.1   |        0 |         252 |             0 |           0 |            0 |
+| 0.0.2   |        0 |         613 |             0 |           0 |            0 |
+| 0.1.0   |      146 |           0 |             0 |         367 |            0 |
+| 0.1.1   |     1193 |           0 |             0 |        1845 |            0 |
+| 0.1.2   |     1366 |           0 |             0 |         888 |            0 |
+| 0.1.3   |      213 |           0 |             0 |         747 |            0 |
+| 0.1.4   |      261 |           0 |             0 |           0 |            0 |
+| 0.1.5   |      912 |           0 |             0 |           0 |            0 |
+| 0.1.6   |      798 |           0 |             0 |           0 |            0 |
+| 1.0.0   |        0 |           0 |          2767 |           0 |         2177 |
+| 1.0.1   |        0 |           0 |          3134 |           0 |          706 |
 
 # Cumulative Downloads by Package
 
