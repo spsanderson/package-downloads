@@ -66,7 +66,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p2 + p4 +
@@ -106,7 +106,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -134,7 +134,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -185,7 +185,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -218,7 +218,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -251,7 +251,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -284,7 +284,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -317,7 +317,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -363,7 +363,7 @@ p5 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ai")
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 + p5 +

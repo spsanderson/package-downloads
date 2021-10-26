@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-25 October, 2021
+26 October, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on October 25, 2021.
+This file was last updated on October 26, 2021.
 
 ``` r
 library(packagedownloads)
@@ -60,7 +60,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p2 + p4 +
@@ -89,10 +89,10 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.2   |        0 |          16 |             0 |           0 |            0 |
-| 0.1.3   |        0 |           0 |             0 |          20 |            0 |
-| 0.1.6   |       20 |           0 |             0 |           0 |            0 |
-| 1.0.1   |        0 |           0 |            22 |           0 |           17 |
+| 0.0.2   |        0 |           7 |             0 |           0 |            0 |
+| 0.1.3   |        0 |           0 |             0 |           7 |            0 |
+| 0.1.6   |        8 |           0 |             0 |           0 |            0 |
+| 1.0.1   |        0 |           0 |             7 |           0 |            7 |
 
 # Current Trend
 
@@ -112,7 +112,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -142,7 +142,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -181,7 +181,7 @@ mapshot(x = l, file = "map.png")
 ```
 
 ![map of downloads](map.png) To date there has been downloads in a total
-of 93 different countries.
+of 94 different countries.
 
 # Analysis by Package
 
@@ -206,7 +206,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -241,7 +241,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -276,7 +276,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -311,7 +311,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -346,7 +346,7 @@ p4 <- plot_downloads_by_country(downloads_by_country)
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 +
@@ -404,16 +404,16 @@ total_downloads %>%
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
 | 0.0.1   |        0 |         252 |             0 |           0 |            0 |
-| 0.0.2   |        0 |         648 |             0 |           0 |            0 |
+| 0.0.2   |        0 |         655 |             0 |           0 |            0 |
 | 0.1.0   |      146 |           0 |             0 |         367 |            0 |
 | 0.1.1   |     1193 |           0 |             0 |        1845 |            0 |
 | 0.1.2   |     1366 |           0 |             0 |         888 |            0 |
-| 0.1.3   |      213 |           0 |             0 |         783 |            0 |
+| 0.1.3   |      213 |           0 |             0 |         790 |            0 |
 | 0.1.4   |      261 |           0 |             0 |           0 |            0 |
 | 0.1.5   |      912 |           0 |             0 |           0 |            0 |
-| 0.1.6   |      834 |           0 |             0 |           0 |            0 |
+| 0.1.6   |      842 |           0 |             0 |           0 |            0 |
 | 1.0.0   |        0 |           0 |          2767 |           0 |         2177 |
-| 1.0.1   |        0 |           0 |          3183 |           0 |          749 |
+| 1.0.1   |        0 |           0 |          3190 |           0 |          756 |
 
 # Cumulative Downloads by Package
 
@@ -427,7 +427,7 @@ p5 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ai")
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
   theme(
-    plot.title = element_text(face = "bold"),
+    plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
 p1 + p2 + p3 + p4 + p5 +
