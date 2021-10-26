@@ -26,7 +26,7 @@ mapping_dataset <- function(){
     countries_to_geocode <- setdiff(new_country_vector, current_country_vector)
 
     if(length(countries_to_geocode) != 0){
-      new_geocode_tbl <- country_vector %>%
+      new_geocode_tbl <- countries_to_geocode %>%
         purrr::map(
           function(x) tmaptools::geocode_OSM(
             x, return.first.only = TRUE, as.data.frame = TRUE, details = TRUE
@@ -35,7 +35,7 @@ mapping_dataset <- function(){
         purrr::map_dfr(~ base::as.data.frame(.))
 
       # Coerce to a tibble and rename columns
-      new_geocode_map_tbl <- geocode_tbl %>%
+      new_geocode_map_tbl <- new_geocode_tbl %>%
         dplyr::as_tibble() %>%
         dplyr::select(query, lat, lon, display_name, icon) %>%
         purrr::set_names("country","latitude","longitude","display_name","icon")
