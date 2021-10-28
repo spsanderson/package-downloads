@@ -156,6 +156,39 @@ p1 + p2 + p3 + p4 +
 
 ![](man/figures/README-total_data-1.png)<!-- -->
 
+``` r
+total_downloads %>%
+  select(date) %>%
+  summarise_by_time(date, .by = "month", n = n()) %>%
+  plot_time_series(date, n, .smooth = FALSE, .interactive = FALSE) +
+  labs(
+    title = "Total package downloads by month"
+  )
+```
+
+![](man/figures/README-dl_by_month-1.png)<!-- -->
+
+``` r
+total_downloads %>%
+  select(date, package) %>%
+  group_by(package) %>%
+  summarise_by_time(date, .by = "month", n = n()) %>%
+  ungroup() %>%
+  plot_time_series(
+    .date_var = date
+    , .value = n
+    , .smooth = FALSE
+    , .interactive = FALSE
+    , .facet_vars = package
+    , .facet_ncol = 2
+  )  +
+  labs(
+    title = "Total package downloads by month"
+  )
+```
+
+![](man/figures/README-dl_by_month-2.png)<!-- -->
+
 # Map of Downloads
 
 A `leaflet` map of countries where a package has been downloaded.
