@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-05 November, 2021
+06 November, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on November 05, 2021.
+This file was last updated on November 06, 2021.
 
 ``` r
 library(packagedownloads)
@@ -89,17 +89,10 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        0 |           1 |             0 |           0 |            0 |
-| 0.0.2   |        0 |          22 |             0 |           0 |            0 |
-| 0.1.0   |        1 |           0 |             0 |           1 |            0 |
-| 0.1.1   |        1 |           0 |             0 |           1 |            0 |
-| 0.1.2   |        1 |           0 |             0 |           1 |            0 |
-| 0.1.3   |        1 |           0 |             0 |           2 |            0 |
-| 0.1.4   |        1 |           0 |             0 |          22 |            0 |
-| 0.1.5   |        1 |           0 |             0 |           0 |            0 |
-| 0.1.6   |       21 |           0 |             0 |           0 |            0 |
-| 1.0.0   |        0 |           0 |             1 |           0 |            1 |
-| 1.0.1   |        0 |           0 |            19 |           0 |           22 |
+| 0.0.2   |        0 |          28 |             0 |           0 |            0 |
+| 0.1.4   |        0 |           0 |             0 |          49 |            0 |
+| 0.1.6   |       31 |           0 |             0 |           0 |            0 |
+| 1.0.1   |        0 |           0 |            35 |           0 |           28 |
 
 # Current Trend
 
@@ -410,7 +403,7 @@ top_n_downloads(total_downloads, 4, r_os) %>%
 
 | OS           | Count |
 |:-------------|------:|
-| darwin17.0   |   807 |
+| darwin17.0   |   828 |
 | darwin15.6.0 |    53 |
 | darwin13.4.0 |    23 |
 | darwin18.7.0 |     5 |
@@ -444,16 +437,16 @@ total_downloads %>%
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
 | 0.0.1   |        0 |         254 |             0 |           0 |            0 |
-| 0.0.2   |        0 |         945 |             0 |           0 |            0 |
+| 0.0.2   |        0 |         973 |             0 |           0 |            0 |
 | 0.1.0   |      148 |           0 |             0 |         369 |            0 |
 | 0.1.1   |     1195 |           0 |             0 |        1847 |            0 |
 | 0.1.2   |     1368 |           0 |             0 |         890 |            0 |
 | 0.1.3   |      215 |           0 |             0 |        1006 |            0 |
-| 0.1.4   |      263 |           0 |             0 |          89 |            0 |
+| 0.1.4   |      263 |           0 |             0 |         138 |            0 |
 | 0.1.5   |      914 |           0 |             0 |           0 |            0 |
-| 0.1.6   |     1140 |           0 |             0 |           0 |            0 |
+| 0.1.6   |     1171 |           0 |             0 |           0 |            0 |
 | 1.0.0   |        0 |           0 |          2769 |           0 |         2179 |
-| 1.0.1   |        0 |           0 |          3577 |           0 |         1046 |
+| 1.0.1   |        0 |           0 |          3612 |           0 |         1074 |
 
 # Cumulative Downloads by Package
 
