@@ -221,7 +221,7 @@ ggplot(aes(date, log1p(N))) +
     , lwd = 1
     , lty = "solid"
   ) +
-  facet_wrap(package~., ncol = 2) +
+  facet_wrap(package ~., ncol = 2) +
   tidyquant::theme_tq() +
   tidyquant::scale_color_tq() +
   labs(
