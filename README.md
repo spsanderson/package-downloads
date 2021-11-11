@@ -177,7 +177,7 @@ dl_tbl %>%
 ggplot(aes(date, log1p(N))) +
   theme_bw() +
   geom_point(aes(group = package, color = package), size = 1) +
-  # geom_line() +
+  geom_line(size = 0.5, color = "black", alpha = .2) +
   ggtitle(paste("Package Downloads: {healthyverse}")) +
   geom_smooth(method = "loess", color = "black",  se = FALSE) +
   geom_vline(
