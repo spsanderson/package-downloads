@@ -115,3 +115,24 @@ top_n_downloads <- function(downloads, .n, ...) {
 
   top_n_tbl
 }
+
+#' Release Dates
+#'
+#' @return
+#' A tibble
+#'
+#' @export
+
+pkg_release_date_tbl <- function(){
+
+  df_tbl <- readr::read_rds("old_downloads.RDS") %>%
+    dplyr::as_tibble()
+
+  release_tbl <- df_tbl %>%
+    select(date, package, vesion) %>%
+    group_by(package, version) %>%
+    filter(date == min(date)) %>%
+    distinct()
+
+  saveRDS("pkg_release_tbl.rds")
+}
