@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-10 November, 2021
+11 November, 2021
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on November 10, 2021.
+This file was last updated on November 11, 2021.
 
 ``` r
 library(packagedownloads)
@@ -90,10 +90,10 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.2   |        0 |          71 |             0 |           0 |            0 |
-| 0.1.4   |        0 |           0 |             0 |          80 |            0 |
-| 0.1.6   |       69 |           0 |             0 |           0 |            0 |
-| 1.0.1   |        0 |           0 |            83 |           0 |           68 |
+| 0.0.2   |        0 |          50 |             0 |           0 |            0 |
+| 0.1.4   |        0 |           0 |             0 |          66 |            0 |
+| 0.1.6   |       50 |           0 |             0 |           0 |            0 |
+| 1.0.1   |        0 |           0 |            53 |           0 |           50 |
 
 # Current Trend
 
@@ -157,39 +157,6 @@ p1 + p2 + p3 + p4 +
 
 ![](man/figures/README-total_data-1.png)<!-- -->
 
-``` r
-total_downloads %>%
-  select(date) %>%
-  summarise_by_time(date, .by = "month", n = n()) %>%
-  plot_time_series(date, n, .smooth = FALSE, .interactive = FALSE) +
-  labs(
-    title = "Total package downloads by month"
-  )
-```
-
-![](man/figures/README-dl_by_month-1.png)<!-- -->
-
-``` r
-total_downloads %>%
-  select(date, package) %>%
-  group_by(package) %>%
-  summarise_by_time(date, .by = "month", n = n()) %>%
-  ungroup() %>%
-  plot_time_series(
-    .date_var = date
-    , .value = n
-    , .smooth = FALSE
-    , .interactive = FALSE
-    , .facet_vars = package
-    , .facet_ncol = 2
-  )  +
-  labs(
-    title = "Total package downloads by month"
-  )
-```
-
-![](man/figures/README-dl_by_month-2.png)<!-- -->
-
 # By Release Date
 
 ``` r
@@ -210,9 +177,8 @@ dl_tbl %>%
 ggplot(aes(date, log1p(N))) +
   theme_bw() +
   geom_point(aes(group = package, color = package), size = 1) +
-  geom_line() +
+  # geom_line() +
   ggtitle(paste("Package Downloads: {healthyverse}")) +
-  ylab("Counts") +
   geom_smooth(method = "loess", color = "black",  se = FALSE) +
   geom_vline(
     data = pkg_tbl
@@ -221,16 +187,15 @@ ggplot(aes(date, log1p(N))) +
     , lwd = 1
     , lty = "solid"
   ) +
-  facet_wrap(package ~., ncol = 2) +
-  tidyquant::theme_tq() +
-  tidyquant::scale_color_tq() +
+  facet_wrap(package ~., ncol = 2, scales = "free_x") +
+  theme_minimal() +
   labs(
-    subtitle = "Dashed lines represent release dates",
-    caption = "log1p scale",
+    subtitle = "Vertical lines represent release dates",
     x = "Date",
     y = "log1p(Counts)",
     color = "Package"
-  )
+  ) +
+  theme(legend.position = "bottom")
 ```
 
 ![](man/figures/README-release_date_plt-1.png)<!-- -->
@@ -439,33 +404,9 @@ p1 + p2 + p3 + p4 +
 
 ![](man/figures/README-healthyverse_analysis-1.png)<!-- -->
 
-# Some table data
+# Table Data
 
-``` r
-top_n_downloads(total_downloads, 4, r_os) %>%
-  set_names("OS", "Count") %>%
-  kable()
-```
-
-| OS           | Count |
-|:-------------|------:|
-| darwin17.0   |  1075 |
-| darwin15.6.0 |    55 |
-| darwin13.4.0 |    23 |
-| darwin18.7.0 |     5 |
-
-``` r
-top_n_downloads(total_downloads, 4, r_version) %>%
-  set_names("Version","Count") %>%
-  kable()
-```
-
-| Version | Count |
-|:--------|------:|
-| 3.2.3   |    15 |
-| 3.2.5   |     9 |
-| 3.2.2   |     4 |
-| 3.2.1   |     2 |
+### Downloads by Package and Version
 
 ``` r
 total_downloads %>% 
@@ -483,16 +424,16 @@ total_downloads %>%
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
 | 0.0.1   |        0 |         254 |             0 |           0 |            0 |
-| 0.0.2   |        0 |        1115 |             0 |           0 |            0 |
+| 0.0.2   |        0 |        1165 |             0 |           0 |            0 |
 | 0.1.0   |      148 |           0 |             0 |         369 |            0 |
 | 0.1.1   |     1195 |           0 |             0 |        1847 |            0 |
 | 0.1.2   |     1368 |           0 |             0 |         890 |            0 |
 | 0.1.3   |      215 |           0 |             0 |        1006 |            0 |
-| 0.1.4   |      263 |           0 |             0 |         309 |            0 |
+| 0.1.4   |      263 |           0 |             0 |         375 |            0 |
 | 0.1.5   |      914 |           0 |             0 |           0 |            0 |
-| 0.1.6   |     1316 |           0 |             0 |           0 |            0 |
+| 0.1.6   |     1366 |           0 |             0 |           0 |            0 |
 | 1.0.0   |        0 |           0 |          2769 |           0 |         2179 |
-| 1.0.1   |        0 |           0 |          3789 |           0 |         1210 |
+| 1.0.1   |        0 |           0 |          3842 |           0 |         1260 |
 
 # Cumulative Downloads by Package
 

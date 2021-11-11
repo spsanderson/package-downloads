@@ -147,34 +147,6 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-```{r dl_by_month}
-total_downloads %>%
-  select(date) %>%
-  summarise_by_time(date, .by = "month", n = n()) %>%
-  plot_time_series(date, n, .smooth = FALSE, .interactive = FALSE) +
-  labs(
-    title = "Total package downloads by month"
-  )
-
-total_downloads %>%
-  select(date, package) %>%
-  group_by(package) %>%
-  summarise_by_time(date, .by = "month", n = n()) %>%
-  ungroup() %>%
-  plot_time_series(
-    .date_var = date
-    , .value = n
-    , .smooth = FALSE
-    , .interactive = FALSE
-    , .facet_vars = package
-    , .facet_ncol = 2
-  )  +
-  labs(
-    title = "Total package downloads by month"
-  )
-
-```
-
 # By Release Date
 ```{r release_date_plt}
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
@@ -194,9 +166,8 @@ dl_tbl %>%
 ggplot(aes(date, log1p(N))) +
   theme_bw() +
   geom_point(aes(group = package, color = package), size = 1) +
-  geom_line() +
+  # geom_line() +
   ggtitle(paste("Package Downloads: {healthyverse}")) +
-  ylab("Counts") +
   geom_smooth(method = "loess", color = "black",  se = FALSE) +
   geom_vline(
     data = pkg_tbl
@@ -205,16 +176,15 @@ ggplot(aes(date, log1p(N))) +
     , lwd = 1
     , lty = "solid"
   ) +
-  facet_wrap(package ~., ncol = 2) +
-  tidyquant::theme_tq() +
-  tidyquant::scale_color_tq() +
+  facet_wrap(package ~., ncol = 2, scales = "free_x") +
+  theme_minimal() +
   labs(
-    subtitle = "Dashed lines represent release dates",
-    caption = "log1p scale",
+    subtitle = "Vertical lines represent release dates",
     x = "Date",
     y = "log1p(Counts)",
     color = "Package"
-  )
+  ) +
+  theme(legend.position = "bottom")
 
 ```
 
@@ -401,17 +371,10 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-# Some table data
+# Table Data
+### Downloads by Package and Version
 
 ```{r top_n_data_tbl}
-top_n_downloads(total_downloads, 4, r_os) %>%
-  set_names("OS", "Count") %>%
-  kable()
-
-top_n_downloads(total_downloads, 4, r_version) %>%
-  set_names("Version","Count") %>%
-  kable()
-
 total_downloads %>% 
   count(package, version) %>% 
   tidyr::pivot_wider(
