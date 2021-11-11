@@ -52,6 +52,7 @@ start_date      <- Sys.Date() - 9 #as.Date("2020-11-15")
 end_date        <- Sys.Date() - 2
 total_downloads <- download_logs(start_date, end_date)
 interactive     <- FALSE
+pkg_release_date_tbl()
 ```
 
 # Last Full Day Data
