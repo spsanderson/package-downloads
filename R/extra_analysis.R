@@ -83,7 +83,7 @@ leaflet(data = map_data) %>%
           )
 
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
-df_tbl %>%
+dl_tbl <- df_tbl %>%
   group_by(package, version) %>%
   summarise_by_time(
     .date_var = date,
@@ -92,4 +92,44 @@ df_tbl %>%
   ) %>%
   ungroup() %>%
   select(date, package, version, N) %>%
-  left_join(pkg_tbl)
+  left_join(pkg_tbl) %>%
+  mutate(release_record = ifelse(is.na(release_record), 0, 1))
+
+healthyR_vline <- subset(dl_tbl, (release_record == 1 & package == "healthyR"))$date
+healthyR_vline <- which(dl_tbl$date %in% healthyR_vline)
+
+dl_tbl %>%
+  filter(package == "healthyR") %>%
+  plot_time_series(
+    .date_var = date,
+    .value = N,
+    .smooth = FALSE,
+    .interactive = FALSE
+  ) +
+  geom_vline(xintercept = as.numeric(dl_tbl$date[healthyR_vline]), color = "red")
+
+dl_tbl %>%
+ggplot(aes(date, log1p(N))) +
+  theme_bw() +
+  geom_point(aes(group = package, color = package), size = 1) +
+  geom_line() +
+  ggtitle(paste("Package Downloads: {healthyverse}")) +
+  ylab("Counts") +
+  geom_smooth(method = "loess", color = "black",  se = FALSE) +
+  geom_vline(
+    data = pkg_tbl
+    , aes(xintercept = as.numeric(date))
+    , color = "red"
+    , lwd = 1
+    , lty = "solid"
+  ) +
+  facet_wrap(package~., ncol = 2) +
+  tidyquant::theme_tq() +
+  tidyquant::scale_color_tq() +
+  labs(
+    subtitle = "Dashed lines represent release dates",
+    caption = "log1p scale",
+    x = "Date",
+    y = "log1p(Counts)",
+    color = "Package"
+  )

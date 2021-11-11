@@ -45,6 +45,7 @@ start_date      <- Sys.Date() - 9 #as.Date("2020-11-15")
 end_date        <- Sys.Date() - 2
 total_downloads <- download_logs(start_date, end_date)
 interactive     <- FALSE
+pkg_release_date_tbl()
 ```
 
 # Last Full Day Data
@@ -188,6 +189,51 @@ total_downloads %>%
 ```
 
 ![](man/figures/README-dl_by_month-2.png)<!-- -->
+
+# By Release Date
+
+``` r
+pkg_tbl <- readRDS("pkg_release_tbl.rds")
+dl_tbl <- total_downloads %>%
+  group_by(package, version) %>%
+  summarise_by_time(
+    .date_var = date,
+    .by = "day",
+    N = n()
+  ) %>%
+  ungroup() %>%
+  select(date, package, version, N) %>%
+  left_join(pkg_tbl) %>%
+  mutate(release_record = ifelse(is.na(release_record), 0, 1))
+
+dl_tbl %>%
+ggplot(aes(date, log1p(N))) +
+  theme_bw() +
+  geom_point(aes(group = package, color = package), size = 1) +
+  geom_line() +
+  ggtitle(paste("Package Downloads: {healthyverse}")) +
+  ylab("Counts") +
+  geom_smooth(method = "loess", color = "black",  se = FALSE) +
+  geom_vline(
+    data = pkg_tbl
+    , aes(xintercept = as.numeric(date))
+    , color = "red"
+    , lwd = 1
+    , lty = "solid"
+  ) +
+  facet_wrap(package~., ncol = 2) +
+  tidyquant::theme_tq() +
+  tidyquant::scale_color_tq() +
+  labs(
+    subtitle = "Dashed lines represent release dates",
+    caption = "log1p scale",
+    x = "Date",
+    y = "log1p(Counts)",
+    color = "Package"
+  )
+```
+
+![](man/figures/README-release_date_plt-1.png)<!-- -->
 
 # Map of Downloads
 
