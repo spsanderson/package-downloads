@@ -81,3 +81,15 @@ leaflet(data = map_data) %>%
                )
              )
           )
+
+pkg_tbl <- readRDS("pkg_release_tbl.rds")
+df_tbl %>%
+  group_by(package, version) %>%
+  summarise_by_time(
+    .date_var = date,
+    .by = "day",
+    N = n()
+  ) %>%
+  ungroup() %>%
+  select(date, package, version, N) %>%
+  left_join(pkg_tbl)

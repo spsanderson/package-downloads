@@ -129,10 +129,11 @@ pkg_release_date_tbl <- function(){
     dplyr::as_tibble()
 
   release_tbl <- df_tbl %>%
-    select(date, package, vesion) %>%
+    select(date, package, version) %>%
     group_by(package, version) %>%
     filter(date == min(date)) %>%
-    distinct()
+    distinct() %>%
+    mutate(release_record = 1)
 
-  saveRDS("pkg_release_tbl.rds")
+  saveRDS(release_tbl, "pkg_release_tbl.rds")
 }
