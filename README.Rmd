@@ -158,9 +158,7 @@ dl_tbl <- total_downloads %>%
     N = n()
   ) %>%
   ungroup() %>%
-  select(date, package, version, N) %>%
-  left_join(pkg_tbl) %>%
-  mutate(release_record = ifelse(is.na(release_record), 0, 1))
+  select(date, package, version, N)
 
 dl_tbl %>%
 ggplot(aes(date, log1p(N))) +

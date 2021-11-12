@@ -169,15 +169,13 @@ dl_tbl <- total_downloads %>%
     N = n()
   ) %>%
   ungroup() %>%
-  select(date, package, version, N) %>%
-  left_join(pkg_tbl) %>%
-  mutate(release_record = ifelse(is.na(release_record), 0, 1))
+  select(date, package, version, N)
 
 dl_tbl %>%
 ggplot(aes(date, log1p(N))) +
   theme_bw() +
   geom_point(aes(group = package, color = package), size = 1) +
-  geom_line(size = 0.5, color = "black", alpha = .2) +
+  #geom_line(size = 0.5, color = "black", alpha = .1) +
   ggtitle(paste("Package Downloads: {healthyverse}")) +
   geom_smooth(method = "loess", color = "black",  se = FALSE) +
   geom_vline(
