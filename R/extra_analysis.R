@@ -82,40 +82,24 @@ leaflet(data = map_data) %>%
              )
           )
 
+library(tidyverse)
+
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
-dl_tbl <- df_tbl %>%
-  group_by(package, version) %>%
-  summarise_by_time(
-    .date_var = date,
-    .by = "day",
-    N = n()
-  ) %>%
-  ungroup() %>%
-  select(date, package, version, N) %>%
-  left_join(pkg_tbl) %>%
-  mutate(release_record = ifelse(is.na(release_record), 0, 1))
+df_tbl <- readRDS("old_downloads.RDS")
 
-healthyR_vline <- subset(dl_tbl, (release_record == 1 & package == "healthyR"))$date
-healthyR_vline <- which(dl_tbl$date %in% healthyR_vline)
-
-dl_tbl %>%
-  filter(package == "healthyR") %>%
-  plot_time_series(
-    .date_var = date,
-    .value = N,
-    .smooth = FALSE,
-    .interactive = FALSE
-  ) +
-  geom_vline(xintercept = as.numeric(dl_tbl$date[healthyR_vline]), color = "red")
-
-dl_tbl %>%
-ggplot(aes(date, log1p(N))) +
-  theme_bw() +
-  geom_point(aes(group = package, color = package), size = 1) +
-  geom_line() +
-  ggtitle(paste("Package Downloads: {healthyverse}")) +
-  ylab("Counts") +
-  geom_smooth(method = "loess", color = "black",  se = FALSE) +
+df_tbl %>%
+  select(date) %>%
+  timetk::summarise_by_time(.date_var = date, .by = "day", N = n()) %>%
+  timetk::tk_augment_differences(.value = N, .differences = 1) %>%
+  timetk::tk_augment_differences(.value = N, .differences = 2) %>%
+  rename(velocity = contains("_diff1")) %>%
+  rename(acceleration = contains("_diff2")) %>%
+  pivot_longer(-date) %>%
+  mutate(name = str_to_title(name)) %>%
+  mutate(name = as_factor(name)) %>%
+  ggplot(aes(x = date, y = value, group = name, color = name)) +
+  #geom_line() +
+  geom_point() +
   geom_vline(
     data = pkg_tbl
     , aes(xintercept = as.numeric(date))
@@ -123,13 +107,13 @@ ggplot(aes(date, log1p(N))) +
     , lwd = 1
     , lty = "solid"
   ) +
-  facet_wrap(package~., ncol = 2) +
-  tidyquant::theme_tq() +
-  tidyquant::scale_color_tq() +
+  facet_wrap(name ~ ., ncol = 1, scale = "free") +
+  theme_minimal() +
   labs(
-    subtitle = "Dashed lines represent release dates",
-    caption = "log1p scale",
+    title = "Total Downloads: Trend, Velocity, and Accelertion",
+    subtitle = "Vertical Lines Indicate a CRAN Release",
     x = "Date",
-    y = "log1p(Counts)",
-    color = "Package"
-  )
+    y = "",
+    color = ""
+  ) +
+  theme(legend.position = "bottom")
