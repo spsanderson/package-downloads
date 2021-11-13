@@ -27,11 +27,9 @@ This file was last updated on November 12, 2021.
 
 ``` r
 library(packagedownloads)
-library(ggplot2)
+library(tidyverse)
 library(patchwork)
-library(dplyr)
 library(timetk)
-library(purrr)
 library(knitr)
 library(leaflet)
 library(htmltools)
@@ -200,6 +198,41 @@ ggplot(aes(date, log1p(N))) +
 ```
 
 ![](man/figures/README-release_date_plt-1.png)<!-- -->
+
+``` r
+dl_tbl %>%
+  select(date, N) %>%
+  rename(Actual = N) %>%
+  tk_augment_differences(.value = Actual, .differences = 1) %>%
+  tk_augment_differences(.value = Actual, .differences = 2) %>%
+  rename(velocity = contains("_diff1")) %>%
+  rename(acceleration = contains("_diff2")) %>%
+  pivot_longer(-date) %>%
+  mutate(name = str_to_title(name)) %>%
+  mutate(name = as_factor(name)) %>%
+  ggplot(aes(x = date, y = value, group = name, color = name)) +
+  #geom_line() +
+  geom_point() +
+  geom_vline(
+    data = pkg_tbl
+    , aes(xintercept = as.numeric(date))
+    , color = "red"
+    , lwd = 1
+    , lty = "solid"
+  ) +
+  facet_wrap(name ~ ., ncol = 1, scale = "free") +
+  theme_minimal() +
+  labs(
+    title = "Total Downloads: Trend, Velocity, and Accelertion",
+    subtitle = "Vertical Lines Indicate a CRAN Release",
+    x = "Date",
+    y = "",
+    color = ""
+  ) +
+  theme(legend.position = "bottom")
+```
+
+![](man/figures/README-release_date_plt-2.png)<!-- -->
 
 # Map of Downloads
 
