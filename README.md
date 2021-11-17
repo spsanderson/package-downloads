@@ -208,13 +208,11 @@ dl_tbl %>%
   pivot_longer(-date) %>%
   mutate(name = str_to_title(name)) %>%
   mutate(name = as_factor(name)) %>%
-  ggplot(aes(x = date, y = value, group = name, color = name)) +
-  #geom_line() +
-  geom_point() +
+  ggplot(aes(x = date, y = value, group = name)) +
+  geom_point(alpha = .2) +
   geom_vline(
     data = pkg_tbl
-    , aes(xintercept = as.numeric(date))
-    , color = "red"
+    , aes(xintercept = as.numeric(date), color = package)
     , lwd = 1
     , lty = "solid"
   ) +
