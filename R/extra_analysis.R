@@ -87,33 +87,3 @@ library(tidyverse)
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
 df_tbl <- readRDS("old_downloads.RDS")
 
-df_tbl %>%
-  select(date) %>%
-  timetk::summarise_by_time(.date_var = date, .by = "day", N = n()) %>%
-  timetk::tk_augment_differences(.value = N, .differences = 1) %>%
-  timetk::tk_augment_differences(.value = N, .differences = 2) %>%
-  rename(velocity = contains("_diff1")) %>%
-  rename(acceleration = contains("_diff2")) %>%
-  pivot_longer(-date) %>%
-  mutate(name = str_to_title(name)) %>%
-  mutate(name = as_factor(name)) %>%
-  ggplot(aes(x = date, y = value, group = name, color = name)) +
-  #geom_line() +
-  geom_point() +
-  geom_vline(
-    data = pkg_tbl
-    , aes(xintercept = as.numeric(date))
-    , color = "red"
-    , lwd = 1
-    , lty = "solid"
-  ) +
-  facet_wrap(name ~ ., ncol = 1, scale = "free") +
-  theme_minimal() +
-  labs(
-    title = "Total Downloads: Trend, Velocity, and Accelertion",
-    subtitle = "Vertical Lines Indicate a CRAN Release",
-    x = "Date",
-    y = "",
-    color = ""
-  ) +
-  theme(legend.position = "bottom")
