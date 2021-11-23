@@ -149,20 +149,19 @@ p1 + p2 + p3 + p4 +
 ```{r release_date_plt}
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
 dl_tbl <- total_downloads %>%
-  group_by(package, version) %>%
+  group_by(package) %>%
   summarise_by_time(
     .date_var = date,
     .by = "day",
     N = n()
   ) %>%
   ungroup() %>%
-  select(date, package, version, N)
+  select(date, package, N)
 
 dl_tbl %>%
 ggplot(aes(date, log1p(N))) +
   theme_bw() +
   geom_point(aes(group = package, color = package), size = 1) +
-  #geom_line(size = 0.5, color = "black", alpha = .1) +
   ggtitle(paste("Package Downloads: {healthyverse}")) +
   geom_smooth(method = "loess", color = "black",  se = FALSE) +
   geom_vline(
@@ -184,7 +183,11 @@ ggplot(aes(date, log1p(N))) +
 
 dl_tbl %>%
   select(date, N) %>%
-  rename(Actual = N) %>%
+  summarise_by_time(
+    .date_var = date,
+    .by = "day",
+    Actual = sum(N, na.rm = TRUE)
+  ) %>%
   tk_augment_differences(.value = Actual, .differences = 1) %>%
   tk_augment_differences(.value = Actual, .differences = 2) %>%
   rename(velocity = contains("_diff1")) %>%
