@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-16 January, 2022
+17 January, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -23,7 +23,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on January 16, 2022.
+This file was last updated on January 17, 2022.
 
 ``` r
 library(packagedownloads)
@@ -88,9 +88,11 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.5   |        0 |          12 |             0 |           0 |            0 |
-| 0.1.7   |       11 |           0 |             0 |           8 |            0 |
-| 1.0.1   |        0 |           0 |            14 |           0 |            6 |
+| 0.0.4   |        0 |           3 |             0 |           0 |            0 |
+| 0.0.5   |        0 |          15 |             0 |           0 |            0 |
+| 0.1.6   |        3 |           0 |             0 |           0 |            0 |
+| 0.1.7   |       15 |           0 |             0 |          12 |            0 |
+| 1.0.1   |        0 |           0 |            19 |           0 |           12 |
 
 # Current Trend
 
@@ -457,18 +459,18 @@ total_downloads %>%
 | 0.0.1   |        0 |         275 |             0 |           0 |            0 |
 | 0.0.2   |        0 |        1523 |             0 |           0 |            0 |
 | 0.0.3   |        0 |         286 |             0 |           0 |            0 |
-| 0.0.4   |        0 |         365 |             0 |           0 |            0 |
-| 0.0.5   |        0 |         125 |             0 |           0 |            0 |
+| 0.0.4   |        0 |         368 |             0 |           0 |            0 |
+| 0.0.5   |        0 |         140 |             0 |           0 |            0 |
 | 0.1.0   |      166 |           0 |             0 |         390 |            0 |
 | 0.1.1   |     1213 |           0 |             0 |        1871 |            0 |
 | 0.1.2   |     1392 |           0 |             0 |         911 |            0 |
 | 0.1.3   |      236 |           0 |             0 |        1031 |            0 |
 | 0.1.4   |      284 |           0 |             0 |         590 |            0 |
 | 0.1.5   |      935 |           0 |             0 |         427 |            0 |
-| 0.1.6   |     2121 |           0 |             0 |         169 |            0 |
-| 0.1.7   |      136 |           0 |             0 |         398 |            0 |
+| 0.1.6   |     2124 |           0 |             0 |         169 |            0 |
+| 0.1.7   |      151 |           0 |             0 |         410 |            0 |
 | 1.0.0   |        0 |           0 |          2788 |           0 |         2203 |
-| 1.0.1   |        0 |           0 |          5015 |           0 |         2016 |
+| 1.0.1   |        0 |           0 |          5034 |           0 |         2028 |
 
 # Cumulative Downloads by Package
 
