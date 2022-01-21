@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-20 January, 2022
+21 January, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on January 20, 2022.
+This file was last updated on January 21, 2022.
 
 ``` r
 library(packagedownloads)
@@ -89,9 +89,11 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.5   |        0 |           7 |             0 |           0 |            0 |
-| 0.1.7   |        7 |           0 |             0 |           7 |            0 |
-| 1.0.1   |        0 |           0 |             5 |           0 |            5 |
+| 0.0.4   |        0 |           1 |             0 |           0 |            0 |
+| 0.0.5   |        0 |          11 |             0 |           0 |            0 |
+| 0.1.6   |        1 |           0 |             0 |           0 |            0 |
+| 0.1.7   |       11 |           0 |             0 |          11 |            0 |
+| 1.0.1   |        0 |           0 |            10 |           0 |           11 |
 
 # Current Trend
 
@@ -436,6 +438,41 @@ p1 + p2 + p3 + p4 +
 
 ![](man/figures/README-healthyverse_analysis-1.png)<!-- -->
 
+## TidyDensity
+
+``` r
+start_date <- as.Date("2020-11-15")
+pkg <- "TidyDensity"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title   = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
+![](man/figures/README-tidydensity_analysis-1.png)<!-- -->
+
 # Table Data
 
 ### Downloads by Package and Version
@@ -458,18 +495,18 @@ total_downloads %>%
 | 0.0.1   |        0 |         275 |             0 |           0 |            0 |
 | 0.0.2   |        0 |        1523 |             0 |           0 |            0 |
 | 0.0.3   |        0 |         286 |             0 |           0 |            0 |
-| 0.0.4   |        0 |         368 |             0 |           0 |            0 |
-| 0.0.5   |        0 |         161 |             0 |           0 |            0 |
+| 0.0.4   |        0 |         369 |             0 |           0 |            0 |
+| 0.0.5   |        0 |         172 |             0 |           0 |            0 |
 | 0.1.0   |      166 |           0 |             0 |         390 |            0 |
 | 0.1.1   |     1213 |           0 |             0 |        1871 |            0 |
 | 0.1.2   |     1392 |           0 |             0 |         911 |            0 |
 | 0.1.3   |      236 |           0 |             0 |        1031 |            0 |
 | 0.1.4   |      284 |           0 |             0 |         590 |            0 |
 | 0.1.5   |      935 |           0 |             0 |         427 |            0 |
-| 0.1.6   |     2124 |           0 |             0 |         169 |            0 |
-| 0.1.7   |      172 |           0 |             0 |         428 |            0 |
+| 0.1.6   |     2125 |           0 |             0 |         169 |            0 |
+| 0.1.7   |      183 |           0 |             0 |         439 |            0 |
 | 1.0.0   |        0 |           0 |          2788 |           0 |         2203 |
-| 1.0.1   |        0 |           0 |          5054 |           0 |         2041 |
+| 1.0.1   |        0 |           0 |          5064 |           0 |         2052 |
 
 # Cumulative Downloads by Package
 
@@ -479,6 +516,7 @@ p2 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ts")
 p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data")
 p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse")
 p5 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ai")
+p6 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "TidyDensity")
 
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
