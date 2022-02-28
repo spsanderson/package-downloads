@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-27 February, 2022
+28 February, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on February 27, 2022.
+This file was last updated on February 28, 2022.
 
 ``` r
 library(packagedownloads)
@@ -89,12 +89,12 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.1   |        0 |           0 |             0 |           0 |            0 |          12 |
-| 0.0.5   |        0 |          12 |             0 |           0 |            0 |           0 |
-| 0.1.7   |       12 |           0 |             0 |          11 |            0 |           0 |
-| 0.1.8   |        0 |           0 |             0 |          11 |            0 |           0 |
-| 1.0.1   |        0 |           0 |            17 |           0 |            0 |           0 |
-| 1.0.2   |        0 |           0 |             0 |           0 |           12 |           0 |
+| 0.0.1   |        0 |           0 |             0 |           0 |            0 |           2 |
+| 0.0.5   |        0 |           3 |             0 |           0 |            0 |           0 |
+| 0.1.7   |        4 |           0 |             0 |           0 |            0 |           0 |
+| 0.1.8   |        0 |           0 |             0 |           7 |            0 |           0 |
+| 1.0.1   |        0 |           0 |             2 |           0 |            0 |           0 |
+| 1.0.2   |        0 |           0 |             0 |           0 |            3 |           0 |
 
 # Current Trend
 
@@ -245,14 +245,14 @@ mapping_dataset() %>%
   knitr::kable()
 ```
 
-| country             |  latitude |   longitude | display\_name                                                        | icon                                                                                    |
-|:--------------------|----------:|------------:|:---------------------------------------------------------------------|:----------------------------------------------------------------------------------------|
-| United States       |  39.78373 | -100.445882 | United States                                                        | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| United Kingdom      |  54.70235 |   -3.276575 | United Kingdom                                                       | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Germany             |  51.08342 |   10.423447 | Deutschland                                                          | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Hong Kong SAR China |  22.35063 |  114.184916 | &lt;U+9999&gt;&lt;U+6E2F&gt; Hong Kong, &lt;U+4E2D&gt;&lt;U+56FD&gt; | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Japan               |  36.57484 |  139.239418 | &lt;U+65E5&gt;&lt;U+672C&gt;                                         | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Chile               | -31.76134 |  -71.318770 | Chile                                                                | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| country             |  latitude |   longitude | display_name                                         | icon                                                                                    |
+|:--------------------|----------:|------------:|:-----------------------------------------------------|:----------------------------------------------------------------------------------------|
+| United States       |  39.78373 | -100.445882 | United States                                        | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| United Kingdom      |  54.70235 |   -3.276575 | United Kingdom                                       | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| Germany             |  51.08342 |   10.423447 | Deutschland                                          | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| Hong Kong SAR China |  22.35063 |  114.184916 | \<U+9999\>\<U+6E2F\> Hong Kong, \<U+4E2D\>\<U+56FD\> | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| Japan               |  36.57484 |  139.239418 | \<U+65E5\>\<U+672C\>                                 | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| Chile               | -31.76134 |  -71.318770 | Chile                                                | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
 
 ``` r
 l <- map_leaflet()
@@ -493,11 +493,11 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.1   |        0 |         285 |             0 |           0 |            0 |         488 |
+| 0.0.1   |        0 |         285 |             0 |           0 |            0 |         490 |
 | 0.0.2   |        0 |        1533 |             0 |           0 |            0 |           0 |
 | 0.0.3   |        0 |         296 |             0 |           0 |            0 |           0 |
 | 0.0.4   |        0 |         390 |             0 |           0 |            0 |           0 |
-| 0.0.5   |        0 |         568 |             0 |           0 |            0 |           0 |
+| 0.0.5   |        0 |         571 |             0 |           0 |            0 |           0 |
 | 0.1.0   |      176 |           0 |             0 |         400 |            0 |           0 |
 | 0.1.1   |     1223 |           0 |             0 |        1882 |            0 |           0 |
 | 0.1.2   |     1403 |           0 |             0 |         921 |            0 |           0 |
@@ -505,11 +505,11 @@ total_downloads %>%
 | 0.1.4   |      294 |           0 |             0 |         600 |            0 |           0 |
 | 0.1.5   |      945 |           0 |             0 |         439 |            0 |           0 |
 | 0.1.6   |     2145 |           0 |             0 |         180 |            0 |           0 |
-| 0.1.7   |      552 |           0 |             0 |         802 |            0 |           0 |
-| 0.1.8   |        0 |           0 |             0 |          11 |            0 |           0 |
+| 0.1.7   |      556 |           0 |             0 |         802 |            0 |           0 |
+| 0.1.8   |        0 |           0 |             0 |          18 |            0 |           0 |
 | 1.0.0   |        0 |           0 |          2798 |           0 |         2214 |           0 |
-| 1.0.1   |        0 |           0 |          5488 |           0 |         2088 |           0 |
-| 1.0.2   |        0 |           0 |             0 |           0 |          413 |           0 |
+| 1.0.1   |        0 |           0 |          5490 |           0 |         2088 |           0 |
+| 1.0.2   |        0 |           0 |             0 |           0 |          416 |           0 |
 
 # Cumulative Downloads by Package
 
