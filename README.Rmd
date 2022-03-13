@@ -196,7 +196,7 @@ dl_tbl %>%
   pivot_longer(-date) %>%
   mutate(name = str_to_title(name)) %>%
   mutate(name = as_factor(name)) %>%
-  ggplot(aes(x = date, y = value, group = name)) +
+  ggplot(aes(x = date, y = log1p(value), group = name)) +
   geom_point(alpha = .2) +
   geom_vline(
     data = pkg_tbl
