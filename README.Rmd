@@ -87,6 +87,15 @@ downloads %>%
     ) %>% 
   arrange(version) %>%
   kable()
+
+downloads %>%
+  count(package) %>%
+  tidyr::pivot_wider(
+    names_from = package,
+    values_from = n,
+    values_fill = 0
+  ) %>%
+  kable()
 ```
 
 # Current Trend
