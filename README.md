@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-26 April, 2022
+27 April, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on April 26, 2022.
+This file was last updated on April 27, 2022.
 
 ``` r
 library(packagedownloads)
@@ -89,9 +89,10 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.6   |        0 |           9 |             0 |           0 |            0 |           0 |
-| 0.1.8   |       12 |           0 |             0 |           9 |            0 |           0 |
-| 1.0.1   |        0 |           0 |             9 |           0 |            0 |          10 |
+| 0.0.6   |        0 |           7 |             0 |           0 |            0 |           0 |
+| 0.1.8   |       12 |           0 |             0 |           8 |            0 |           0 |
+| 0.1.9   |        5 |           0 |             0 |           0 |            0 |           0 |
+| 1.0.1   |        0 |           0 |            13 |           0 |            0 |          10 |
 | 1.0.2   |        0 |           0 |             0 |           0 |            9 |           0 |
 
 ``` r
@@ -107,7 +108,7 @@ downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|       12 |           9 |             9 |           9 |            9 |          10 |
+|       17 |           7 |            13 |           8 |            9 |          10 |
 
 # Current Trend
 
@@ -272,7 +273,7 @@ l <- map_leaflet()
 try(mapshot(x = l, file = "map.png"))
 ```
 
-    ## Could not load  c:%5CUsers%5CSteve%5CAppData%5CLocal%5CTemp%5CRtmpmm7xLZ%5Cfiledd83cac485b.html
+    ## Could not load  c:%5CUsers%5CSteve%5CAppData%5CLocal%5CTemp%5CRtmp2lPXgg%5Cfile391c148e7e94.html
     ## Error in (function (url = NULL, file = "webshot.png", vwidth = 992, vheight = 744,  : 
     ##   webshot.js returned failure value: 1
 
@@ -515,7 +516,7 @@ total_downloads %>%
 | 0.0.3   |        0 |         316 |             0 |           0 |            0 |           0 |
 | 0.0.4   |        0 |         409 |             0 |           0 |            0 |           0 |
 | 0.0.5   |        0 |         696 |             0 |           0 |            0 |           0 |
-| 0.0.6   |        0 |         691 |             0 |           0 |            0 |           0 |
+| 0.0.6   |        0 |         698 |             0 |           0 |            0 |           0 |
 | 0.1.0   |      194 |           0 |             0 |         418 |            0 |           0 |
 | 0.1.1   |     1242 |           0 |             0 |        1901 |            0 |           0 |
 | 0.1.2   |     1422 |           0 |             0 |         939 |            0 |           0 |
@@ -524,10 +525,11 @@ total_downloads %>%
 | 0.1.5   |      964 |           0 |             0 |         457 |            0 |           0 |
 | 0.1.6   |     2164 |           0 |             0 |         200 |            0 |           0 |
 | 0.1.7   |      679 |           0 |             0 |         911 |            0 |           0 |
-| 0.1.8   |      706 |           0 |             0 |         683 |            0 |           0 |
+| 0.1.8   |      718 |           0 |             0 |         691 |            0 |           0 |
+| 0.1.9   |        5 |           0 |             0 |           0 |            0 |           0 |
 | 1.0.0   |        0 |           0 |          2816 |           0 |         2234 |         349 |
-| 1.0.1   |        0 |           0 |          6239 |           0 |         2107 |         433 |
-| 1.0.2   |        0 |           0 |             0 |           0 |         1026 |           0 |
+| 1.0.1   |        0 |           0 |          6252 |           0 |         2107 |         443 |
+| 1.0.2   |        0 |           0 |             0 |           0 |         1035 |           0 |
 
 # Cumulative Downloads by Package
 
