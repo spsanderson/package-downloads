@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-29 April, 2022
+30 April, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on April 29, 2022.
+This file was last updated on April 30, 2022.
 
 ``` r
 library(packagedownloads)
@@ -89,25 +89,11 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.1   |        0 |           2 |             0 |           0 |            0 |           5 |
-| 0.0.2   |        0 |           2 |             0 |           0 |            0 |           0 |
-| 0.0.3   |        0 |           2 |             0 |           0 |            0 |           0 |
-| 0.0.4   |        0 |           2 |             0 |           0 |            0 |           0 |
-| 0.0.5   |        0 |           5 |             0 |           0 |            0 |           0 |
-| 0.0.6   |        0 |          18 |             0 |           0 |            0 |           0 |
-| 0.1.0   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.1   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.2   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.3   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.4   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.5   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.6   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.7   |        5 |           0 |             0 |           5 |            0 |           0 |
-| 0.1.8   |       13 |           0 |             0 |          15 |            0 |           0 |
-| 0.1.9   |       30 |           0 |             0 |          17 |            0 |           0 |
-| 1.0.0   |        0 |           0 |             2 |           0 |            2 |           2 |
-| 1.0.1   |        0 |           0 |            36 |           0 |            2 |          15 |
-| 1.0.2   |        0 |           0 |             0 |           0 |           21 |           0 |
+| 0.0.6   |        0 |           3 |             0 |           0 |            0 |           0 |
+| 0.1.8   |        1 |           0 |             0 |           1 |            0 |           0 |
+| 0.1.9   |       11 |           0 |             0 |           6 |            0 |           0 |
+| 1.0.1   |        0 |           0 |             4 |           0 |            0 |           7 |
+| 1.0.2   |        0 |           0 |             0 |           0 |            3 |           0 |
 
 ``` r
 downloads %>%
@@ -122,7 +108,7 @@ downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|       62 |          31 |            38 |          51 |           25 |          22 |
+|       12 |           3 |             4 |           7 |            3 |           7 |
 
 # Current Trend
 
@@ -287,7 +273,7 @@ l <- map_leaflet()
 try(mapshot(x = l, file = "map.png"))
 ```
 
-    ## Could not load  c:%5CUsers%5CSteve%5CAppData%5CLocal%5CTemp%5CRtmpwdhxce%5Cfile3e94196e3f.html
+    ## Could not load  c:%5CUsers%5CSteve%5CAppData%5CLocal%5CTemp%5CRtmpUf4yji%5Cfile279445e43ff3.html
     ## Error in (function (url = NULL, file = "webshot.png", vwidth = 992, vheight = 744,  : 
     ##   webshot.js returned failure value: 1
 
@@ -530,7 +516,7 @@ total_downloads %>%
 | 0.0.3   |        0 |         318 |             0 |           0 |            0 |           0 |
 | 0.0.4   |        0 |         411 |             0 |           0 |            0 |           0 |
 | 0.0.5   |        0 |         701 |             0 |           0 |            0 |           0 |
-| 0.0.6   |        0 |         721 |             0 |           0 |            0 |           0 |
+| 0.0.6   |        0 |         724 |             0 |           0 |            0 |           0 |
 | 0.1.0   |      196 |           0 |             0 |         420 |            0 |           0 |
 | 0.1.1   |     1244 |           0 |             0 |        1903 |            0 |           0 |
 | 0.1.2   |     1424 |           0 |             0 |         941 |            0 |           0 |
@@ -539,11 +525,11 @@ total_downloads %>%
 | 0.1.5   |      966 |           0 |             0 |         459 |            0 |           0 |
 | 0.1.6   |     2166 |           0 |             0 |         202 |            0 |           0 |
 | 0.1.7   |      684 |           0 |             0 |         916 |            0 |           0 |
-| 0.1.8   |      731 |           0 |             0 |         709 |            0 |           0 |
-| 0.1.9   |       58 |           0 |             0 |          37 |            0 |           0 |
+| 0.1.8   |      732 |           0 |             0 |         710 |            0 |           0 |
+| 0.1.9   |       69 |           0 |             0 |          43 |            0 |           0 |
 | 1.0.0   |        0 |           0 |          2818 |           0 |         2236 |         352 |
-| 1.0.1   |        0 |           0 |          6295 |           0 |         2109 |         465 |
-| 1.0.2   |        0 |           0 |             0 |           0 |         1060 |           0 |
+| 1.0.1   |        0 |           0 |          6299 |           0 |         2109 |         472 |
+| 1.0.2   |        0 |           0 |             0 |           0 |         1063 |           0 |
 
 # Cumulative Downloads by Package
 
