@@ -44,6 +44,8 @@ library(htmltools)
 library(tmaptools)
 library(mapview)
 library(countrycode)
+library(htmlwidgets)
+library(webshot)
 ```
 
 ```{r get_data}
@@ -235,7 +237,10 @@ mapping_dataset() %>%
   knitr::kable()
 
 l <- map_leaflet()
-try(mapshot(x = l, file = "map.png"))
+saveWidget(l, "downloads_map.html")
+webshot("downloads_map.html", file = "map.png",
+        cliprect = "viewport")
+#try(mapshot(x = l, file = "map.png"))
 ```
 
 ![map of downloads](map.png)

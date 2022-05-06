@@ -37,6 +37,8 @@ library(htmltools)
 library(tmaptools)
 library(mapview)
 library(countrycode)
+library(htmlwidgets)
+library(webshot)
 ```
 
 ``` r
@@ -285,12 +287,16 @@ mapping_dataset() %>%
 
 ``` r
 l <- map_leaflet()
-try(mapshot(x = l, file = "map.png"))
+saveWidget(l, "downloads_map.html")
+webshot("downloads_map.html", file = "map.png",
+        cliprect = "viewport")
 ```
 
-    ## Could not load  c:%5CUsers%5CSteve%5CAppData%5CLocal%5CTemp%5CRtmpawc3zm%5Cfile12b46e284d4d.html
-    ## Error in (function (url = NULL, file = "webshot.png", vwidth = 992, vheight = 744,  : 
-    ##   webshot.js returned failure value: 1
+![](man/figures/README-map_file-1.png)<!-- -->
+
+``` r
+#try(mapshot(x = l, file = "map.png"))
+```
 
 ![map of downloads](map.png) To date there has been downloads in a total
 of 105 different countries.
