@@ -298,8 +298,7 @@ webshot("downloads_map.html", file = "map.png",
 #try(mapshot(x = l, file = "map.png"))
 ```
 
-![map of downloads](map.png) To date there has been downloads in a total
-of 105 different countries.
+To date there has been downloads in a total of 105 different countries.
 
 # Analysis by Package
 

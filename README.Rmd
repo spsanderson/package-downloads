@@ -240,10 +240,8 @@ l <- map_leaflet()
 saveWidget(l, "downloads_map.html")
 webshot("downloads_map.html", file = "map.png",
         cliprect = "viewport")
-#try(mapshot(x = l, file = "map.png"))
 ```
 
-![map of downloads](map.png)
 To date there has been downloads in a total of `r nrow(readRDS("mapping_dataset.rds"))` different countries.
 
 # Analysis by Package
