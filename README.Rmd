@@ -458,6 +458,10 @@ total_downloads %>%
     ) %>%
   arrange(version) %>%
   kable()
+
+total_downloads %>%
+  count(package) %>%
+  kable()
 ```
 
 # Cumulative Downloads by Package

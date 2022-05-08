@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-07 May, 2022
+08 May, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on May 07, 2022.
+This file was last updated on May 08, 2022.
 
 ``` r
 library(packagedownloads)
@@ -91,12 +91,16 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.6   |        0 |           2 |             0 |           0 |            0 |           0 |
-| 0.0.7   |        0 |           7 |             0 |           0 |            0 |           0 |
-| 0.1.8   |        2 |           0 |             0 |           2 |            0 |           0 |
-| 0.1.9   |        7 |           0 |             0 |           6 |            0 |           0 |
-| 1.0.1   |        0 |           0 |             5 |           0 |            0 |          10 |
-| 1.0.2   |        0 |           0 |             0 |           0 |            7 |           0 |
+| 0.0.1   |        0 |           0 |             0 |           0 |            0 |           3 |
+| 0.0.5   |        0 |           3 |             0 |           0 |            0 |           0 |
+| 0.0.6   |        0 |           4 |             0 |           0 |            0 |           0 |
+| 0.0.7   |        0 |          27 |             0 |           0 |            0 |           0 |
+| 0.1.7   |        3 |           0 |             0 |           3 |            0 |           0 |
+| 0.1.8   |        5 |           0 |             0 |           5 |            0 |           0 |
+| 0.1.9   |       22 |           0 |             0 |          22 |            0 |           0 |
+| 1.0.1   |        0 |           0 |            22 |           0 |            0 |          15 |
+| 1.0.2   |        0 |           0 |             0 |           0 |           19 |           0 |
+| 1.1.0   |        0 |           0 |             0 |           0 |            0 |           7 |
 
 ``` r
 downloads %>%
@@ -111,7 +115,7 @@ downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|        9 |           9 |             5 |           8 |            7 |          10 |
+|       30 |          34 |            22 |          30 |           19 |          25 |
 
 # Current Trend
 
@@ -513,13 +517,13 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.1   |        0 |         307 |             0 |           0 |            0 |         718 |
+| 0.0.1   |        0 |         307 |             0 |           0 |            0 |         721 |
 | 0.0.2   |        0 |        1555 |             0 |           0 |            0 |           0 |
 | 0.0.3   |        0 |         320 |             0 |           0 |            0 |           0 |
 | 0.0.4   |        0 |         413 |             0 |           0 |            0 |           0 |
-| 0.0.5   |        0 |         712 |             0 |           0 |            0 |           0 |
-| 0.0.6   |        0 |         758 |             0 |           0 |            0 |           0 |
-| 0.0.7   |        0 |         121 |             0 |           0 |            0 |           0 |
+| 0.0.5   |        0 |         715 |             0 |           0 |            0 |           0 |
+| 0.0.6   |        0 |         762 |             0 |           0 |            0 |           0 |
+| 0.0.7   |        0 |         148 |             0 |           0 |            0 |           0 |
 | 0.1.0   |      198 |           0 |             0 |         422 |            0 |           0 |
 | 0.1.1   |     1246 |           0 |             0 |        1905 |            0 |           0 |
 | 0.1.2   |     1426 |           0 |             0 |         943 |            0 |           0 |
@@ -527,12 +531,28 @@ total_downloads %>%
 | 0.1.4   |      317 |           0 |             0 |         622 |            0 |           0 |
 | 0.1.5   |      968 |           0 |             0 |         461 |            0 |           0 |
 | 0.1.6   |     2168 |           0 |             0 |         204 |            0 |           0 |
-| 0.1.7   |      695 |           0 |             0 |         927 |            0 |           0 |
-| 0.1.8   |      749 |           0 |             0 |         730 |            0 |           0 |
-| 0.1.9   |      167 |           0 |             0 |         145 |            0 |           0 |
+| 0.1.7   |      698 |           0 |             0 |         930 |            0 |           0 |
+| 0.1.8   |      754 |           0 |             0 |         735 |            0 |           0 |
+| 0.1.9   |      189 |           0 |             0 |         167 |            0 |           0 |
 | 1.0.0   |        0 |           0 |          2820 |           0 |         2238 |         354 |
-| 1.0.1   |        0 |           0 |          6387 |           0 |         2111 |         558 |
-| 1.0.2   |        0 |           0 |             0 |           0 |         1135 |           0 |
+| 1.0.1   |        0 |           0 |          6409 |           0 |         2111 |         573 |
+| 1.0.2   |        0 |           0 |             0 |           0 |         1154 |           0 |
+| 1.1.0   |        0 |           0 |             0 |           0 |            0 |           7 |
+
+``` r
+total_downloads %>%
+  count(package) %>%
+  kable()
+```
+
+| package       |    n |
+|:--------------|-----:|
+| healthyR      | 8233 |
+| healthyR.ai   | 4220 |
+| healthyR.data | 9229 |
+| healthyR.ts   | 7452 |
+| healthyverse  | 5503 |
+| TidyDensity   | 1655 |
 
 # Cumulative Downloads by Package
 
