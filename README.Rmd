@@ -461,6 +461,10 @@ total_downloads %>%
 
 total_downloads %>%
   count(package) %>%
+  tidyr::pivot_wider(
+    names_from = package,
+    values_from = n
+  ) |>
   kable()
 ```
 
