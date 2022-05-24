@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-23 May, 2022
+24 May, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on May 23, 2022.
+This file was last updated on May 24, 2022.
 
 ``` r
 library(packagedownloads)
@@ -91,11 +91,16 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.7   |        0 |           2 |             0 |           0 |            0 |           0 |
-| 0.1.9   |        1 |           0 |             0 |           2 |            0 |           0 |
-| 1.0.1   |        0 |           0 |             3 |           0 |            0 |           0 |
-| 1.0.2   |        0 |           0 |             0 |           0 |            1 |           0 |
-| 1.1.0   |        0 |           0 |             0 |           0 |            0 |           2 |
+| 0.0.1   |        0 |           0 |             0 |           0 |            0 |           3 |
+| 0.0.5   |        0 |           3 |             0 |           0 |            0 |           0 |
+| 0.0.6   |        0 |           3 |             0 |           0 |            0 |           0 |
+| 0.0.7   |        0 |           6 |             0 |           0 |            0 |           0 |
+| 0.1.7   |        3 |           0 |             0 |           3 |            0 |           0 |
+| 0.1.8   |        3 |           0 |             0 |           3 |            0 |           0 |
+| 0.1.9   |        8 |           0 |             0 |           6 |            0 |           0 |
+| 1.0.1   |        0 |           0 |            14 |           0 |            0 |           3 |
+| 1.0.2   |        0 |           0 |             0 |           0 |           12 |           0 |
+| 1.1.0   |        0 |           0 |             0 |           0 |            0 |           9 |
 
 ``` r
 downloads %>%
@@ -110,7 +115,7 @@ downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|        1 |           2 |             3 |           2 |            1 |           2 |
+|       14 |          12 |            14 |          12 |           12 |          15 |
 
 # Current Trend
 
@@ -261,14 +266,14 @@ mapping_dataset() %>%
   knitr::kable()
 ```
 
-| country             |  latitude |   longitude | display_name                                         | icon                                                                                    |
-|:--------------------|----------:|------------:|:-----------------------------------------------------|:----------------------------------------------------------------------------------------|
-| United States       |  39.78373 | -100.445882 | United States                                        | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| United Kingdom      |  54.70235 |   -3.276575 | United Kingdom                                       | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Germany             |  51.08342 |   10.423447 | Deutschland                                          | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Hong Kong SAR China |  22.35063 |  114.184916 | \<U+9999\>\<U+6E2F\> Hong Kong, \<U+4E2D\>\<U+56FD\> | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Japan               |  36.57484 |  139.239418 | \<U+65E5\>\<U+672C\>                                 | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
-| Chile               | -31.76134 |  -71.318770 | Chile                                                | <https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png> |
+| country             |  latitude |   longitude | display_name         | icon                                                                                   |
+|:--------------------|----------:|------------:|:---------------------|:---------------------------------------------------------------------------------------|
+| United States       |  39.78373 | -100.445882 | United States        | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| United Kingdom      |  54.70235 |   -3.276575 | United Kingdom       | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Germany             |  51.08342 |   10.423447 | Deutschland          | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Hong Kong SAR China |  22.35063 |  114.184916 | 香港 Hong Kong, 中国 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Japan               |  36.57484 |  139.239418 | 日本                 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Chile               | -31.76134 |  -71.318770 | Chile                | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 
 ``` r
 l <- map_leaflet()
@@ -512,13 +517,13 @@ total_downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.1   |        0 |         311 |             0 |           0 |            0 |         743 |
+| 0.0.1   |        0 |         311 |             0 |           0 |            0 |         746 |
 | 0.0.2   |        0 |        1559 |             0 |           0 |            0 |           0 |
 | 0.0.3   |        0 |         324 |             0 |           0 |            0 |           0 |
 | 0.0.4   |        0 |         417 |             0 |           0 |            0 |           0 |
-| 0.0.5   |        0 |         737 |             0 |           0 |            0 |           0 |
-| 0.0.6   |        0 |         787 |             0 |           0 |            0 |           0 |
-| 0.0.7   |        0 |         299 |             0 |           0 |            0 |           0 |
+| 0.0.5   |        0 |         740 |             0 |           0 |            0 |           0 |
+| 0.0.6   |        0 |         790 |             0 |           0 |            0 |           0 |
+| 0.0.7   |        0 |         305 |             0 |           0 |            0 |           0 |
 | 0.1.0   |      202 |           0 |             0 |         426 |            0 |           0 |
 | 0.1.1   |     1251 |           0 |             0 |        1910 |            0 |           0 |
 | 0.1.2   |     1432 |           0 |             0 |         947 |            0 |           0 |
@@ -526,13 +531,13 @@ total_downloads %>%
 | 0.1.4   |      322 |           0 |             0 |         626 |            0 |           0 |
 | 0.1.5   |      973 |           0 |             0 |         465 |            0 |           0 |
 | 0.1.6   |     2172 |           0 |             0 |         208 |            0 |           0 |
-| 0.1.7   |      720 |           0 |             0 |         949 |            0 |           0 |
-| 0.1.8   |      779 |           0 |             0 |         760 |            0 |           0 |
-| 0.1.9   |      353 |           0 |             0 |         320 |            0 |           0 |
+| 0.1.7   |      723 |           0 |             0 |         952 |            0 |           0 |
+| 0.1.8   |      782 |           0 |             0 |         763 |            0 |           0 |
+| 0.1.9   |      361 |           0 |             0 |         326 |            0 |           0 |
 | 1.0.0   |        0 |           0 |          2824 |           0 |         2243 |         358 |
-| 1.0.1   |        0 |           0 |          6573 |           0 |         2115 |         606 |
-| 1.0.2   |        0 |           0 |             0 |           0 |         1305 |           0 |
-| 1.1.0   |        0 |           0 |             0 |           0 |            0 |         256 |
+| 1.0.1   |        0 |           0 |          6587 |           0 |         2115 |         609 |
+| 1.0.2   |        0 |           0 |             0 |           0 |         1317 |           0 |
+| 1.1.0   |        0 |           0 |             0 |           0 |            0 |         265 |
 
 ``` r
 total_downloads %>%
@@ -546,7 +551,7 @@ total_downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|     8477 |        4434 |          9397 |        7678 |         5663 |        1963 |
+|     8491 |        4446 |          9411 |        7690 |         5675 |        1978 |
 
 # Cumulative Downloads by Package
 
