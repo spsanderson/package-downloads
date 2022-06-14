@@ -1,9 +1,9 @@
 Package: packagedownloads
 Type: Package
-Title: Analyze {healthyR} {healthyR.data} {healthyR.ts} {healthyverse} CRAN Downloads
+Title: Analyze {healthyverse} CRAN Downloads
 Version: 0.1.0
 Authors@R: person("Steven", "Sanderson", , "spsanderson@gmail.com", c("aut", "cre"))
-Description: Download and visualize the RStudio CRAN logs for {healthyR} {healthyR.data} {healthyR.ts} {healthyverse}.
+Description: Download and visualize the RStudio CRAN logs for {healthyR} {healthyR.data} {healthyR.ts} {healthyR.ai} {TidyDensity} and {healthyverse}.
 Depends:
     R (>= 2.10)
 Imports:
