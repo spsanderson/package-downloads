@@ -27,5 +27,5 @@ jobs:
           ref:  'master'
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Render Rmarkdown
-        run: bach ./bash/data_refresh.sh
+        run: bash ./bash/data_refresh.sh
       
