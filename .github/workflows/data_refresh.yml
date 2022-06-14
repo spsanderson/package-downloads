@@ -21,6 +21,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: checkout_repo
+        uses: actions/checkout@v2
+        with:
+          ref:  'master'
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Render Rmarkdown
         run: bach ./bash/data_refresh.sh
