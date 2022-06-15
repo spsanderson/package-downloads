@@ -3,6 +3,9 @@ name: render-rmarkdown
 on:
   schedule:  
     - cron:  '0 08 * * *'
+    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   render-rmarkdown:
