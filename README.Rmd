@@ -46,6 +46,7 @@ library(mapview)
 library(countrycode)
 library(htmlwidgets)
 library(webshot)
+library(rmarkdown)
 ```
 
 ```{r get_data}
