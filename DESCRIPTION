@@ -23,7 +23,13 @@ Imports:
     htmltools,
     leaflet,
     purrr,
-    mapview
+    mapview,
+    rmarkdown,
+    tidyr,
+    stringr,
+    patchwork,
+    htmlwidgets,
+    webshot
 Suggests: glue
 License: MIT + file LICENSE
 URL: https://github.com/spsanderson/package-downloads
