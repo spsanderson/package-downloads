@@ -43,7 +43,7 @@ library(rmarkdown)
 ```
 
 ``` r
-start_date      <- Sys.Date() - 9 #as.Date("2020-11-15")
+start_date      <- as.Date("2022-08-07")#Sys.Date() - 9 #as.Date("2020-11-15")
 end_date        <- Sys.Date() - 2
 total_downloads <- download_logs(start_date, end_date)
 interactive     <- FALSE
