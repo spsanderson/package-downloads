@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-18 October, 2022
+19 October, 2022
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -24,7 +24,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on October 18, 2022.
+This file was last updated on October 19, 2022.
 
 ``` r
 library(packagedownloads)
@@ -92,12 +92,12 @@ downloads %>%
 
 | version | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |:--------|---------:|------------:|--------------:|------------:|-------------:|------------:|
-| 0.0.9   |        0 |           4 |             0 |           0 |            0 |           0 |
-| 0.2.0   |        2 |           0 |             0 |           0 |            0 |           0 |
-| 0.2.3   |        0 |           0 |             0 |           5 |            0 |           0 |
-| 1.0.1   |        0 |           0 |             2 |           0 |            0 |           0 |
-| 1.0.2   |        0 |           0 |             0 |           0 |            1 |           0 |
-| 1.2.3   |        0 |           0 |             0 |           0 |            0 |           4 |
+| 0.0.9   |        0 |          38 |             0 |           0 |            0 |           0 |
+| 0.2.0   |       41 |           0 |             0 |           0 |            0 |           0 |
+| 0.2.3   |        0 |           0 |             0 |          39 |            0 |           0 |
+| 1.0.1   |        0 |           0 |            34 |           0 |            0 |           0 |
+| 1.0.2   |        0 |           0 |             0 |           0 |           39 |           0 |
+| 1.2.3   |        0 |           0 |             0 |           0 |            0 |          37 |
 
 ``` r
 downloads %>%
@@ -112,7 +112,7 @@ downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|        2 |           4 |             2 |           5 |            1 |           4 |
+|       41 |          38 |            34 |          39 |           39 |          37 |
 
 # Current Trend
 
@@ -522,7 +522,7 @@ total_downloads %>%
 | 0.0.6   |        0 |        1013 |             0 |           0 |            0 |           0 |
 | 0.0.7   |        0 |         696 |             0 |           0 |            0 |           0 |
 | 0.0.8   |        0 |         820 |             0 |           0 |            0 |           0 |
-| 0.0.9   |        0 |         199 |             0 |           0 |            0 |           0 |
+| 0.0.9   |        0 |         237 |             0 |           0 |            0 |           0 |
 | 0.1.0   |      240 |           0 |             0 |         464 |            0 |           0 |
 | 0.1.1   |     1289 |           0 |             0 |        1953 |            0 |           0 |
 | 0.1.2   |     1476 |           0 |             0 |         985 |            0 |           0 |
@@ -533,18 +533,18 @@ total_downloads %>%
 | 0.1.7   |      910 |           0 |             0 |        1140 |            0 |           0 |
 | 0.1.8   |     1011 |           0 |             0 |         988 |            0 |           0 |
 | 0.1.9   |      866 |           0 |             0 |         476 |            0 |           0 |
-| 0.2.0   |      862 |           0 |             0 |         478 |            0 |           0 |
+| 0.2.0   |      903 |           0 |             0 |         478 |            0 |           0 |
 | 0.2.1   |        0 |           0 |             0 |         292 |            0 |           0 |
 | 0.2.2   |        0 |           0 |             0 |         526 |            0 |           0 |
-| 0.2.3   |        0 |           0 |             0 |         201 |            0 |           0 |
+| 0.2.3   |        0 |           0 |             0 |         240 |            0 |           0 |
 | 1.0.0   |        0 |           0 |          2863 |           0 |         2286 |         396 |
-| 1.0.1   |        0 |           0 |          7926 |           0 |         2153 |         838 |
-| 1.0.2   |        0 |           0 |             0 |           0 |         2505 |           0 |
+| 1.0.1   |        0 |           0 |          7960 |           0 |         2153 |         838 |
+| 1.0.2   |        0 |           0 |             0 |           0 |         2544 |           0 |
 | 1.1.0   |        0 |           0 |             0 |           0 |            0 |         433 |
 | 1.2.0   |        0 |           0 |             0 |           0 |            0 |         517 |
 | 1.2.1   |        0 |           0 |             0 |           0 |            0 |         335 |
 | 1.2.2   |        0 |           0 |             0 |           0 |            0 |         552 |
-| 1.2.3   |        0 |           0 |             0 |           0 |            0 |         200 |
+| 1.2.3   |        0 |           0 |             0 |           0 |            0 |         237 |
 
 ``` r
 total_downloads %>%
@@ -558,7 +558,7 @@ total_downloads %>%
 
 | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | TidyDensity |
 |---------:|------------:|--------------:|------------:|-------------:|------------:|
-|    10547 |        6418 |         10789 |       10021 |         6944 |        4203 |
+|    10588 |        6456 |         10823 |       10060 |         6983 |        4240 |
 
 # Cumulative Downloads by Package
 
