@@ -42,7 +42,8 @@ download_logs <- function(from = Sys.Date() - 9,
       # Get only the dates and packages we want
       downloads[, date := as.Date(date)]
       downloads[package %in% c("healthyR","healthyR.ts","healthyR.data",
-                               "healthyverse","healthyR.ai","TidyDensity")]
+                               "healthyverse","healthyR.ai","TidyDensity",
+                               "tidyAML")]
     })
     parallel::stopCluster(cl)
 
