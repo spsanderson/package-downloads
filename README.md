@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Data Scientist/IT Manager
-16 February, 2023
+17 February, 2023
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -11,6 +11,7 @@ This repo contains the analysis of downloads of my `R` packages:
 - [`healthyR.ai`](https://www.spsanderson.com/healthyR.ai/)
 - [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 - [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
+- [`tidyAML`](https://www.spsanderson.com/tidyAML/)
 
 All of which follow the [“analyses as
 package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html)
@@ -24,7 +25,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on February 16, 2023.
+This file was last updated on February 17, 2023.
 
 ``` r
 library(packagedownloads)
@@ -92,44 +93,16 @@ downloads %>%
 
 | version | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|------------:|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |           1 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.10  |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.11  |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.12  |           0 |        0 |          33 |             0 |           0 |            0 |
-| 0.0.2   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.3   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.4   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.5   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.6   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.7   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.8   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.0.9   |           0 |        0 |           1 |             0 |           0 |            0 |
-| 0.1.0   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.1   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.2   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.3   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.4   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.5   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.6   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.7   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.8   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.1.9   |           0 |        1 |           0 |             0 |           1 |            0 |
-| 0.2.0   |           0 |       10 |           0 |             0 |           1 |            0 |
-| 0.2.1   |           0 |        0 |           0 |             0 |           1 |            0 |
-| 0.2.2   |           0 |        0 |           0 |             0 |           1 |            0 |
-| 0.2.3   |           0 |        0 |           0 |             0 |           1 |            0 |
-| 0.2.4   |           0 |        0 |           0 |             0 |           1 |            0 |
-| 0.2.5   |           0 |        0 |           0 |             0 |           1 |            0 |
-| 0.2.6   |           0 |        0 |           0 |             0 |           1 |            0 |
-| 0.2.7   |           0 |        0 |           0 |             0 |          26 |            0 |
-| 1.0.0   |           1 |        0 |           0 |             1 |           0 |            1 |
-| 1.0.1   |           1 |        0 |           0 |            11 |           0 |            1 |
-| 1.0.2   |           0 |        0 |           0 |            25 |           0 |            8 |
-| 1.1.0   |           1 |        0 |           0 |             0 |           0 |            0 |
-| 1.2.0   |           1 |        0 |           0 |             0 |           0 |            0 |
-| 1.2.1   |           1 |        0 |           0 |             0 |           0 |            0 |
-| 1.2.2   |           1 |        0 |           0 |             0 |           0 |            0 |
-| 1.2.3   |           1 |        0 |           0 |             0 |           0 |            0 |
+| 0.0.1   |           3 |        0 |           0 |             0 |           0 |            0 |
+| 0.0.12  |           0 |        0 |          26 |             0 |           0 |            0 |
+| 0.0.5   |           0 |        0 |           3 |             0 |           0 |            0 |
+| 0.0.6   |           0 |        0 |           3 |             0 |           0 |            0 |
+| 0.1.7   |           0 |        3 |           0 |             0 |           3 |            0 |
+| 0.1.8   |           0 |        3 |           0 |             0 |           3 |            0 |
+| 0.2.0   |           0 |        9 |           0 |             0 |           0 |            0 |
+| 0.2.7   |           0 |        0 |           0 |             0 |          15 |            0 |
+| 1.0.1   |           3 |        0 |           0 |             3 |           0 |            0 |
+| 1.0.2   |           0 |        0 |           0 |             9 |           0 |           13 |
 | 1.2.4   |          11 |        0 |           0 |             0 |           0 |            0 |
 
 ``` r
@@ -145,7 +118,7 @@ downloads %>%
 
 | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |------------:|---------:|------------:|--------------:|------------:|-------------:|
-|          19 |       20 |          44 |            37 |          43 |           10 |
+|          17 |       15 |          32 |            12 |          21 |           13 |
 
 # Current Trend
 
@@ -300,7 +273,7 @@ mapping_dataset() %>%
 |:--------------------|----------:|------------:|:---------------------|:---------------------------------------------------------------------------------------|
 | United States       |  39.78373 | -100.445882 | United States        | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 | United Kingdom      |  54.70235 |   -3.276575 | United Kingdom       | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
-| Germany             |  51.08342 |   10.423447 | Deutschland          | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Germany             |  51.16382 |   10.447831 | Deutschland          | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 | Hong Kong SAR China |  22.35063 |  114.184916 | 香港 Hong Kong, 中国 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 | Japan               |  36.57484 |  139.239418 | 日本                 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 | Chile               | -31.76134 |  -71.318770 | Chile                | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
@@ -528,6 +501,41 @@ p1 + p2 + p3 + p4 +
 
 ![](man/figures/README-tidydensity_analysis-1.png)<!-- -->
 
+## tidyAML
+
+``` r
+start_date <- as.Date("2023-02-13")
+pkg <- "tidyAML"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title   = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
+![](man/figures/README-tidyaml_analysis-1.png)<!-- -->
+
 # Table Data
 
 ### Downloads by Package and Version
@@ -547,15 +555,15 @@ total_downloads %>%
 
 | version | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |:--------|------------:|---------:|------------:|--------------:|------------:|-------------:|
-| 0.0.1   |        1015 |        0 |         369 |             0 |           0 |            0 |
+| 0.0.1   |        1018 |        0 |         369 |             0 |           0 |            0 |
 | 0.0.10  |           0 |        0 |         494 |             0 |           0 |            0 |
 | 0.0.11  |           0 |        0 |         333 |             0 |           0 |            0 |
-| 0.0.12  |           0 |        0 |         204 |             0 |           0 |            0 |
+| 0.0.12  |           0 |        0 |         230 |             0 |           0 |            0 |
 | 0.0.2   |           0 |        0 |        1620 |             0 |           0 |            0 |
 | 0.0.3   |           0 |        0 |         382 |             0 |           0 |            0 |
 | 0.0.4   |           0 |        0 |         475 |             0 |           0 |            0 |
-| 0.0.5   |           0 |        0 |        1008 |             0 |           0 |            0 |
-| 0.0.6   |           0 |        0 |        1114 |             0 |           0 |            0 |
+| 0.0.5   |           0 |        0 |        1011 |             0 |           0 |            0 |
+| 0.0.6   |           0 |        0 |        1117 |             0 |           0 |            0 |
 | 0.0.7   |           0 |        0 |         717 |             0 |           0 |            0 |
 | 0.0.8   |           0 |        0 |         846 |             0 |           0 |            0 |
 | 0.0.9   |           0 |        0 |         618 |             0 |           0 |            0 |
@@ -566,26 +574,26 @@ total_downloads %>%
 | 0.1.4   |           0 |      381 |           0 |             0 |         683 |            0 |
 | 0.1.5   |           0 |     1031 |           0 |             0 |         523 |            0 |
 | 0.1.6   |           0 |     2230 |           0 |             0 |         266 |            0 |
-| 0.1.7   |           0 |      993 |           0 |             0 |        1218 |            0 |
-| 0.1.8   |           0 |     1113 |           0 |             0 |        1089 |            0 |
+| 0.1.7   |           0 |      996 |           0 |             0 |        1221 |            0 |
+| 0.1.8   |           0 |     1116 |           0 |             0 |        1092 |            0 |
 | 0.1.9   |           0 |      886 |           0 |             0 |         495 |            0 |
-| 0.2.0   |           0 |     1753 |           0 |             0 |         497 |            0 |
+| 0.2.0   |           0 |     1762 |           0 |             0 |         497 |            0 |
 | 0.2.1   |           0 |        0 |           0 |             0 |         311 |            0 |
 | 0.2.2   |           0 |        0 |           0 |             0 |         551 |            0 |
 | 0.2.3   |           0 |        0 |           0 |             0 |         545 |            0 |
 | 0.2.4   |           0 |        0 |           0 |             0 |         166 |            0 |
 | 0.2.5   |           0 |        0 |           0 |             0 |         463 |            0 |
 | 0.2.6   |           0 |        0 |           0 |             0 |         324 |            0 |
-| 0.2.7   |           0 |        0 |           0 |             0 |         318 |            0 |
+| 0.2.7   |           0 |        0 |           0 |             0 |         333 |            0 |
 | 1.0.0   |         418 |        0 |           0 |          2884 |           0 |         2335 |
-| 1.0.1   |         936 |        0 |           0 |          8648 |           0 |         2174 |
-| 1.0.2   |           0 |        0 |           0 |           379 |           0 |         3288 |
+| 1.0.1   |         939 |        0 |           0 |          8651 |           0 |         2174 |
+| 1.0.2   |           0 |        0 |           0 |           388 |           0 |         3301 |
 | 1.1.0   |         455 |        0 |           0 |             0 |           0 |            0 |
 | 1.2.0   |         539 |        0 |           0 |             0 |           0 |            0 |
 | 1.2.1   |         357 |        0 |           0 |             0 |           0 |            0 |
 | 1.2.2   |         580 |        0 |           0 |             0 |           0 |            0 |
 | 1.2.3   |         603 |        0 |           0 |             0 |           0 |            0 |
-| 1.2.4   |         959 |        0 |           0 |             0 |           0 |            0 |
+| 1.2.4   |         970 |        0 |           0 |             0 |           0 |            0 |
 
 ``` r
 total_downloads %>%
@@ -599,7 +607,7 @@ total_downloads %>%
 
 | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse |
 |------------:|---------:|------------:|--------------:|------------:|-------------:|
-|        5862 |    11791 |        8180 |         11911 |       12039 |         7797 |
+|        5879 |    11806 |        8212 |         11923 |       12060 |         7810 |
 
 # Cumulative Downloads by Package
 
@@ -610,6 +618,7 @@ p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data")
 p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse")
 p5 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ai")
 p6 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "TidyDensity")
+p7 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "tidyAML")
 
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
@@ -617,7 +626,7 @@ patchwork_theme <- theme_classic(base_size = 24) +
     plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
-p1 + p2 + p3 + p4 + p5 + p6 +
+p1 + p2 + p3 + p4 + p5 + p6 + p7 +
   plot_annotation(
     title    = "healthyR packages are on the Rise",
     subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
