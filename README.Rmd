@@ -166,7 +166,7 @@ dl_tbl <- total_downloads %>%
   group_by(package) %>%
   summarise_by_time(
     .date_var = date,
-    .by = "day",
+    .by = "week",
     N = n()
   ) %>%
   ungroup() %>%
@@ -176,6 +176,7 @@ dl_tbl %>%
 ggplot(aes(date, log1p(N))) +
   theme_bw() +
   geom_point(aes(group = package, color = package), size = 1) +
+  geom_line(aes(group = package, color = package)) +
   ggtitle(paste("Package Downloads: {healthyverse}")) +
   geom_smooth(method = "loess", color = "black",  se = FALSE) +
   geom_vline(
@@ -199,7 +200,7 @@ dl_tbl %>%
   select(date, N) %>%
   summarise_by_time(
     .date_var = date,
-    .by = "day",
+    .by = "week",
     Actual = sum(N, na.rm = TRUE)
   ) %>%
   tk_augment_differences(.value = Actual, .differences = 1) %>%
