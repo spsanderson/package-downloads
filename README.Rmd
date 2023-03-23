@@ -2,7 +2,7 @@
 title: "CRAN Downloads"
 output: github_document
 always_allow_html: true
-author: "Steven P. Sanderson II, MPH - Data Scientist/IT Manager"
+author: "Steven P. Sanderson II, MPHr"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 ---
 
