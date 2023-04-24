@@ -1,0 +1,20 @@
+name: Knit R Markdown File
+on:
+  schedule:
+    - cron: '0 8 * * *' # run at 8am every day
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: '4.1.0'
+    - name: Install Dependencies
+      run: |
+        install.packages("rmarkdown")
+        install.packages("knitr")
+    - name: Knit R Markdown
+      run: |
+        Rscript -e 'rmarkdown::render("https://raw.githubusercontent.com/spsanderson/package-downloads/master/README.Rmd")'
