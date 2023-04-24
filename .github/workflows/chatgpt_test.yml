@@ -1,10 +1,12 @@
 name: Knit R Markdown File
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.Rmd'
   schedule:
     - cron: '0 8 * * *' # run at 8am every day
-    
-    # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,5 +21,16 @@ jobs:
         install.packages("rmarkdown")
         install.packages("knitr")
     - name: Knit R Markdown
+      if: ${{ github.event_name == 'push' || inputs.force_run == 'true' }}
       run: |
         Rscript -e 'rmarkdown::render("https://raw.githubusercontent.com/spsanderson/package-downloads/master/README.Rmd")'
+    - name: Notify Success
+      if: ${{ always() }}
+      run: echo "Knitting complete."
+    - name: Notify Failure
+      if: ${{ failure() }}
+      run: echo "Knitting failed."
+    inputs:
+      force_run:
+        description: 'Set to "true" to force a run of the workflow'
+        default: 'false'
