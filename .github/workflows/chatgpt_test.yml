@@ -1,4 +1,4 @@
-name: Knit R Markdown File
+name: ChatGPT Test - Knit R Markdown File
 on:
   push:
     branches:
