@@ -1,4 +1,4 @@
-name: Knit README.Rmd
+name: Bard Test - Knit README.Rmd
 
 on:
   schedule:
