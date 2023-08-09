@@ -1,4 +1,4 @@
-name: ChatGPT Test - Knit R Markdown File
+name: ChatGPT Test - Knit README.Rmd
 on:
   push:
     branches:
