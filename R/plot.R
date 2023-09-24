@@ -2,10 +2,10 @@
 plot_daily_downloads <- function(daily_downloads, color = "steelblue") {
 
   ggplot(daily_downloads, aes(date, N)) +
-    geom_line(color = color, size = 1.5) +
+    geom_line(color = color, linewidth = 1.0) +
     scale_x_date(date_labels = "%b %d") +
     ylim(0, NA) +
-    theme_classic(base_size = 14) +
+    theme_classic(base_size = 11) +
     labs(
       x = NULL,
       y = NULL,
@@ -22,7 +22,7 @@ plot_cumulative_downloads <- function(daily_downloads, color = "steelblue") {
       data = daily_downloads,
       mapping = aes(date, cumulative_N),
       color = color,
-      size = 1.5
+      linewidth = 1.0
     ) +
     geom_point(
       data = max_downloads,
