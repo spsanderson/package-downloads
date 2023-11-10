@@ -306,14 +306,27 @@ A `leaflet` map of countries where a package has been downloaded.
 mapping_dataset() %>%
   head() %>%
   knitr::kable()
+```
 
+| country             |  latitude |   longitude | display_name         | icon                                                                                   |
+|:--------------------|----------:|------------:|:---------------------|:---------------------------------------------------------------------------------------|
+| United States       |  39.78373 | -100.445882 | United States        | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| United Kingdom      |  54.70235 |   -3.276575 | United Kingdom       | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Germany             |  51.16382 |   10.447831 | Deutschland          | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Hong Kong SAR China |  22.35063 |  114.184916 | 香港 Hong Kong, 中国 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Japan               |  36.57484 |  139.239418 | 日本                 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Chile               | -31.76134 |  -71.318770 | Chile                | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+
+``` r
 l <- map_leaflet()
 saveWidget(l, "downloads_map.html")
 webshot("downloads_map.html", file = "map.png",
         cliprect = "viewport")
 ```
 
-To date there has been downloads in a total of 142 different countries.
+![](man/figures/README-map_file-1.png)<!-- -->
+
+To date there has been downloads in a total of 143 different countries.
 
 # Analysis by Package
 
