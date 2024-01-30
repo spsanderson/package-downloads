@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Date:
-29 January, 2024
+30 January, 2024
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -25,7 +25,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on January 29, 2024.
+This file was last updated on January 30, 2024.
 
 ``` r
 library(packagedownloads)
@@ -94,15 +94,14 @@ downloads |>
 
 | version | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
 |:--------|------------:|---------:|------------:|--------------:|------------:|-------------:|--------:|
-| 0.0.13  |           0 |        0 |           6 |             0 |           0 |            0 |       0 |
-| 0.0.4   |           0 |        0 |           0 |             0 |           0 |            0 |       5 |
-| 0.1.1   |           0 |        0 |           0 |             0 |           1 |            0 |       0 |
-| 0.1.2   |           0 |        1 |           0 |             0 |           0 |            0 |       0 |
-| 0.2.1   |           0 |        3 |           0 |             0 |           0 |            0 |       0 |
-| 0.3.0   |           0 |        0 |           0 |             0 |           3 |            0 |       0 |
+| 0.0.13  |           0 |        0 |           2 |             0 |           0 |            0 |       0 |
+| 0.0.4   |           0 |        0 |           0 |             0 |           0 |            0 |       2 |
+| 0.1.3   |           0 |        0 |           0 |             0 |           1 |            0 |       0 |
+| 0.2.1   |           0 |        1 |           0 |             0 |           0 |            0 |       0 |
+| 0.3.0   |           0 |        0 |           0 |             0 |           5 |            0 |       0 |
 | 1.0.3   |           0 |        0 |           0 |             2 |           0 |            0 |       0 |
-| 1.0.4   |           0 |        0 |           0 |             0 |           0 |            3 |       0 |
-| 1.3.0   |          10 |        0 |           0 |             0 |           0 |            0 |       0 |
+| 1.0.4   |           0 |        0 |           0 |             0 |           0 |            1 |       0 |
+| 1.3.0   |           4 |        0 |           0 |             0 |           0 |            0 |       0 |
 
 ``` r
 downloads |>
@@ -117,7 +116,7 @@ downloads |>
 
 | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
 |------------:|---------:|------------:|--------------:|------------:|-------------:|--------:|
-|          10 |        4 |           6 |             2 |           4 |            3 |       5 |
+|           4 |        1 |           2 |             2 |           6 |            1 |       2 |
 
 # Current Trend
 
@@ -267,12 +266,25 @@ A `leaflet` map of countries where a package has been downloaded.
 mapping_dataset() %>%
   head() %>%
   knitr::kable()
+```
 
+| country             |  latitude |   longitude | display_name         | icon                                                                                   |
+|:--------------------|----------:|------------:|:---------------------|:---------------------------------------------------------------------------------------|
+| United States       |  39.78373 | -100.445882 | United States        | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| United Kingdom      |  54.70235 |   -3.276575 | United Kingdom       | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Germany             |  51.16382 |   10.447831 | Deutschland          | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Hong Kong SAR China |  22.35063 |  114.184916 | 香港 Hong Kong, 中国 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Japan               |  36.57484 |  139.239418 | 日本                 | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+| Chile               | -31.76134 |  -71.318770 | Chile                | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
+
+``` r
 l <- map_leaflet()
 saveWidget(l, "downloads_map.html")
 webshot("downloads_map.html", file = "map.png",
         cliprect = "viewport")
 ```
+
+![](man/figures/README-map_file-1.png)<!-- -->
 
 To date there has been downloads in a total of 148 different countries.
 
@@ -546,10 +558,10 @@ total_downloads %>%
 | 0.0.10  |           0 |        0 |         604 |             0 |           0 |            0 |       0 |
 | 0.0.11  |           0 |        0 |         441 |             0 |           0 |            0 |       0 |
 | 0.0.12  |           0 |        0 |         694 |             0 |           0 |            0 |       0 |
-| 0.0.13  |           0 |        0 |        2325 |             0 |           0 |            0 |       0 |
+| 0.0.13  |           0 |        0 |        2327 |             0 |           0 |            0 |       0 |
 | 0.0.2   |           0 |        0 |        1726 |             0 |           0 |            0 |    1837 |
 | 0.0.3   |           0 |        0 |         487 |             0 |           0 |            0 |     546 |
-| 0.0.4   |           0 |        0 |         582 |             0 |           0 |            0 |     509 |
+| 0.0.4   |           0 |        0 |         582 |             0 |           0 |            0 |     511 |
 | 0.0.5   |           0 |        0 |        1152 |             0 |           0 |            0 |       0 |
 | 0.0.6   |           0 |        0 |        1580 |             0 |           0 |            0 |       0 |
 | 0.0.7   |           0 |        0 |         823 |             0 |           0 |            0 |       0 |
@@ -558,7 +570,7 @@ total_downloads %>%
 | 0.1.0   |           0 |      366 |           0 |             0 |         595 |            0 |       0 |
 | 0.1.1   |           0 |     1415 |           0 |             0 |        2111 |            0 |       0 |
 | 0.1.2   |           0 |     1636 |           0 |             0 |        1109 |            0 |       0 |
-| 0.1.3   |           0 |      439 |           0 |             0 |        1227 |            0 |       0 |
+| 0.1.3   |           0 |      439 |           0 |             0 |        1228 |            0 |       0 |
 | 0.1.4   |           0 |      488 |           0 |             0 |         792 |            0 |       0 |
 | 0.1.5   |           0 |     1138 |           0 |             0 |         634 |            0 |       0 |
 | 0.1.6   |           0 |     2339 |           0 |             0 |         377 |            0 |       0 |
@@ -566,7 +578,7 @@ total_downloads %>%
 | 0.1.8   |           0 |     1581 |           0 |             0 |        1555 |            0 |       0 |
 | 0.1.9   |           0 |      995 |           0 |             0 |         602 |            0 |       0 |
 | 0.2.0   |           0 |     2232 |           0 |             0 |         605 |            0 |       0 |
-| 0.2.1   |           0 |     2766 |           0 |             0 |         422 |            0 |       0 |
+| 0.2.1   |           0 |     2767 |           0 |             0 |         422 |            0 |       0 |
 | 0.2.10  |           0 |        0 |           0 |             0 |         514 |            0 |       0 |
 | 0.2.11  |           0 |        0 |           0 |             0 |         538 |            0 |       0 |
 | 0.2.2   |           0 |        0 |           0 |             0 |         659 |            0 |       0 |
@@ -577,12 +589,12 @@ total_downloads %>%
 | 0.2.7   |           0 |        0 |           0 |             0 |         826 |            0 |       0 |
 | 0.2.8   |           0 |        0 |           0 |             0 |        1343 |            0 |       0 |
 | 0.2.9   |           0 |        0 |           0 |             0 |         710 |            0 |       0 |
-| 0.3.0   |           0 |        0 |           0 |             0 |         885 |            0 |       0 |
+| 0.3.0   |           0 |        0 |           0 |             0 |         890 |            0 |       0 |
 | 1.0.0   |         522 |        0 |           0 |          2992 |           0 |         2469 |       0 |
 | 1.0.1   |        1395 |        0 |           0 |          9513 |           0 |         2279 |       0 |
 | 1.0.2   |           0 |        0 |           0 |          1427 |           0 |         3605 |       0 |
-| 1.0.3   |           0 |        0 |           0 |          2157 |           0 |          463 |       0 |
-| 1.0.4   |           0 |        0 |           0 |             0 |           0 |         1889 |       0 |
+| 1.0.3   |           0 |        0 |           0 |          2159 |           0 |          463 |       0 |
+| 1.0.4   |           0 |        0 |           0 |             0 |           0 |         1890 |       0 |
 | 1.1.0   |         558 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.2.0   |         644 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.2.1   |         460 |        0 |           0 |             0 |           0 |            0 |       0 |
@@ -591,7 +603,7 @@ total_downloads %>%
 | 1.2.4   |        2535 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.2.5   |        1898 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.2.6   |        1082 |        0 |           0 |             0 |           0 |            0 |       0 |
-| 1.3.0   |         653 |        0 |           0 |             0 |           0 |            0 |       0 |
+| 1.3.0   |         657 |        0 |           0 |             0 |           0 |            0 |       0 |
 
 ``` r
 total_downloads %>%
@@ -605,7 +617,7 @@ total_downloads %>%
 
 | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
 |------------:|---------:|------------:|--------------:|------------:|-------------:|--------:|
-|       12297 |    16531 |       12566 |         16089 |       18809 |        10705 |    3690 |
+|       12301 |    16532 |       12568 |         16091 |       18815 |        10706 |    3692 |
 
 # Cumulative Downloads by Package
 

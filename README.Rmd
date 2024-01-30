@@ -235,7 +235,7 @@ dl_tbl %>%
 
 A `leaflet` map of countries where a package has been downloaded.
 
-```{r map_file, warning=FALSE, eval=FALSE}
+```{r map_file, warning=FALSE, eval=TRUE}
 mapping_dataset() %>%
   head() %>%
   knitr::kable()
