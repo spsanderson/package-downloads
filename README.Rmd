@@ -94,7 +94,7 @@ downloads |>
   kable()
 
 downloads |>
-  count(package) |>
+  count(package, sort = TRUE) |>
   tidyr::pivot_wider(
     names_from = package,
     values_from = n,
@@ -497,7 +497,7 @@ total_downloads %>%
   kable()
 
 total_downloads %>%
-  count(package) %>%
+  count(package, sort = TRUE) %>%
   tidyr::pivot_wider(
     names_from = package,
     values_from = n
