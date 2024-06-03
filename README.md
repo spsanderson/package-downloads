@@ -706,9 +706,9 @@ latest_group_tbl <- release_tbl |>
   ungroup()
 
 joined_tbl <- left_join(
-  x = thirty_day_runup_tbl,
+  x = thirty_day_runup_tbl, 
   y = latest_group_tbl
-) |>
+  ) |>
   mutate(group_no = ifelse(is.na(group_no), FALSE, TRUE))
 
 joined_tbl |>
