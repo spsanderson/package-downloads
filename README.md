@@ -665,6 +665,7 @@ p1 + p2 + p3 + p4 + p5 + p6 + p7 +
 
 ``` r
 pkg_rel <- readRDS("pkg_release_tbl.rds") |>
+  filter(date != "2024-05-29") |>
   arrange(date) |>
   group_by(package) |>
   mutate(rel_no = row_number()) |>
