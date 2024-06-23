@@ -164,7 +164,10 @@ p1 + p2 + p3 + p4 +
 ```{r release_date_plt}
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
 dl_tbl <- total_downloads %>%
-  filter(date != "2024-05-29") %>% # bad data on this for some reason
+    filter(
+    date != "2024-05-29" &
+      !(date == "2024-06-12" & package == "TidyDensity")
+    ) |> # bad data on this for some reason
   group_by(package) %>%
   summarise_by_time(
     .date_var = date,
