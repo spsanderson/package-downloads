@@ -240,6 +240,7 @@ dl_tbl %>%
     .by = "week",
     Actual = sum(N, na.rm = TRUE)
   ) %>%
+  mutate(Actual = cumsum(Actual)) %>%
   tk_augment_differences(.value = Actual, .differences = 1) %>%
   tk_augment_differences(.value = Actual, .differences = 2) %>%
   rename(velocity = contains("_diff1")) %>%
@@ -249,6 +250,7 @@ dl_tbl %>%
   mutate(name = as_factor(name)) %>%
   ggplot(aes(x = date, y = log1p(value), group = name)) +
   geom_point(alpha = .2) +
+  geom_line(alpha = .2) +
   geom_vline(
     data = pkg_tbl
     , aes(xintercept = as.numeric(date), color = package)
