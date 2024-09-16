@@ -43,7 +43,7 @@ download_logs <- function(from = Sys.Date() - 9,
       downloads[, date := as.Date(date)]
       downloads[package %in% c("healthyR","healthyR.ts","healthyR.data",
                                "healthyverse","healthyR.ai","TidyDensity",
-                               "tidyAML")]
+                               "tidyAML","RandomWalker")]
     })
     parallel::stopCluster(cl)
 
