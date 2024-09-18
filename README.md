@@ -1,7 +1,7 @@
 CRAN Downloads
 ================
 Steven P. Sanderson II, MPH - Date:
-17 September, 2024
+18 September, 2024
 
 This repo contains the analysis of downloads of my `R` packages:
 
@@ -12,6 +12,7 @@ This repo contains the analysis of downloads of my `R` packages:
 - [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 - [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
 - [`tidyAML`](https://www.spsanderson.com/tidyAML/)
+- [`RandomWalker`](https://www.spsanderson.com/RandomWalker/)
 
 All of which follow the [“analyses as
 package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html)
@@ -25,7 +26,7 @@ While I analyze `healthyverse` packages here, the functions are written
 in a way that you can analyze any CRAN package with a slight
 modification to the `download_log` function.
 
-This file was last updated on September 17, 2024.
+This file was last updated on September 18, 2024.
 
 ``` r
 library(packagedownloads)
@@ -94,13 +95,12 @@ downloads |>
 
 | version | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
 |:--------|------------:|---------:|------------:|--------------:|------------:|-------------:|--------:|
-| 0.0.13  |           0 |        0 |           1 |             0 |           0 |            0 |       0 |
 | 0.0.5   |           0 |        0 |           0 |             0 |           0 |            0 |       2 |
-| 0.1.0   |           0 |        0 |           5 |             0 |           0 |            0 |       0 |
-| 0.2.2   |           0 |       12 |           0 |             0 |           0 |            0 |       0 |
+| 0.1.0   |           0 |        0 |          14 |             0 |           0 |            0 |       0 |
+| 0.2.2   |           0 |        4 |           0 |             0 |           0 |            0 |       0 |
 | 0.3.0   |           0 |        0 |           0 |             0 |           7 |            0 |       0 |
-| 1.0.4   |           0 |        0 |           0 |             0 |           0 |           21 |       0 |
-| 1.1.1   |           0 |        0 |           0 |            12 |           0 |            0 |       0 |
+| 1.0.4   |           0 |        0 |           0 |             0 |           0 |            2 |       0 |
+| 1.1.1   |           0 |        0 |           0 |             1 |           0 |            0 |       0 |
 | 1.5.0   |           6 |        0 |           0 |             0 |           0 |            0 |       0 |
 
 ``` r
@@ -114,9 +114,9 @@ downloads |>
   kable()
 ```
 
-| healthyverse | healthyR | healthyR.data | healthyR.ts | TidyDensity | healthyR.ai | tidyAML |
-|-------------:|---------:|--------------:|------------:|------------:|------------:|--------:|
-|           21 |       12 |            12 |           7 |           6 |           6 |       2 |
+| healthyR.ai | healthyR.ts | TidyDensity | healthyR | healthyverse | tidyAML | healthyR.data |
+|------------:|------------:|------------:|---------:|-------------:|--------:|--------------:|
+|          14 |           7 |           6 |        4 |            2 |       2 |             1 |
 
 # Current Trend
 
@@ -541,6 +541,41 @@ p1 + p2 + p3 + p4 +
 
 ![](man/figures/README-tidyaml_analysis-1.png)<!-- -->
 
+## RandomWalker
+
+``` r
+start_date <- as.Date("2023-02-13")
+pkg <- "RandomWalker"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title   = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
+![](man/figures/README-randomwalker_analysis-1.png)<!-- -->
+
 # Table Data
 
 ### Downloads by Package and Version
@@ -569,12 +604,12 @@ total_downloads %>%
 | 0.0.2             |           0 |        0 |        1803 |             0 |           0 |            0 |    1942 |
 | 0.0.3             |           0 |        0 |         563 |             0 |           0 |            0 |     635 |
 | 0.0.4             |           0 |        0 |         648 |             0 |           0 |            0 |     906 |
-| 0.0.5             |           0 |        0 |        1228 |             0 |           0 |            0 |    1703 |
+| 0.0.5             |           0 |        0 |        1228 |             0 |           0 |            0 |    1705 |
 | 0.0.6             |           0 |        0 |        2204 |             0 |           0 |            0 |       0 |
 | 0.0.7             |           0 |        0 |         899 |             0 |           0 |            0 |       0 |
 | 0.0.8             |           0 |        0 |        1026 |             0 |           0 |            0 |       0 |
 | 0.0.9             |           0 |        0 |         813 |             0 |           0 |            0 |       0 |
-| 0.1.0             |           0 |      446 |         104 |             0 |         673 |            0 |       0 |
+| 0.1.0             |           0 |      446 |         118 |             0 |         673 |            0 |       0 |
 | 0.1.1             |           0 |     1496 |           0 |             0 |        2192 |            0 |       0 |
 | 0.1.2             |           0 |     1719 |           0 |             0 |        1186 |            0 |       0 |
 | 0.1.3             |           0 |      520 |           0 |             0 |        1303 |            0 |       0 |
@@ -589,7 +624,7 @@ total_downloads %>%
 | 0.2.1.tar.gz%20HT |           0 |        5 |           0 |             0 |           0 |            0 |       0 |
 | 0.2.10            |           0 |        0 |           0 |             0 |         586 |            0 |       0 |
 | 0.2.11            |           0 |        0 |           0 |             0 |         621 |            0 |       0 |
-| 0.2.2             |           0 |      856 |           0 |             0 |         728 |            0 |       0 |
+| 0.2.2             |           0 |      860 |           0 |             0 |         728 |            0 |       0 |
 | 0.2.2.tar.gz%20   |           0 |        0 |           0 |             0 |          10 |            0 |       0 |
 | 0.2.3             |           0 |        0 |           0 |             0 |         736 |            0 |       0 |
 | 0.2.4             |           0 |        0 |           0 |             0 |         359 |            0 |       0 |
@@ -598,15 +633,15 @@ total_downloads %>%
 | 0.2.7             |           0 |        0 |           0 |             0 |         906 |            0 |       0 |
 | 0.2.8             |           0 |        0 |           0 |             0 |        1951 |            0 |       0 |
 | 0.2.9             |           0 |        0 |           0 |             0 |         802 |            0 |       0 |
-| 0.3.0             |           0 |        0 |           0 |             0 |        2750 |            0 |       0 |
+| 0.3.0             |           0 |        0 |           0 |             0 |        2757 |            0 |       0 |
 | 0.3.0.tar.gz%20H  |           0 |        0 |           0 |             0 |           5 |            0 |       0 |
 | 1.0.0             |         596 |        0 |           0 |          3072 |           0 |         2550 |       0 |
 | 1.0.1             |        1755 |        0 |           0 |          9916 |           0 |         2355 |       0 |
 | 1.0.2             |           0 |        0 |           0 |          1765 |           0 |         3709 |       0 |
 | 1.0.3             |           0 |        0 |           0 |          3196 |           0 |          540 |       0 |
-| 1.0.4             |           0 |        0 |           0 |             0 |           0 |         3369 |       0 |
+| 1.0.4             |           0 |        0 |           0 |             0 |           0 |         3371 |       0 |
 | 1.1.0             |         632 |        0 |           0 |           519 |           0 |            0 |       0 |
-| 1.1.1             |           0 |        0 |           0 |           614 |           0 |            0 |       0 |
+| 1.1.1             |           0 |        0 |           0 |           615 |           0 |            0 |       0 |
 | 1.2.0             |         718 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.2.1             |         534 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.2.2             |         749 |        0 |           0 |             0 |           0 |            0 |       0 |
@@ -617,7 +652,7 @@ total_downloads %>%
 | 1.3.0             |        1740 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.4.0             |        1184 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.4.0.tar.gz%20H  |           1 |        0 |           0 |             0 |           0 |            0 |       0 |
-| 1.5.0             |        1576 |        0 |           0 |             0 |           0 |            0 |       0 |
+| 1.5.0             |        1582 |        0 |           0 |             0 |           0 |            0 |       0 |
 | 1.5.0.tar.gz%20HT |           3 |        0 |           0 |             0 |           0 |            0 |       0 |
 
 ``` r
@@ -632,7 +667,7 @@ total_downloads %>%
 
 | healthyR.ts | healthyR | healthyR.data | TidyDensity | healthyR.ai | healthyverse | tidyAML |
 |------------:|---------:|--------------:|------------:|------------:|-------------:|--------:|
-|       23252 |    20062 |         19082 |       17533 |       15764 |        12523 |    6056 |
+|       23259 |    20066 |         19083 |       17539 |       15778 |        12525 |    6058 |
 
 # Cumulative Downloads by Package
 
@@ -644,6 +679,7 @@ p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse")
 p5 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ai")
 p6 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "TidyDensity")
 p7 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "tidyAML")
+p8 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "RandomWalker")
 
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
@@ -651,7 +687,7 @@ patchwork_theme <- theme_classic(base_size = 24) +
     plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
-p1 + p2 + p3 + p4 + p5 + p6 + p7 +
+p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 +
   plot_annotation(
     title    = "healthyR packages are on the Rise",
     subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",

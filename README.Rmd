@@ -25,6 +25,7 @@ This repo contains the analysis of downloads of my `R` packages:
 -   [`healthyverse`](https://www.spsanderson.com/healthyverse/)
 -   [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
 -   [`tidyAML`](https://www.spsanderson.com/tidyAML/)
+-   [`RandomWalker`](https://www.spsanderson.com/RandomWalker/)
 
 All of which follow the ["analyses as package"](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
 
@@ -487,6 +488,39 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
+## RandomWalker
+
+```{r randomwalker_analysis}
+start_date <- as.Date("2023-02-13")
+pkg <- "RandomWalker"
+
+daily_downloads <- compute_daily_downloads(
+  downloads = total_downloads
+  , pkg = pkg)
+downloads_by_country <- compute_downloads_by_country(
+  downloads = total_downloads
+  , pkg = pkg)
+
+p1 <- plot_daily_downloads(daily_downloads)
+p2 <- plot_cumulative_downloads(daily_downloads)
+p3 <- hist_daily_downloads(daily_downloads)
+p4 <- plot_downloads_by_country(downloads_by_country)
+
+f <- function(date) format(date, "%b %d, %Y")
+patchwork_theme <- theme_classic(base_size = 24) +
+  theme(
+    plot.title   = element_text(face = "bold"),
+    plot.caption = element_text(size = 14)
+  )
+p1 + p2 + p3 + p4 +
+  plot_annotation(
+    title    = glue::glue("Package: {pkg}"),
+    subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
+    caption  = glue::glue("Source: RStudio CRAN Logs ({f(start_date)} to {f(end_date)})"),
+    theme    = patchwork_theme
+  )
+```
+
 # Table Data
 ### Downloads by Package and Version
 
@@ -520,6 +554,7 @@ p4 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyverse")
 p5 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ai")
 p6 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "TidyDensity")
 p7 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "tidyAML")
+p8 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "RandomWalker")
 
 f <- function(date) format(date, "%b %d, %Y")
 patchwork_theme <- theme_classic(base_size = 24) +
@@ -527,7 +562,7 @@ patchwork_theme <- theme_classic(base_size = 24) +
     plot.title   = element_text(face = "bold"),
     plot.caption = element_text(size = 14)
   )
-p1 + p2 + p3 + p4 + p5 + p6 + p7 +
+p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 +
   plot_annotation(
     title    = "healthyR packages are on the Rise",
     subtitle = "A Summary of Downloads from the RStudio CRAN Mirror - Since Inception",
