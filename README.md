@@ -1,25 +1,32 @@
-# CRAN Downloads
-
-Steven P. Sanderson II, MPH - Date: 24 July, 2025
+CRAN Downloads
+================
+Steven P. Sanderson II, MPH - Date:
+25 July, 2025
 
 This repo contains the analysis of downloads of my `R` packages:
 
--   [`healthyR`](https://www.spsanderson.com/healthyR/)
--   [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
--   [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
--   [`healthyR.ai`](https://www.spsanderson.com/healthyR.ai/)
--   [`healthyverse`](https://www.spsanderson.com/healthyverse/)
--   [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
--   [`tidyAML`](https://www.spsanderson.com/tidyAML/)
--   [`RandomWalker`](https://www.spsanderson.com/RandomWalker/)
+- [`healthyR`](https://www.spsanderson.com/healthyR/)
+- [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
+- [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
+- [`healthyR.ai`](https://www.spsanderson.com/healthyR.ai/)
+- [`healthyverse`](https://www.spsanderson.com/healthyverse/)
+- [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
+- [`tidyAML`](https://www.spsanderson.com/tidyAML/)
+- [`RandomWalker`](https://www.spsanderson.com/RandomWalker/)
 
-All of which follow the [“analyses as package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
+All of which follow the [“analyses as
+package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html)
+philosophy this repo itself is an `R` package that can installed using
+`remotes::install_github()`.
 
-I have forked this project itself from [`ggcharts-analysis`](https://github.com/thomas-neitmann/ggcharts-downloads).
+I have forked this project itself from
+[`ggcharts-analysis`](https://github.com/thomas-neitmann/ggcharts-downloads).
 
-While I analyze `healthyverse` packages here, the functions are written in a way that you can analyze any CRAN package with a slight modification to the `download_log` function.
+While I analyze `healthyverse` packages here, the functions are written
+in a way that you can analyze any CRAN package with a slight
+modification to the `download_log` function.
 
-This file was last updated on July 24, 2025.
+This file was last updated on July 25, 2025.
 
 ``` r
 library(packagedownloads)
@@ -86,24 +93,16 @@ downloads |>
   kable()
 ```
 
-| version | RandomWalker | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
-|:-------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| 0.0.6 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 9 |
-| 0.1.1 | 0 | 0 | 0 | 6 | 0 | 0 | 0 | 0 |
-| 0.1.8 | 0 | 0 | 3 | 0 | 0 | 3 | 0 | 0 |
-| 0.2.0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 0.2.1 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 0 |
-| 0.2.2 | 0 | 0 | 7 | 0 | 0 | 0 | 0 | 0 |
-| 0.2.8 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 |
-| 0.3.0 | 40 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 0.3.1 | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 |
-| 1.0.1 | 0 | 4 | 0 | 0 | 3 | 0 | 0 | 0 |
-| 1.0.2 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 |
-| 1.0.3 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 |
-| 1.1.0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 0 |
-| 1.2.0 | 0 | 0 | 0 | 0 | 6 | 0 | 0 | 0 |
-| 1.2.4 | 0 | 7 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.0 | 0 | 31 | 0 | 0 | 0 | 0 | 0 | 0 |
+| version | RandomWalker | TidyDensity | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
+|:---|---:|---:|---:|---:|---:|---:|---:|
+| 0.0.6 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
+| 0.1.1 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| 0.3.0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 0.3.1 | 0 | 0 | 0 | 0 | 5 | 0 | 0 |
+| 1.1.0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
+| 1.2.0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
+| 1.5.0 | 0 | 7 | 0 | 0 | 0 | 0 | 0 |
+| 1.5.1 | 0 | 18 | 0 | 0 | 0 | 0 | 0 |
 
 ``` r
 downloads |>
@@ -116,13 +115,14 @@ downloads |>
   kable()
 ```
 
-| RandomWalker | TidyDensity | healthyR.ts | healthyR.data | healthyR | healthyR.ai | tidyAML | healthyverse |
-|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
-| 43 | 42 | 19 | 15 | 13 | 9 | 9 | 4 |
+| TidyDensity | healthyR.ts | RandomWalker | tidyAML | healthyR.ai | healthyR.data | healthyverse |
+|---:|---:|---:|---:|---:|---:|---:|
+| 25 | 5 | 3 | 3 | 2 | 2 | 2 |
 
 # Current Trend
 
-Here are the current 7 day trends for the `healthyverse` suite of packages.
+Here are the current 7 day trends for the `healthyverse` suite of
+packages.
 
 ``` r
 downloads            <- total_downloads[date >= start_date]
@@ -276,7 +276,7 @@ mapping_dataset() %>%
 ```
 
 | country | latitude | longitude | display_name | icon |
-|:--------------|--------------:|--------------:|:--------------|:--------------|
+|:---|---:|---:|:---|:---|
 | United States | 39.78373 | -100.445882 | United States | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 | United Kingdom | 54.70235 | -3.276575 | United Kingdom | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
 | Germany | 51.16382 | 10.447831 | Deutschland | <https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png> |
@@ -595,7 +595,7 @@ total_downloads %>%
 ```
 
 | version | RandomWalker | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
-|:-------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+|:---|---:|---:|---:|---:|---:|---:|---:|---:|
 | 0.0.1 | 0 | 1322 | 0 | 637 | 0 | 0 | 0 | 945 |
 | 0.0.10 | 0 | 0 | 0 | 766 | 0 | 0 | 0 | 0 |
 | 0.0.11 | 0 | 0 | 0 | 604 | 0 | 0 | 0 | 0 |
@@ -606,12 +606,12 @@ total_downloads %>%
 | 0.0.3 | 0 | 0 | 0 | 652 | 0 | 0 | 0 | 756 |
 | 0.0.4 | 0 | 0 | 0 | 735 | 0 | 0 | 0 | 981 |
 | 0.0.5 | 0 | 0 | 0 | 1316 | 0 | 0 | 0 | 3133 |
-| 0.0.6 | 0 | 0 | 0 | 2632 | 0 | 0 | 0 | 578 |
+| 0.0.6 | 0 | 0 | 0 | 2632 | 0 | 0 | 0 | 581 |
 | 0.0.7 | 0 | 0 | 0 | 986 | 0 | 0 | 0 | 0 |
 | 0.0.8 | 0 | 0 | 0 | 1112 | 0 | 0 | 0 | 0 |
 | 0.0.9 | 0 | 0 | 0 | 902 | 0 | 0 | 0 | 0 |
 | 0.1.0 | 436 | 0 | 529 | 1655 | 0 | 759 | 0 | 0 |
-| 0.1.1 | 0 | 0 | 1576 | 721 | 0 | 2280 | 0 | 0 |
+| 0.1.1 | 0 | 0 | 1576 | 723 | 0 | 2280 | 0 | 0 |
 | 0.1.2 | 0 | 0 | 1800 | 0 | 0 | 1273 | 0 | 0 |
 | 0.1.3 | 0 | 0 | 601 | 0 | 0 | 1392 | 0 | 0 |
 | 0.1.4 | 0 | 0 | 651 | 0 | 0 | 963 | 0 | 0 |
@@ -634,17 +634,17 @@ total_downloads %>%
 | 0.2.7 | 0 | 0 | 0 | 0 | 0 | 995 | 0 | 0 |
 | 0.2.8 | 0 | 0 | 0 | 0 | 0 | 2675 | 0 | 0 |
 | 0.2.9 | 0 | 0 | 0 | 0 | 0 | 891 | 0 | 0 |
-| 0.3.0 | 1320 | 0 | 0 | 0 | 0 | 3101 | 0 | 0 |
+| 0.3.0 | 1323 | 0 | 0 | 0 | 0 | 3101 | 0 | 0 |
 | 0.3.0.tar.gz%20H | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 |
-| 0.3.1 | 0 | 0 | 0 | 0 | 0 | 2061 | 0 | 0 |
+| 0.3.1 | 0 | 0 | 0 | 0 | 0 | 2066 | 0 | 0 |
 | 1.0.0 | 0 | 680 | 0 | 0 | 3168 | 0 | 2643 | 0 |
 | 1.0.1 | 0 | 2175 | 0 | 0 | 10355 | 0 | 2448 | 0 |
 | 1.0.2 | 0 | 0 | 0 | 0 | 2154 | 0 | 3861 | 0 |
 | 1.0.3 | 0 | 0 | 0 | 0 | 3690 | 0 | 632 | 0 |
 | 1.0.4 | 0 | 0 | 0 | 0 | 0 | 0 | 3677 | 0 |
-| 1.1.0 | 0 | 719 | 0 | 0 | 655 | 0 | 1794 | 0 |
+| 1.1.0 | 0 | 719 | 0 | 0 | 655 | 0 | 1796 | 0 |
 | 1.1.1 | 0 | 0 | 0 | 0 | 1263 | 0 | 0 | 0 |
-| 1.2.0 | 0 | 800 | 0 | 0 | 1186 | 0 | 0 | 0 |
+| 1.2.0 | 0 | 800 | 0 | 0 | 1188 | 0 | 0 | 0 |
 | 1.2.1 | 0 | 616 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.2.2 | 0 | 831 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.2.3 | 0 | 864 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -654,8 +654,9 @@ total_downloads %>%
 | 1.3.0 | 0 | 1833 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.4.0 | 0 | 1267 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.4.0.tar.gz%20H | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.0 | 0 | 5123 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 1.5.0 | 0 | 5130 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.5.0.tar.gz%20HT | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 1.5.1 | 0 | 18 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ``` r
 total_downloads %>%
@@ -668,8 +669,8 @@ total_downloads %>%
 ```
 
 | healthyR.ts | healthyR | TidyDensity | healthyR.data | healthyR.ai | healthyverse | tidyAML | RandomWalker |
-|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
-| 28621 | 23980 | 22928 | 22471 | 19711 | 15055 | 8459 | 5162 |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 28626 | 23980 | 22953 | 22473 | 19713 | 15057 | 8462 | 5165 |
 
 # Cumulative Downloads by Package
 
