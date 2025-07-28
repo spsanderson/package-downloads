@@ -83,6 +83,7 @@ p1 + p2 +
 ``` r
 downloads |>
   count(package, version) |> 
+  filter(grepl("[0-9]+\\.[0-9]+\\.[0-9]+", version)) |>
   tidyr::pivot_wider(
     id_cols       = version
     , names_from  = package
@@ -197,6 +198,7 @@ p1 + p2 + p3 + p4 +
 ``` r
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
 dl_tbl <- total_downloads %>%
+  filter(grepl(pattern = "[0-9]+\\.[0-9]+\\.[0-9]+", version)) %>%
     filter(
     date != "2024-05-29" &
       !(date == "2024-06-12" & package == "TidyDensity")
@@ -595,6 +597,8 @@ p1 + p2 + p3 + p4 +
 ``` r
 total_downloads %>% 
   count(package, version) %>% 
+  filter(grepl(pattern = "[0-9]+\\.[0-9]+\\.[0-9]+", version)) %>%
+  filter(!str_detect(version, "tar.gz")) %>%
   tidyr::pivot_wider(
     id_cols       = version
     , names_from  = package
@@ -612,7 +616,6 @@ total_downloads %>%
 | 0.0.11 | 0 | 0 | 0 | 604 | 0 | 0 | 0 | 0 |
 | 0.0.12 | 0 | 0 | 0 | 856 | 0 | 0 | 0 | 0 |
 | 0.0.13 | 0 | 0 | 0 | 4242 | 0 | 0 | 0 | 0 |
-| 0.0.13.tar.gz%20H | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
 | 0.0.2 | 0 | 0 | 0 | 1890 | 0 | 0 | 0 | 2066 |
 | 0.0.3 | 0 | 0 | 0 | 652 | 0 | 0 | 0 | 756 |
 | 0.0.4 | 0 | 0 | 0 | 735 | 0 | 0 | 0 | 981 |
@@ -633,11 +636,9 @@ total_downloads %>%
 | 0.1.9 | 0 | 0 | 1155 | 0 | 0 | 774 | 0 | 0 |
 | 0.2.0 | 3409 | 0 | 2405 | 0 | 0 | 778 | 0 | 0 |
 | 0.2.1 | 0 | 0 | 4803 | 0 | 0 | 594 | 0 | 0 |
-| 0.2.1.tar.gz%20HT | 0 | 0 | 5 | 0 | 0 | 0 | 0 | 0 |
 | 0.2.10 | 0 | 0 | 0 | 0 | 0 | 677 | 0 | 0 |
 | 0.2.11 | 0 | 0 | 0 | 0 | 0 | 712 | 0 | 0 |
 | 0.2.2 | 0 | 0 | 3014 | 0 | 0 | 820 | 0 | 0 |
-| 0.2.2.tar.gz%20 | 0 | 0 | 0 | 0 | 0 | 10 | 0 | 0 |
 | 0.2.3 | 0 | 0 | 0 | 0 | 0 | 826 | 0 | 0 |
 | 0.2.4 | 0 | 0 | 0 | 0 | 0 | 450 | 0 | 0 |
 | 0.2.5 | 0 | 0 | 0 | 0 | 0 | 743 | 0 | 0 |
@@ -646,7 +647,6 @@ total_downloads %>%
 | 0.2.8 | 0 | 0 | 0 | 0 | 0 | 2681 | 0 | 0 |
 | 0.2.9 | 0 | 0 | 0 | 0 | 0 | 891 | 0 | 0 |
 | 0.3.0 | 1375 | 0 | 0 | 0 | 0 | 3101 | 0 | 0 |
-| 0.3.0.tar.gz%20H | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 0 |
 | 0.3.1 | 0 | 0 | 0 | 0 | 0 | 2086 | 0 | 0 |
 | 1.0.0 | 0 | 680 | 0 | 0 | 3168 | 0 | 2643 | 0 |
 | 1.0.1 | 0 | 2178 | 0 | 0 | 10358 | 0 | 2448 | 0 |
@@ -664,24 +664,25 @@ total_downloads %>%
 | 1.2.6 | 0 | 1307 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.3.0 | 0 | 1833 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.4.0 | 0 | 1267 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.4.0.tar.gz%20H | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.5.0 | 0 | 5154 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.0.tar.gz%20HT | 0 | 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 1.5.1 | 0 | 122 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ``` r
 total_downloads %>%
   count(package, sort = TRUE) %>%
-  tidyr::pivot_wider(
-    names_from = package,
-    values_from = n
-  ) |>
   kable()
 ```
 
-| healthyR.ts | healthyR | TidyDensity | healthyR.data | healthyR.ai | healthyverse | tidyAML | RandomWalker |
-|---:|---:|---:|---:|---:|---:|---:|---:|
-| 28655 | 24002 | 23088 | 22496 | 19733 | 15080 | 8483 | 5220 |
+| package       |     n |
+|:--------------|------:|
+| healthyR.ts   | 28655 |
+| healthyR      | 24002 |
+| TidyDensity   | 23088 |
+| healthyR.data | 22496 |
+| healthyR.ai   | 19733 |
+| healthyverse  | 15080 |
+| tidyAML       |  8483 |
+| RandomWalker  |  5220 |
 
 # Cumulative Downloads by Package
 
