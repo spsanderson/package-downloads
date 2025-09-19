@@ -1,33 +1,43 @@
-# CRAN Downloads
-Steven P. Sanderson II, MPH - Date:
-2025-09-19
+---
+title: "CRAN Downloads"
+format: gfm
+theme: darkly
+author: "Steven P. Sanderson II, MPH - Date: "
+date: today
+description: "A time series analysis of CRAN downloads."
+keywords: ["R", "Time Series", "Healthyverse"]
+---
+
+```{r knit_opts, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  fig.path = "man/figures/README-",
+  fig.width = 12,
+  fig.height = 10
+)
+```
 
 This repo contains the analysis of downloads of my `R` packages:
 
-- [`healthyR`](https://www.spsanderson.com/healthyR/)
-- [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
-- [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
-- [`healthyR.ai`](https://www.spsanderson.com/healthyR.ai/)
-- [`healthyverse`](https://www.spsanderson.com/healthyverse/)
-- [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
-- [`tidyAML`](https://www.spsanderson.com/tidyAML/)
-- [`RandomWalker`](https://www.spsanderson.com/RandomWalker/)
+-   [`healthyR`](https://www.spsanderson.com/healthyR/)
+-   [`healthyR.data`](https://www.spsanderson.com/healthyR.data/)
+-   [`healthyR.ts`](https://www.spsanderson.com/healthyR.ts/)
+-   [`healthyR.ai`](https://www.spsanderson.com/healthyR.ai/)
+-   [`healthyverse`](https://www.spsanderson.com/healthyverse/)
+-   [`TidyDensity`](https://www.spsanderson.com/TidyDensity/)
+-   [`tidyAML`](https://www.spsanderson.com/tidyAML/)
+-   [`RandomWalker`](https://www.spsanderson.com/RandomWalker/)
 
-All of which follow the [“analyses as
-package”](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html)
-philosophy this repo itself is an `R` package that can installed using
-`remotes::install_github()`.
+All of which follow the ["analyses as package"](https://rmflight.github.io/posts/2014/07/analyses_as_packages.html) philosophy this repo itself is an `R` package that can installed using `remotes::install_github()`.
 
-I have forked this project itself from
-[`ggcharts-analysis`](https://github.com/thomas-neitmann/ggcharts-downloads).
+I have forked this project itself from [`ggcharts-analysis`](https://github.com/thomas-neitmann/ggcharts-downloads).
 
-While I analyze `healthyverse` packages here, the functions are written
-in a way that you can analyze any CRAN package with a slight
-modification to the `download_log` function.
+While I analyze `healthyverse` packages here, the functions are written in a way that you can analyze any CRAN package with a slight modification to the `download_log` function.
 
-This file was last updated on September 19, 2025.
+This file was last updated on `r format(Sys.Date(), "%B %d, %Y")`.
 
-``` r
+```{r setup, results='hide'}
 library(packagedownloads)
 library(tidyverse)
 library(patchwork)
@@ -44,7 +54,7 @@ library(rmarkdown)
 library(dtplyr)
 ```
 
-``` r
+```{r get_data}
 start_date      <- Sys.Date() - 9 #as.Date("2020-11-15")
 end_date        <- Sys.Date() - 2
 total_downloads <- download_logs(start_date, end_date)
@@ -53,8 +63,7 @@ pkg_release_date_tbl()
 ```
 
 # Last Full Day Data
-
-``` r
+```{r last_full_day}
 downloads            <- total_downloads |> filter(date == max(date))
 daily_downloads      <- compute_daily_downloads(downloads)
 downloads_by_country <- compute_downloads_by_country(downloads)
@@ -75,11 +84,7 @@ p1 + p2 +
     caption  = glue::glue("Source: RStudio CRAN Logs for {f(end_date)}"),
     theme    = patchwork_theme
   )
-```
 
-![](man/figures/README-last_full_day-1.png)
-
-``` r
 downloads |>
   count(package, version) |> 
   filter(grepl("[0-9]+\\.[0-9]+\\.[0-9]+", version)) |>
@@ -91,29 +96,7 @@ downloads |>
     ) |>
   arrange(version) |>
   kable()
-```
 
-| version | RandomWalker | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
-|:---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 0.0.5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| 0.0.6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5 |
-| 0.1.0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 0 |
-| 0.1.1 | 0 | 0 | 0 | 9 | 0 | 0 | 0 | 0 |
-| 0.1.8 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
-| 0.2.2 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 0 |
-| 0.3.0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 0.3.1 | 0 | 0 | 0 | 0 | 0 | 8 | 0 | 0 |
-| 1.0.0 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.0.1 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 |
-| 1.0.2 | 0 | 0 | 0 | 0 | 0 | 0 | 2 | 0 |
-| 1.0.4 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
-| 1.1.0 | 0 | 0 | 0 | 0 | 0 | 0 | 7 | 0 |
-| 1.2.0 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 |
-| 1.2.4 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.2 | 0 | 25 | 0 | 0 | 0 | 0 | 0 | 0 |
-
-``` r
 downloads |>
   count(package, sort = TRUE) |>
   tidyr::pivot_wider(
@@ -124,16 +107,11 @@ downloads |>
   kable()
 ```
 
-| TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyverse | healthyR.ts | RandomWalker | tidyAML |
-|---:|---:|---:|---:|---:|---:|---:|---:|
-| 27 | 11 | 10 | 10 | 10 | 9 | 7 | 6 |
-
 # Current Trend
 
-Here are the current 7 day trends for the `healthyverse` suite of
-packages.
+Here are the current 7 day trends for the `healthyverse` suite of packages.
 
-``` r
+```{r analysis_7_day}
 downloads            <- total_downloads[date >= start_date]
 daily_downloads      <- compute_daily_downloads(downloads)
 downloads_by_country <- compute_downloads_by_country(downloads)
@@ -158,11 +136,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-analysis_7_day-1.png)
-
 # Since Inception
 
-``` r
+```{r total_data}
 start_date <- as.Date("2020-11-15")
 
 daily_downloads <- compute_daily_downloads(downloads = total_downloads)
@@ -188,11 +164,8 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-total_data-1.png)
-
 # By Release Date
-
-``` r
+```{r release_date_plt}
 pkg_tbl <- readRDS("pkg_release_tbl.rds")
 dl_tbl <- total_downloads %>%
   filter(grepl(pattern = "[0-9]+\\.[0-9]+\\.[0-9]+", version)) %>%
@@ -232,11 +205,7 @@ ggplot(aes(date, log1p(N))) +
     color = "Package"
   ) +
   theme(legend.position = "bottom")
-```
 
-![](man/figures/README-release_date_plt-1.png)
-
-``` r
 dl_tbl %>%
   select(date, N) %>%
   summarise_by_time(
@@ -273,43 +242,28 @@ dl_tbl %>%
   theme(legend.position = "bottom")
 ```
 
-![](man/figures/README-release_date_plt-2.png)
-
 # Map of Downloads
 
 A `leaflet` map of countries where a package has been downloaded.
 
-``` r
+```{r map_file, warning=FALSE, eval=TRUE}
 mapping_dataset() %>%
   head() %>%
   knitr::kable()
-```
 
-| country | latitude | longitude | display_name | icon |
-|:---|---:|---:|:---|:---|
-| United States | 39.78373 | -100.445882 | United States | https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png |
-| United Kingdom | 54.70235 | -3.276575 | United Kingdom | https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png |
-| Germany | 51.16382 | 10.447831 | Deutschland | https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png |
-| Hong Kong SAR China | 22.35063 | 114.184916 | 香港 Hong Kong, 中国 | https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png |
-| Japan | 36.57484 | 139.239418 | 日本 | https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png |
-| Chile | -31.76134 | -71.318770 | Chile | https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png |
-
-``` r
 l <- map_leaflet()
 saveWidget(l, "downloads_map.html")
 webshot("downloads_map.html", file = "map.png",
         cliprect = "viewport")
 ```
 
-![](man/figures/README-map_file-1.png)
-
-To date there has been downloads in a total of 161 different countries.
+To date there has been downloads in a total of `r nrow(readRDS("mapping_dataset.rds"))` different countries.
 
 # Analysis by Package
 
 ## healthyR
 
-``` r
+```{r healthyR_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR"
 
@@ -340,11 +294,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-healthyR_analysis-1.png)
-
 ## healthyR.ts
 
-``` r
+```{r healthyRts_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR.ts"
 
@@ -375,11 +327,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-healthyRts_analysis-1.png)
-
 ## healthyR.data
 
-``` r
+```{r healthyRdata_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR.data"
 
@@ -410,11 +360,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-healthyRdata_analysis-1.png)
-
 ## healthyR.ai
 
-``` r
+```{r healthyRai_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyR.ai"
 
@@ -445,11 +393,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-healthyRai_analysis-1.png)
-
 ## healthyverse
 
-``` r
+```{r healthyverse_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "healthyverse"
 
@@ -480,11 +426,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-healthyverse_analysis-1.png)
-
 ## TidyDensity
 
-``` r
+```{r tidydensity_analysis}
 start_date <- as.Date("2020-11-15")
 pkg <- "TidyDensity"
 
@@ -515,11 +459,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-tidydensity_analysis-1.png)
-
 ## tidyAML
 
-``` r
+```{r tidyaml_analysis}
 start_date <- as.Date("2023-02-13")
 pkg <- "tidyAML"
 
@@ -550,11 +492,9 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-tidyaml_analysis-1.png)
-
 ## RandomWalker
 
-``` r
+```{r randomwalker_analysis}
 start_date <- as.Date("2023-02-13")
 pkg <- "RandomWalker"
 
@@ -585,13 +525,10 @@ p1 + p2 + p3 + p4 +
   )
 ```
 
-![](man/figures/README-randomwalker_analysis-1.png)
-
 # Table Data
-
 ### Downloads by Package and Version
 
-``` r
+```{r top_n_data_tbl}
 total_downloads %>% 
   count(package, version) %>% 
   filter(grepl(pattern = "[0-9]+\\.[0-9]+\\.[0-9]+", version)) %>%
@@ -604,87 +541,14 @@ total_downloads %>%
     ) %>%
   arrange(version) %>%
   kable()
-```
 
-| version | RandomWalker | TidyDensity | healthyR | healthyR.ai | healthyR.data | healthyR.ts | healthyverse | tidyAML |
-|:---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 0.0.1 | 0 | 1329 | 0 | 650 | 0 | 0 | 0 | 960 |
-| 0.0.10 | 0 | 0 | 0 | 775 | 0 | 0 | 0 | 0 |
-| 0.0.11 | 0 | 0 | 0 | 610 | 0 | 0 | 0 | 0 |
-| 0.0.12 | 0 | 0 | 0 | 865 | 0 | 0 | 0 | 0 |
-| 0.0.13 | 0 | 0 | 0 | 4292 | 0 | 0 | 0 | 0 |
-| 0.0.2 | 0 | 0 | 0 | 1902 | 0 | 0 | 0 | 2085 |
-| 0.0.3 | 0 | 0 | 0 | 666 | 0 | 0 | 0 | 783 |
-| 0.0.4 | 0 | 0 | 0 | 747 | 0 | 0 | 0 | 992 |
-| 0.0.5 | 0 | 0 | 0 | 1329 | 0 | 0 | 0 | 3155 |
-| 0.0.6 | 0 | 0 | 0 | 2701 | 0 | 0 | 0 | 910 |
-| 0.0.7 | 0 | 0 | 0 | 999 | 0 | 0 | 0 | 0 |
-| 0.0.8 | 0 | 0 | 0 | 1122 | 0 | 0 | 0 | 0 |
-| 0.0.9 | 0 | 0 | 0 | 916 | 0 | 0 | 0 | 0 |
-| 0.1.0 | 444 | 0 | 537 | 1666 | 0 | 772 | 0 | 0 |
-| 0.1.1 | 0 | 0 | 1582 | 1360 | 0 | 2294 | 0 | 0 |
-| 0.1.2 | 0 | 0 | 1809 | 0 | 0 | 1285 | 0 | 0 |
-| 0.1.3 | 0 | 0 | 611 | 0 | 0 | 1403 | 0 | 0 |
-| 0.1.4 | 0 | 0 | 662 | 0 | 0 | 980 | 0 | 0 |
-| 0.1.5 | 0 | 0 | 1304 | 0 | 0 | 814 | 0 | 0 |
-| 0.1.6 | 0 | 0 | 2511 | 0 | 0 | 554 | 0 | 0 |
-| 0.1.7 | 0 | 0 | 1297 | 0 | 0 | 1547 | 0 | 0 |
-| 0.1.8 | 0 | 0 | 2435 | 0 | 0 | 2430 | 0 | 0 |
-| 0.1.9 | 0 | 0 | 1165 | 0 | 0 | 789 | 0 | 0 |
-| 0.2.0 | 3455 | 0 | 2414 | 0 | 0 | 792 | 0 | 0 |
-| 0.2.1 | 0 | 0 | 4885 | 0 | 0 | 605 | 0 | 0 |
-| 0.2.10 | 0 | 0 | 0 | 0 | 0 | 691 | 0 | 0 |
-| 0.2.11 | 0 | 0 | 0 | 0 | 0 | 723 | 0 | 0 |
-| 0.2.2 | 0 | 0 | 3360 | 0 | 0 | 829 | 0 | 0 |
-| 0.2.3 | 0 | 0 | 0 | 0 | 0 | 839 | 0 | 0 |
-| 0.2.4 | 0 | 0 | 0 | 0 | 0 | 465 | 0 | 0 |
-| 0.2.5 | 0 | 0 | 0 | 0 | 0 | 758 | 0 | 0 |
-| 0.2.6 | 0 | 0 | 0 | 0 | 0 | 621 | 0 | 0 |
-| 0.2.7 | 0 | 0 | 0 | 0 | 0 | 1007 | 0 | 0 |
-| 0.2.8 | 0 | 0 | 0 | 0 | 0 | 2778 | 0 | 0 |
-| 0.2.9 | 0 | 0 | 0 | 0 | 0 | 907 | 0 | 0 |
-| 0.3.0 | 1845 | 0 | 0 | 0 | 0 | 3147 | 0 | 0 |
-| 0.3.1 | 0 | 0 | 0 | 0 | 0 | 2466 | 0 | 0 |
-| 1.0.0 | 445 | 684 | 0 | 0 | 3186 | 0 | 2659 | 0 |
-| 1.0.1 | 0 | 2235 | 0 | 0 | 10435 | 0 | 2462 | 0 |
-| 1.0.2 | 0 | 0 | 0 | 0 | 2217 | 0 | 3888 | 0 |
-| 1.0.3 | 0 | 0 | 0 | 0 | 3781 | 0 | 644 | 0 |
-| 1.0.4 | 0 | 0 | 0 | 0 | 0 | 0 | 3729 | 0 |
-| 1.1.0 | 0 | 723 | 0 | 0 | 678 | 0 | 2089 | 0 |
-| 1.1.1 | 0 | 0 | 0 | 0 | 1280 | 0 | 0 | 0 |
-| 1.2.0 | 0 | 808 | 0 | 0 | 1504 | 0 | 0 | 0 |
-| 1.2.1 | 0 | 622 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.2.2 | 0 | 835 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.2.3 | 0 | 869 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.2.4 | 0 | 3390 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.2.5 | 0 | 2063 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.2.6 | 0 | 1330 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.3.0 | 0 | 1840 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.4.0 | 0 | 1272 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.0 | 0 | 5185 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.1 | 0 | 658 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 1.5.2 | 0 | 589 | 0 | 0 | 0 | 0 | 0 | 0 |
-
-``` r
 total_downloads %>%
   count(package, sort = TRUE) %>%
   kable()
 ```
 
-| package       |     n |
-|:--------------|------:|
-| healthyR.ts   | 29511 |
-| healthyR      | 24577 |
-| TidyDensity   | 24436 |
-| healthyR.data | 23081 |
-| healthyR.ai   | 20605 |
-| healthyverse  | 15471 |
-| tidyAML       |  8885 |
-| RandomWalker  |  6189 |
-
 # Cumulative Downloads by Package
-
-``` r
+```{r cum_pkg_dl}
 p1 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR")
 p2 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.ts")
 p3 <- plot_cumulative_downloads_pkg(total_downloads, pkg = "healthyR.data")
@@ -709,11 +573,9 @@ p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 +
   )
 ```
 
-![](man/figures/README-cum_pkg_dl-1.png)
-
 # Thirty Day Run Post Release
 
-``` r
+```{r thirty_day_post_release}
 pkg_rel <- readRDS("pkg_release_tbl.rds") |>
   # Filter out bad data, not sure why it occurrs. 
   filter(
@@ -777,11 +639,7 @@ joined_tbl |>
     x = "Day After Version Release",
     col = "Latest Release"
   )
-```
-
-![](man/figures/README-thirty_day_post_release-1.png)
-
-``` r
+  
 joined_tbl |>
   ggplot(aes(x = rec_no, y = cum_dl, group = as.factor(pkg_ver))) +
   facet_wrap(~ package, scales = "free", ncol = 3) +
@@ -794,5 +652,3 @@ joined_tbl |>
     col = "Latest Release"
   )
 ```
-
-![](man/figures/README-thirty_day_post_release-2.png)
