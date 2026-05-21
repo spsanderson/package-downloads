@@ -2,7 +2,7 @@
 
 echo "Rendering the page..."
 
-Rscript -e "rmarkdown::render(input = 'README.Rmd')"
+Rscript -e "rmarkdown::render(input = 'README.qmd')"
 
 if [[ "$(git status --porcelain)" != "" ]]; then
     git config --global user.name 'spsanderson'
