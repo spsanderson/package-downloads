@@ -1,0 +1,21 @@
+{
+  "name": "package-downloads",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace/package-downloads",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "REditorSupport.r-lsp",
+        "quarto.quarto",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker",
+        "github.vscode-github-actions",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  }
+}

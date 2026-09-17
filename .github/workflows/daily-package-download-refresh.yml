@@ -1,0 +1,98 @@
+name: Daily Package Download Refresh
+
+on:
+  workflow_dispatch:
+
+  # GitHub cron expressions are UTC.
+  # These two entries are paired with an ET guard below so the workflow
+  # runs at 9:00 AM America/New_York across DST changes.
+  schedule:
+    - cron: "0 13 * * *"
+    - cron: "0 14 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: package-downloads-daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Refresh package download data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enforce 9 AM Eastern schedule
+        if: github.event_name == 'schedule'
+        shell: bash
+        run: |
+          HOUR_ET="$(TZ=America/New_York date +%H)"
+          if [ "${HOUR_ET}" != "09" ]; then
+            echo "This UTC cron occurrence is not 9 AM Eastern. Exiting successfully."
+            echo "SKIP_REFRESH=true" >> "${GITHUB_ENV}"
+          fi
+
+      - name: Checkout repository
+        if: env.SKIP_REFRESH != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Build Docker image
+        if: env.SKIP_REFRESH != 'true'
+        shell: bash
+        run: |
+          docker build \
+            --file .devcontainer/Dockerfile \
+            --tag package-downloads:ci \
+            .
+
+      - name: Run refresh inside Docker
+        if: env.SKIP_REFRESH != 'true'
+        shell: bash
+        run: |
+          docker run --rm \
+            --volume "${GITHUB_WORKSPACE}:/workspace" \
+            --workdir /workspace \
+            --env TZ=America/New_York \
+            package-downloads:ci \
+            bash ./bash/data_refresh_docker.sh
+
+      - name: Show changed files
+        if: env.SKIP_REFRESH != 'true'
+        shell: bash
+        run: git status --short
+
+      - name: Commit and push refreshed outputs
+        if: env.SKIP_REFRESH != 'true'
+        id: commit
+        shell: bash
+        run: |
+          if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "No repository changes detected."
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            old_downloads.RDS \
+            pkg_release_tbl.rds \
+            mapping_dataset.rds \
+            downloads_map.html \
+            map.png \
+            README.md \
+            man/figures
+
+          git commit -m "chore: refresh package download data"
+          git push origin HEAD:master
+
+          echo "changed=true" >> "${GITHUB_OUTPUT}"
+
+      # Downstream dispatch is intentionally NOT enabled in this first draft.
+      # Once package-downloads is proven stable, add a final step here that
+      # triggers the healthyverse_tsa workflow only after this job succeeds.

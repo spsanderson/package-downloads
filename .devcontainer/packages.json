@@ -1,0 +1,82 @@
+{
+  "packages": [
+    {
+      "package": "countrycode"
+    },
+    {
+      "package": "data.table"
+    },
+    {
+      "package": "ggcharts"
+    },
+    {
+      "package": "ggeasy"
+    },
+    {
+      "package": "ggplot2"
+    },
+    {
+      "package": "patchwork"
+    },
+    {
+      "package": "R.utils"
+    },
+    {
+      "package": "lubridate"
+    },
+    {
+      "package": "knitr"
+    },
+    {
+      "package": "timetk"
+    },
+    {
+      "package": "dplyr"
+    },
+    {
+      "package": "tmaptools"
+    },
+    {
+      "package": "htmltools"
+    },
+    {
+      "package": "leaflet"
+    },
+    {
+      "package": "purrr"
+    },
+    {
+      "package": "mapview"
+    },
+    {
+      "package": "rmarkdown"
+    },
+    {
+      "package": "tidyr"
+    },
+    {
+      "package": "stringr"
+    },
+    {
+      "package": "htmlwidgets"
+    },
+    {
+      "package": "webshot"
+    },
+    {
+      "package": "webshot2"
+    },
+    {
+      "package": "readr"
+    },
+    {
+      "package": "glue"
+    },
+    {
+      "package": "dtplyr"
+    },
+    {
+      "package": "remotes"
+    }
+  ]
+}
