@@ -1,9 +1,0 @@
-FROM package-downloads:local
-
-# Development-only conveniences. The production GitHub Actions workflow
-# uses .devcontainer/Dockerfile directly.
-RUN Rscript -e 'install.packages(c("languageserver", "httpgd"), repos = "https://cloud.r-project.org")'
-
-WORKDIR /workspace
-
-CMD ["/bin/bash"]
